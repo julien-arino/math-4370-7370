@@ -21,7 +21,7 @@ Using the information you provided in this form, I will be in touch individually
 
 Some of you are used to writing reports or papers, others not at all. To help everyone with the project, two assignments are then specifically designed to guide you along. These two assignments have specific deadlines, although you are free to return them before the deadline.
 1. Project Assignment 1 is due at 23:59 on Friday 13 October
-2. Project assignment 2 is due at 23:59 on Friday 17 November
+2. Project Assignment 2 is due at 23:59 on Friday 17 November
 
 I will strive to mark both of these assignments within one week of receiving them. 
 
