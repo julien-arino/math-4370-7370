@@ -12,7 +12,7 @@ Matrices are ubiquitous in many aspects of mathematics. They show up, for instan
 Objectives of the course: 
 1. explore the role of matrices in several fields of mathematics;
 2. study properties of these matrices;
-3. develop an understanding of how to deal with matrices in software.
+3. develop a toolbox to study some matrix properties computationally.
 
 ### Rough course program
 
