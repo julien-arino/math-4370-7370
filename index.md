@@ -29,17 +29,17 @@ Note that some content could change.
     - Similarity
     - Geometric multiplicity
     - The Gershgorin Theorem and friends
-3. Factorisations, canonical forms and decompositions:
+3. *Factorisations, canonical forms and decompositions*:
     - Unitary matrices and QR factorisation
     - Schur's form
     - Normal matrices
     - Jordan canonical form
     - Singular values and the SVD
-4. Nonnegative matrices:
+4. *Nonnegative matrices*:
     - Perron-Frobenius Theorem
     - Stochastic matrices
-5. M-matrices
-6. Norms and matrix norms
+5. *M-matrices*
+6. *Norms and matrix norms*
     - Vector norms on matrices
     - Matrix norms
     - Matrix norms and singular values
