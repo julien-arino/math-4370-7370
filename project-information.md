@@ -17,8 +17,10 @@ You can work on three different types of projects.
 
 Early in the term, I will ask you to fill an online form where you will indicate what type of project you would like to choose, domain area, etc. 
 
-Some of you are used to writing reports or papers, others not at all. To help everyone with the project, two assignments are specifically designed to guide you. These two assignments have specific deadlines, although you are free to return them before the deadline.
-1. Project Assignment 1 is due at 23:59 on Friday 6 October
+Using the information you provided in this form, I will be in touch individually to fine tune the topic. By the last week of September, your topic should be chosen.
+
+Some of you are used to writing reports or papers, others not at all. To help everyone with the project, two assignments are then specifically designed to guide you along. These two assignments have specific deadlines, although you are free to return them before the deadline.
+1. Project Assignment 1 is due at 23:59 on Friday 13 October
 2. Project assignment 2 is due at 23:59 on Friday 17 November
 
 I will strive to mark both of these assignments within one week of receiving them. 

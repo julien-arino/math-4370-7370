@@ -107,9 +107,9 @@ There will be no formal tests or examinations. Evaluation of the performance in 
 There are 3 types of assignments. 
     - **4 mathematics assignments (MA)**. Each of these assignments involves answering a certain number of questions selected from a list. These assignments roughly correspond to topics in the course but can be returned at any time and in any order, bearing in mind the constraint of *cumulative evaluation weight* detailed below. (Numbering is just there to distinguish them.) MATH 7370 students must pick more questions and some harder questions than students in MATH 4370. (This is clearly indicated in the assignments.)
 	- **4 coding assignments (CA)**. Each of these assignments involves writing some matrix analysis functions. Authorised languages are `R`, `Python` and `Octave` (a `MatLab` lookalike), although `R` is preferred. (syzygy.ca is now available to UofM students and works well with `R`.)  Coding assignments 1-3 can be returned in any order and at any time before coding assignment 4, bearing in mind the constraint of *cumulative evaluation weight* detailed below. Coding assignment 4 is summative of preceding assignments and due (electronically) Friday 3 December at 23:59.
-	- **2 project assignments (PA)**. These assignments are designed to help you define and get started on your final project. They must be returned in sequence and have due dates. Project assignment 1 is due at 23:59 on 6 October, project assignment 2 is due at 23:59 on 17 November.
+	- **2 project assignments (PA)**. These assignments are designed to help you define and get started on your final project. They must be returned in sequence and have due dates. Project assignment 1 is due at 23:59 on 13 October, project assignment 2 is due at 23:59 on 17 November.
 2. Further remarks on assignments.
-    - **Cumulative evaluation weight constraint**. Although most assignments do not have due dates, it is *imperative* that by 16 November at 23:59, I have received 3 out of the 4 mathematics assignments, 3 out of the 4 coding assignments and, of course, the 2 project assignments due before then. I will only mark 1 more mathematics assignment, 1 more coding assignments and 1 project assignment received after that date.
+    - **Cumulative evaluation weight constraint**. Although most assignments do not have due dates, it is *imperative* that by 24 November at 23:59, I have received 3 out of the 4 mathematics assignments, 3 out of the 4 coding assignments and, of course, the 2 project assignments due before then. I will only mark 1 more mathematics assignment and 1 more coding assignment received after that date, regardless of how many you do submit.
 	- All *assignments* (i.e., except the *Final project*) must have been handed out by the last day of classes, 11 December 2023 at 23:59. Any assignment handed in after that date will receive a mark of zero.
 	- All assignments should be submitted electronically on UMLearn. Hand-written mathematics or project assignments are **not** acceptable for students registered in MATH 7370. $\LaTeX$ is preferred, but projects using LibreOffice or Word are acceptable. Instructions on typesetting will be distributed during the term.
 	- For those assignments with due dates, late assignments will not be accepted.
@@ -123,9 +123,11 @@ There are 3 types of assignments.
 
 The University of Manitoba now allows self-declaration of short duration absences of less than 5 days. In the interest of fairness, this measure is also available to students attending remotely as PIMS students.
 
-Self-declarations are meant to be used for sporadic absences, not as a general mechanism to delay evaluations. As a consequence, I will not admit more than two submissions during the term.
+Self-declarations are meant to be used for sporadic absences, not as a general mechanism to delay evaluations. As a consequence, I will not admit more than two submissions during the term. If you have issues that necessitate more absences than this, talk to me, talk to you faculty, etc., but do not use a form as I will not accept it.
 
-The self-declaration form is available [here](https://umanitoba.ca/sites/default/files/2022-09/Self%20Declaration%20Fillable%20Form-%20FINAL%20for%20Website.pdf). For students from other universities: replace "U of M email account" in the sentence "submitting this form electronically from a U of M email account will be accepted in lieu of a signature" with your home institution.
+The self-declaration form is available [here](https://umanitoba.ca/sites/default/files/2022-09/Self%20Declaration%20Fillable%20Form-%20FINAL%20for%20Website.pdf). For students from other universities: the remark that "submitting this form electronically from a U of M email account will be accepted in lieu of a signature" works for me if you do indeed use an official email from your institution.
+
+A self-declaration form "buys you" 5 days (at most: you can declare fewer).
 
 
 ### Voluntary Withdrawal deadline
