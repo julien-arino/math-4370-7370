@@ -14,29 +14,59 @@ Objectives of the course:
 2. study properties of these matrices;
 3. develop an understanding of how to deal with matrices in software.
 
+## Rough course program
+
+Note that some content could change.
+
+1. *Matrices are everywhere*:
+    - Linear systems of differences equations
+    - Ordinary differential equations
+    - Discrete-time Markov chains
+    - Discretisation of partial differential equations
+2. *Eigenvalues, eigenvectors, Gershgorin disks*:
+    - Eigenpairs
+    - Algebraic multiplicity
+    - Similarity
+    - Geometric multiplicity
+    - The Gershgorin Theorem and friends
+3. Factorisations, canonical forms and decompositions:
+    - Unitary matrices and QR factorisation
+    - Schur's form
+    - Normal matrices
+    - Jordan canonical form
+    - Singular values and the SVD
+4. Nonnegative matrices:
+    - Perron-Frobenius Theorem
+    - Stochastic matrices
+5. M-matrices
+6. Norms and matrix norms
+    - Vector norms on matrices
+    - Matrix norms
+    - Matrix norms and singular values
+
+Although not detailed explicitly above, we will also repeatedly consider links between matrices and graphs.
+
 ## Prerequisites
 
-For University of Manitoba students: MATH 2090, Linear Algebra 2.
+For University of Manitoba students: MATH 2090, Linear Algebra 2. 
+
+For the information of students not having taken 2090, when I teach that course, I usually use Axler's *Linear algebra done right* with some notes added to compensate for the quasi-absence of determinants in Axler.
+
+While the prereqs are quite low, you should be comfortable with the content of a solid second-year linear algebra course: the pace of the course is sustained, so you will not have time to work on prereqs.
 
 ## Who's teaching?
 
-> Instructor: Julien Arino
-
-> Office: 432 Machray Hall
-
-> Email: [julien.arino@umanitoba.ca](mailto:julien.arino@umanitoba.ca)
-
-> I do not answer the telephone in my office, don't bother.
+- Instructor: Julien Arino
+- Office: 432 Machray Hall
+- Email: [julien.arino@umanitoba.ca](mailto:julien.arino@umanitoba.ca)
+- I do not answer the telephone in my office, don't bother.
 
 ## Where and when?
 
-> Class schedule: 10:00-11:15 Tuesday & Thursday.
-
-> Class location: TBD.
-
-> Office hours: TBD. There will be both in-person and zoom sessions.
-
-> Course page: UMLearn (and this repository for some content).
+- Class schedule: 10:00-11:15 Tuesday & Thursday.
+- Class location: TBD.
+- Office hours: TBD. There will be both in-person and zoom sessions.
+- Course page: UMLearn (and this repository for some content).
 
 ## Video for remote attendance
 
