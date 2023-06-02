@@ -117,6 +117,7 @@ There are 3 types of assignments.
     - The Final project is due during the Final Examination period (11-23 December).
 	- The project must be typeset. $\LaTeX$ is preferred, but projects using LibreOffice or Word are acceptable. Instructions on project typesetting will be distributed during the term.
 	- If time and class enrolment permit it, oral presentations of the projects will be organised. If that is the case, then this presentation will count as part of the mark for the project. (This will be discussed during term.)
+    - See more extensive information [here](project-information.html).
 
 
 ### Note on self-declarations of absences
