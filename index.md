@@ -63,7 +63,7 @@ While the prereqs are quite low, you should be comfortable with the content of a
 
 ## Where and when?
 
-- Class schedule: 10:00-11:15 Tuesday & Thursday.
+- Class schedule: 10:00-11:15 (Central) Tuesday & Thursday.
 - Class location: TBD.
 - Office hours: TBD. There will be both in-person and zoom sessions.
 - Course page: UMLearn (and this repository for some content).
