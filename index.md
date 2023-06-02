@@ -3,9 +3,9 @@ layout: default
 description: Material for the University of Manitoba course MATH 4370-7370, Linear Algebra and Matrix Analysis
 ---
 
-# MATH 4370-7370 <br> Linear Algebra and Matrix Analysis <br> Syllabus
+## MATH 4370-7370 <br> Linear Algebra and Matrix Analysis <br> Fall 2023 outline
 
-## Objectives of the course
+### Objectives of the course
 
 Matrices are ubiquitous in many aspects of mathematics. They show up, for instance, when considering the local asymptotic stability of equilibria of systems of ordinary differential equations, the long term behaviour of Markov chains, the study of graphs and the discretization of reaction-diffusion equations.
 
@@ -14,7 +14,7 @@ Objectives of the course:
 2. study properties of these matrices;
 3. develop an understanding of how to deal with matrices in software.
 
-## Rough course program
+### Rough course program
 
 Note that some content could change.
 
@@ -46,7 +46,7 @@ Note that some content could change.
 
 Although not detailed explicitly above, we will also repeatedly consider links between matrices and graphs.
 
-## Prerequisites
+### Prerequisites
 
 For University of Manitoba students: MATH 2090, Linear Algebra 2. 
 
@@ -54,46 +54,43 @@ For the information of students not having taken 2090, when I teach that course,
 
 While the prereqs are quite low, you should be comfortable with the content of a solid second-year linear algebra course: the pace of the course is sustained, so you will not have time to work on prereqs.
 
-## Who's teaching?
+### Who's teaching?
 
 - Instructor: Julien Arino
 - Office: 432 Machray Hall
 - Email: [julien.arino@umanitoba.ca](mailto:julien.arino@umanitoba.ca)
 - I do not answer the telephone in my office, don't bother.
 
-## Where and when?
+### Where and when?
 
 - Class schedule: 10:00-11:15 (Central) Tuesday & Thursday.
 - Class location: TBD.
 - Office hours: TBD. There will be both in-person and zoom sessions.
 - Course page: UMLearn (and this repository for some content).
 
-## Video for remote attendance
+### Video for remote attendance
 
 Courses will be live cast (precise method TBD, most likely zoom or YouTube Live) and recorded. A zoom link will also be open throughout the lectures to let remote participants ask questions if they want. 
 
 It would be greatly appreciated if local students did attend class rather than watch the videos and if remote students turned on their cameras.
 
 
-## Course number
+### Course number
 
 This course is available to undergraduate students only as MATH 4370 and to University of Manitoba graduate students as either MATH 4370 or MATH 7370. Offsite PIMS students must register in MATH 7370.
 
 Assignments and the project are less involved for those enrolled in MATH 4370 (see separate MATH 4370 syllabus).
 
 
-## Textbook
+### Textbook
 We will not be using a textbook in the regular way, but most of the material will be based on Horn & Johnson, *Matrix Analysis* (Second Edition), Cambridge University Press, 2013 and Fiedler, *Special Matrices and Their Applications in Numerical Mathematics: Second Edition*, Dover, 2013.
 Lecture notes were developed during the Fall 2018 session and will be available for download on UMLearn. Please bear in mind that they may contain typos.
 Extracts from other books as well as slides will also be distributed as we progress. A list of useful books (all available online from the Libraries) will be distributed and updated throughout the term.
 
-\paragraph{Feedback on course material.}
 As indicated, the course notes might contain typos. It is also possible that the videos will have issues. If you see a problem, please let me know.
 
-\paragraph{Program}
-We will focus on matrices that arise in the aforementioned four topic areas of ODE, Markov chains, graphs and discretization of PDE.
 
-## Evaluation
+### Evaluation
 
 There will be no formal tests or examinations. Evaluation of the performance in this course will involve two components: eleven assignments and one final project. The final mark will be decomposed as follows:
 
@@ -101,16 +98,16 @@ There will be no formal tests or examinations. Evaluation of the performance in 
 |--------------------|-----------------------|--------------|
 | Mathematics assignments (4) | 5% each | 20% |
 | Coding assignments (4) | 5% each | 20% |
-| Project assignments (3) | 10% each | 30% |
-| Final project (1) | 30% | 30% |
+| Project assignments (2) | 10% each | 20% |
+| Final project (1) | 30% | 40% |
 
 
-## Notes on evaluations
+### Notes on evaluations
 1. All assignments will be posted on UMLearn shortly after the start of term.
 There are 3 types of assignments. 
     - **4 mathematics assignments (MA)**. Each of these assignments involves answering a certain number of questions selected from a list. These assignments roughly correspond to topics in the course but can be returned at any time and in any order, bearing in mind the constraint of *cumulative evaluation weight* detailed below. (Numbering is just there to distinguish them.) MATH 7370 students must pick more questions and some harder questions than students in MATH 4370. (This is clearly indicated in the assignments.)
-	- **4 coding assignments (CA)**. Each of these assignments involves writing some matrix analysis functions. Authorised languages are `R`, `Python` and `Octave` (a `MatLab` lookalike), although `R` is preferred. (syzygy.ca is now available to UofM students and works well with {\tt R}.)  Coding assignments 1-3 can be returned in any order and at any time before coding assignment 4, bearing in mind the constraint of *cumulative evaluation weight* detailed below. Coding assignment 4 is summative of preceding assignments and due (electronically) Friday 3 December at 23:59.
-	- **3 project assignments (PA)**. These assignments are designed to help you define and work on your final project. They must be returned in sequence and have due dates. These assignments are due just before midnight on the last day of each month: project assignment 1 is due at 23:59 on 30 September, project assignment 2 is due at 23:59 on 31 October and project assignment 3 is due at 23:59 on 30 November.
+	- **4 coding assignments (CA)**. Each of these assignments involves writing some matrix analysis functions. Authorised languages are `R`, `Python` and `Octave` (a `MatLab` lookalike), although `R` is preferred. (syzygy.ca is now available to UofM students and works well with `R`.)  Coding assignments 1-3 can be returned in any order and at any time before coding assignment 4, bearing in mind the constraint of *cumulative evaluation weight* detailed below. Coding assignment 4 is summative of preceding assignments and due (electronically) Friday 3 December at 23:59.
+	- **2 project assignments (PA)**. These assignments are designed to help you define and get started on your final project. They must be returned in sequence and have due dates. Project assignment 1 is due at 23:59 on 6 October, project assignment 2 is due at 23:59 on 17 November.
 2. Further remarks on assignments.
     - **Cumulative evaluation weight constraint**. Although most assignments do not have due dates, it is *imperative* that by 16 November at 23:59, I have received 3 out of the 4 mathematics assignments, 3 out of the 4 coding assignments and, of course, the 2 project assignments due before then. I will only mark 1 more mathematics assignment, 1 more coding assignments and 1 project assignment received after that date.
 	- All *assignments* (i.e., except the *Final project*) must have been handed out by the last day of classes, 11 December 2023 at 23:59. Any assignment handed in after that date will receive a mark of zero.
@@ -122,7 +119,7 @@ There are 3 types of assignments.
 	- If time and class enrolment permit it, oral presentations of the projects will be organised. If that is the case, then this presentation will count as part of the mark for the project. (This will be discussed during term.)
 
 
-## Note on self-declarations of absences
+### Note on self-declarations of absences
 
 The University of Manitoba now allows self-declaration of short duration absences of less than 5 days. In the interest of fairness, this measure is also available to students attending remotely as PIMS students.
 
@@ -131,12 +128,12 @@ Self-declarations are meant to be used for sporadic absences, not as a general m
 The self-declaration form is available [here](https://umanitoba.ca/sites/default/files/2022-09/Self%20Declaration%20Fillable%20Form-%20FINAL%20for%20Website.pdf). For students from other universities: replace "U of M email account" in the sentence "submitting this form electronically from a U of M email account will be accepted in lieu of a signature" with your home institution.
 
 
-## Voluntary Withdrawal deadline
+### Voluntary Withdrawal deadline
 
 The Voluntary Withdrawal deadline is 23 November 2023.
 
 
-## Academic Dishonesty Policy
+### Academic Dishonesty Policy
 The Department of Mathematics, the Faculty of Science and the University of Manitoba all regard acts of academic dishonesty in quizzes, tests, examinations or assignments as serious offences and may assess a variety of penalties depending on the nature of the offence.
 
 Acts of academic dishonesty include bringing unauthorized materials into a test or exam, copying from another student, plagiarism and examination personation. Students are advised to read section 7 (Academic Integrity) and section 4.2.8 (Examinations: Personations) in the General Academic Regulations and Requirements of the current Undergraduate Calendar. Note, in particular, that cell phones and pagers are explicitly listed as unauthorized materials, and hence may not be present during tests or examinations.
