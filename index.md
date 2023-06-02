@@ -99,7 +99,7 @@ There will be no formal tests or examinations. Evaluation of the performance in 
 | Mathematics assignments (4) | 5% each | 20% |
 | Coding assignments (4) | 5% each | 20% |
 | Project assignments (2) | 10% each | 20% |
-| Final project (1) | 30% | 40% |
+| Final project (1) | 40% | 40% |
 
 
 ### Notes on evaluations
