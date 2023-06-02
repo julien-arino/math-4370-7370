@@ -5,18 +5,37 @@ description: Material for the University of Manitoba course MATH 4370-7370, Line
 
 # MATH 4370-7370 <br> Linear Algebra and Matrix Analysis <br> Syllabus
 
-## Who?
+## Objectives of the course
+
+Matrices are ubiquitous in many aspects of mathematics. They show up, for instance, when considering the local asymptotic stability of equilibria of systems of ordinary differential equations, the long term behaviour of Markov chains, the study of graphs and the discretization of reaction-diffusion equations.
+
+Objectives of the course: 
+1. explore the role of matrices in several fields of mathematics;
+2. study properties of these matrices;
+3. develop an understanding of how to deal with matrices in software.
+
+## Prerequisites
+
+For University of Manitoba students: MATH 2090, Linear Algebra 2.
+
+## Who's teaching?
 
 > Instructor: Julien Arino
+
 > Office: 432 Machray Hall
+
 > Email: [julien.arino@umanitoba.ca](mailto:julien.arino@umanitoba.ca)
-> I do not answer the telephone in my office
+
+> I do not answer the telephone in my office, don't bother.
 
 ## Where and when?
 
 > Class schedule: 10:00-11:15 Tuesday & Thursday.
+
 > Class location: TBD.
+
 > Office hours: TBD. There will be both in-person and zoom sessions.
+
 > Course page: UMLearn (and this repository for some content).
 
 ## Video for remote attendance
@@ -26,17 +45,9 @@ Courses will be live cast (precise method TBD, most likely zoom or YouTube Live)
 It would be greatly appreciated if local students did attend class rather than watch the videos and if remote students turned on their cameras.
 
 
-## Objective of the course
-
-Matrices are ubiquitous in many aspects of mathematics and in particular, applied mathematics. They show up, for instance, when considering the local asymptotic stability of equilibria of systems of ordinary differential equations, the long term behaviour of Markov chains, the study of graphs and the discretization of reaction-diffusion equations.
-
-The objectives of this course are 
-1. to explore the role of matrices in several fields of mathematics,
-2. to study important properties of these matrices.
-
 ## Course number
 
-This course is available to undergraduate students only as MATH 4370 (Linear Algebra and Matrix Analysis) and to University of Manitoba graduate students as either MATH 4370 or MATH 7370. PIMS offsite students must register in MATH 7370.
+This course is available to undergraduate students only as MATH 4370 and to University of Manitoba graduate students as either MATH 4370 or MATH 7370. Offsite PIMS students must register in MATH 7370.
 
 Assignments and the project are less involved for those enrolled in MATH 4370 (see separate MATH 4370 syllabus).
 
@@ -85,7 +96,9 @@ There are 3 types of assignments.
 
 The University of Manitoba now allows self-declaration of short duration absences of less than 5 days. In the interest of fairness, this measure is also available to students attending remotely as PIMS students.
 
-Self-declarations are meant 
+Self-declarations are meant to be used for sporadic absences, not as a general mechanism to delay evaluations. As a consequence, I will not admit more than two submissions during the term.
+
+The self-declaration form is available [here](https://umanitoba.ca/sites/default/files/2022-09/Self%20Declaration%20Fillable%20Form-%20FINAL%20for%20Website.pdf). For students from other universities: replace "U of M email account" in the sentence "submitting this form electronically from a U of M email account will be accepted in lieu of a signature" with your home institution.
 
 
 ## Voluntary Withdrawal deadline
