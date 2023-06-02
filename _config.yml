@@ -1,3 +1,5 @@
 remote_theme: pages-themes/slate@v0.2.0
 plugins:
 - jekyll-remote-theme
+
+title: MATH 4370 - 7370 (Linear Algebra and Matrix Analysis)
