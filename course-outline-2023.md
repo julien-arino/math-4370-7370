@@ -68,6 +68,8 @@ While the prereqs are quite low, you should be comfortable with the content of a
 - Office hours: TBD. There will be both in-person and zoom sessions.
 - Course page: UMLearn (and this repository for some content).
 
+For students outside the University of Manitoba: there are no classes in the week of 13-17 November 2023, which is Fall Break here. Note also that classes start 6 September 2023, so our first class is 7 September 2023. 
+
 ### Video for remote attendance
 
 Courses will be live cast (precise method TBD, most likely zoom or YouTube Live) and recorded. A zoom link will also be open throughout the lectures to let remote participants ask questions if they want. 
