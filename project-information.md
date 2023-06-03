@@ -4,7 +4,7 @@ layout: default
 
 ## Information about the project
 
-The final project is the most heavily weighted part of this course, worth 40% of your final mark. It is therefore important to devote a substantial amount of time to it.
+The final project is worth 40% of your final mark. It is therefore important to devote a substantial amount of time to it.
 
 ### Types of projects
 
@@ -43,6 +43,7 @@ Here is the general framework that I use for evaluating projects.
 | Figures and tables | 10 |
 | Numerical/computer algebra/algorithmic work | 10 |
 
+The last two items are optional: they will only be marked if they have a place in your project. Note that projects where these elements are absent will be scrutinized more attentively for the first three items.
 
 
 [back](./)
