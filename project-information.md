@@ -45,5 +45,8 @@ Here is the general framework that I use for evaluating projects.
 
 The last two items are optional: they will only be marked if they have a place in your project. Note that projects where these elements are absent will be scrutinized more attentively for the first three items.
 
+#### One "free" pre-evaluation
+
+I am happy to take a look at your project *once* before you submit it and provide feedback about it. At that stage, I will not dig into the mathematical content to evaluate correctness but rather will 
 
 [back](./)
