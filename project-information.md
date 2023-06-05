@@ -47,6 +47,6 @@ The last two items are optional: they will only be marked if they have a place i
 
 #### One "free" pre-evaluation
 
-I am happy to take a look at your project *once* before you submit it and provide feedback about it. At that stage, I will not dig into the mathematical content to evaluate correctness but rather will 
+I am happy to take a look at your project *once* before you submit it and provide feedback about it. At that stage, I will not dig into the mathematical content to evaluate correctness but rather will tell you if it seems to be the sort of return that I am expecting.
 
 [back](./)
