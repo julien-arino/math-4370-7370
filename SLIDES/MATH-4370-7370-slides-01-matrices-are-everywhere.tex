@@ -160,6 +160,8 @@ However, precise definitions are given in subsequent chapter; here concepts are 
 \section{Linear systems of difference equations}
 \label{sec:linear_DE}
 \begin{frame}{Linear systems of difference equations}
+	See, e.g., \cite{Elaydi2005}
+	\vfill
 Let $x(t)\in \IR^n$ be a \defword{state variable} and $t\in \IN$ be an \defword{independent variable}, typically thought of as \defword{time}. Let $A\in \mathcal{M}_n(\IR)$. 
 An \defword{autonomous homogeneous linear system of difference equations} is a sequence defined by
 \begin{subequations}\label{sys:DE}
@@ -168,9 +170,9 @@ x(t+1) &= Ax(t) \label{sys:DE_dx}\\
 x(0) &=x_0\in \IR^n, \label{sys:DE_IC}
 \end{align}	
 \end{subequations}
-where $x_0$ is called the \defword{initial condition} (IC).
+where $x_0$ is called the \defword{initial condition} (IC)
 \vfill
-(Autonomous: $A$ is a constant that does not depend on $t$. Homogeneous: the system is not of the form $x(t+1)=Ax(t)+b$.)
+(Autonomous: $A$ does not depend on $t$. Homogeneous: system not of the form $x(t+1)=Ax(t)+b$.)
 \end{frame}
 
 \begin{frame}
