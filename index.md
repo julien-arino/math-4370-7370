@@ -8,6 +8,7 @@ description: Course material for the University of Manitoba course MATH 4370-737
 Here, you can find some information about the course. Note that most documents will be distributed using UMLearn.
 
 - [Course outline](course-outline-2023.html)
+- [Tentative schedule](tentative-schedule.html)
 - [Information about projects](project-information.html)
 
 ### Assignments
