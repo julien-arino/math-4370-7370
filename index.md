@@ -17,3 +17,17 @@ Here, you can find some information about the course. Note that most documents w
 - [Project assignment 2 (PA2)](/assets/pdf/MATH-4370-7370-F2023-PA2.pdf)
 
 Other assignments will be distributed using UMLearn.
+
+### Slides
+
+<ul>
+{% for file in site.static_files %}
+  {% if file.path contains 'SLIDES' %}
+    {% if file.path contains 'MATH-4370' %}
+      {% if file.path contains 'pdf' %}
+          <li><a href="https://julien-arino.github.io/math-4370-7370/SLIDES/{{ file.basename }}.pdf">{{ file.basename }}</a></li>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+</ul>
