@@ -20,6 +20,8 @@ Other assignments will be distributed using UMLearn.
 
 ### Slides
 
+Note that it is likely that these slides include typos.
+
 <ul>
 {% for file in site.static_files %}
   {% if file.path contains 'SLIDES' %}
