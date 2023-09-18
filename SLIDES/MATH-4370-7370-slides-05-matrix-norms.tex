@@ -412,18 +412,27 @@ Let $A\in \M_n$, then
 \label{sec:matrixNorms_SVD}
 
 \begin{frame}
-Let $V = \M_{mn}(\IC)$ with Frobenious inner product 
-\[\langle A, \, B \rangle_{F}= \tr(B^*A).\]
+Let $V = \M_{mn}(\IC)$ with Frobenius inner product 
+\[
+    \langle A, \, B \rangle_{F}= \tr(B^*A)
+\]
 The norm derived from the Frobenius inner product is 
 \[\|A\|_2= (\tr(A^*A))^{1/2}\]
-is teh $\ell$-2 norm (on Frobenius norm).\\
+is the $\ell$-2 norm (or Frobenius norm)
+\end{frame}
 
+\begin{frame}
 The spectral norm $\Nt{\cdot}$ defined on $\M_n$ by 
 \[\tripbar A\tripbar_2= \sigma_1(A),\]
 where $\sigma_1(A)$ is the largest singular value of $A$ is induced by the $\ell$-2 norm on $\IC^n$. \\
 Inded, from the singular value decomposition theorem, let 
 \[A= V \Sigma W^*\]
-be a singular value decomposition of $A$, where $V, \, W$ unitary, $\Sigma= \sigma(\sigma_1, \dots, \sigma_n)$ and $\sigma_1 \geq \dots \geq \sigma_n\geq 0$ are the non-increasingly ordered singular values of $A$. From unitary invariance and monotonicity of the Euclidean norm, we say that 
+be a singular value decomposition of $A$, where $V, \, W$ unitary, $\Sigma= \sigma(\sigma_1, \dots, \sigma_n)$ and $\sigma_1 \geq \dots \geq \sigma_n\geq 0$ are the non-increasingly ordered singular values of $A$
+\end{frame}
+
+
+\begin{frame}
+From unitary invariance and monotonicity of the Euclidean norm, we say that 
 \begin{align*}
 \max \|Ax\|_1&= \max_{\|x\|_1} \|V\Sigma W^*\|_2\\
 &= \max_{\|x\|_2} \|\Sigma W^* x\|_2\\
@@ -434,8 +443,11 @@ be a singular value decomposition of $A$, where $V, \, W$ unitary, $\Sigma= \sig
 &= \sigma_1
 \end{align*}
 Since $\| \Sigma y\|_2= \sigma_1$ for $y= e_1$, 
-\[\max_{\|x\|_2=1} \|Ax\|_2= \sigma_1(A).\]
+\[\max_{\|x\|_2=1} \|Ax\|_2= \sigma_1(A)\]
+\end{frame}
 
+
+\begin{frame}
 We could have used 
 \begin{align*}
 \max_{\|x\|_2=1}=\|Ax\|_2^2&= \max_{\|x\|_2=1}x^*A^*AX\\
