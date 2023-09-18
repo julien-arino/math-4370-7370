@@ -7,8 +7,13 @@
 %\pgfpagesuselayout{4 on 1}[letterpaper,landscape]%,border shrink=5mm]
 
 \input{slides_setup_nonLightBoard_whiteBG.tex}
+% To cross reference from other slide files
+\zexternaldocument{MATH-4370-7370-slides-03-eigenpairs-similarity}
+\zexternaldocument{MATH-4370-7370-slides-06-nonnegative-matrices}
 
-
+% To have theorems and everything derived prefixed by the slide set
+% number
+\renewcommand{\thetheorem}{7.\arabic{theorem}}
 
 \title{Essentially nonnegative matrices and M-matrices}
 \author{Julien Arino}
@@ -70,7 +75,7 @@ Irreducibility of a matrix is not affected by the nature of its diagonal entries
 
 
 \begin{frame}
-So we can apply the ``weak'' versions of the Perron-Frobenius Theorem (the imprimitive cases in Theorem~\ref{th:PF_allCases}) to $A+\alpha \mathbb{I}$, which is a nonnegative matrix (potentially irreducible). One important ingredient is a result that was proved as Theorem~\ref{th:spectrum_shift}. Namely, that perturbations of the entire diagonal by the same scalar lead to a shift of the spectrum; this is summarised as
+So we can apply the ``weak'' versions of the Perron-Frobenius Theorem (the imprimitive cases in Theorem~\zref{th:PF_allCases}) to $A+\alpha \mathbb{I}$, which is a nonnegative matrix (potentially irreducible). One important ingredient is a result that was proved as Theorem~\ref{th:spectrum_shift}. Namely, that perturbations of the entire diagonal by the same scalar lead to a shift of the spectrum; this is summarised as
 \[
 \sigma(A+\alpha \mathbb{I})=\{ \lambda_1+\alpha, \dots, \lambda_n+\alpha,\quad \lambda_i\in \sigma(A)\}
 \]
@@ -183,161 +188,270 @@ Let $A\in Z_n$. Assume $A\in K_0$. Then $A\in K$ $\iff$ $A$ nonsingular
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{M-matrices}
-\begin{frame}
-The following theorem can be found in \cite{BermanPlemmons1994}, pages 134--138.
-It is famous for .. well, you will understand soon.
 
+
+
+\begin{frame}
+\begin{definition}[Signature matrix]
+ A \defword{signature matrix} is is a diagonal matrix $S$ with diagonal entries $\pm 1$
+\end{definition}   
+\end{frame}
+
+
+
+\begin{frame}
 \begin{theorem}[\cite{BermanPlemmons1994}]
 Let $A\in\M_n$. Then for each fixed letter $\C$ representing one of the following conditions, conditions $\C_i$ are equivalent for each $i$. Moreover, letting $\C$ then represent any of the equivalent conditions $\C_i$, the following implication tree holds:
 \begin{center}
-	\includegraphics[width=0.6\textwidth]{BermanPlemmons_fig}
+	\includegraphics[width=0.3\textwidth]{BermanPlemmons_fig}
 \end{center}
+If $A\in Z_n$, each of the following conditions is equivalent to the statement ``$A$ is a nonsingular M-matrix''
+\end{theorem}
+\end{frame}
 
-\noindent Finally, if $A\in Z_n$, then each of the following conditions is equivalent to the statement ``$A$ is a nonsingular M-matrix''.
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
 \begin{enumerate}
-\item[($A_1$)] All of the principal minors of $A$ are positive.
-\item[($A_2$)] Every real eigenvalue of each principal submatrix of $A$ is positive.
-\item[($A_3$)] For each $x\neq 0$ there exists a positive diagonal matrix $D$ such that
+\item[($A_1$)] All the principal minors of $A$ are positive
+\item[($A_2$)] Every real eigenvalue of each principal submatrix of $A$ is positive
+\item[($A_3$)] For each $\bx\neq\b0$ there exists a positive diagonal matrix $D$ such that
 \[
-x^TADx>0.
+\bx^TAD\bx>0
 \]
-\item[($A_4$)] For each $x\neq 0$ there exists a nonnegative diagonal matrix $D$ such that
+\item[($A_4$)] For each $\bx\neq\b0$ there exists a nonnegative diagonal matrix $D$ such that
 \[
-x^TADx>0.
+\bx^TAD\bx>0
 \]
-\item[($A_5$)] $A$ does not reverse the sign of any vector; that is, if $x\neq 0$ and $y=Ax$, then for some subscript $i$, $x_iy_i>0$.
-\item[($A_6$)] For each \emph{signature matrix} $S$ (here $S$ is diagonal with diagonal entries $\pm 1$), there exists an $x\gg 0$ such that
+\item[($A_5$)] $A$ does not reverse the sign of any vector; that is, if $\bx\neq\b0$ and $\by=A\bx$, then for some subscript $i$, $x_iy_i>0$
+\item[($A_6$)] For each signature matrix $S$, there exists an $\bx\gg\b0$ such that
 \[
-SASx\gg 0.
+SAS\bx\gg\b0
 \]
-\item[($B_7$)] The sum of all the $k\times k$ principal minors of $A$ is positive for $k=1,\ldots,n$.
-\item[($C_8$)] $A$ is nonsingular and all the principal minors of $A$ are nonnegative.
-\item[($C_9$)] $A$ is nonsingular and every real eigenvalue of each principal submatrix of $A$ is nonnegative.
-\item[($C_{10}$)] $A$ is nonsingular and $A+D$ is nonsingular for each positive diagonal matrix $D$.
-\item[($C_{11}$)] $A+D$ is nonsingular for each nonnegative diagonal matrix $D$.
-\item[($C_{12}$)] $A$ is nonsingular and for each $x\neq 0$ there exists a nonnegative diagonal matrix $D$ such that
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($B_7$)] The sum of all the $k\times k$ principal minors of $A$ is positive for $k=1,\ldots,n$
+\item[($C_8$)] $A$ is nonsingular and all the principal minors of $A$ are nonnegative
+\item[($C_9$)] $A$ is nonsingular and every real eigenvalue of each principal submatrix of $A$ is nonnegative
+\item[($C_{10}$)] $A$ is nonsingular and $A+D$ is nonsingular for each positive diagonal matrix $D$
+\item[($C_{11}$)] $A+D$ is nonsingular for each nonnegative diagonal matrix $D$
+\item[($C_{12}$)] $A$ is nonsingular and for each $\bx\neq\b0$ there exists a nonnegative diagonal matrix $D$ such that
 \[
-x^TDx\neq 0\quad\textrm{and}\quad x^TADx>0.
+\bx^TD\bx\neq 0\quad\textrm{and}\quad \bx^TAD\bx>0
 \]
-\item[($C_{13}$)] $A$ is nonsingular and if $x\neq 0$ and $y=Ax$, then for some subscript $i$, $x_i\neq 0$ and $x_iy_i\geq 0$.
-\item[($C_{14}$)] $A$ is nonsingular and for each signature matrix $S$ there exists a vector $x>0$ such that
+\item[($C_{13}$)] $A$ is nonsingular and if $\bx\neq\b0$ and $\by=A\bx$, then for some subscript $i$, $x_i\neq 0$ and $x_iy_i\geq 0$.
+\item[($C_{14}$)] $A$ is nonsingular and for each signature matrix $S$ there exists a vector $\bx>\b0$ such that
 \[
-SASx\geq 0.
+SAS\bx\geq\b0
 \]
-\item[($D_{15}$)] $A+\alpha I$ is nonsingular for each $\alpha\geq 0$.
-\item[($D_{16}$)] Every real eigenvalue of $A$ is positive.
-\item[($E_{17}$)] All the leading principal minors of $A$ are positive.
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($D_{15}$)] $A+\alpha\II$ is nonsingular for each $\alpha\geq 0$
+\item[($D_{16}$)] Every real eigenvalue of $A$ is positive
+\item[($E_{17}$)] All the leading principal minors of $A$ are positive
 \item[($E_{18}$)] There exists lower and upper triangular matrices $L$ and $U$, respectively, with positive diagonals such that
 \[
-A=LU.
+A=LU
 \]
-\item[($F_{19}$)] There exists a permutation matrix $P$ such that $PAP^T$ satisfies ($E_{17}$) or ($E_{18}$).
-\item[($G_{20}$)] $A$ is \emph{positive stable}; that is, the real part of each eigenvalue of $A$ is positive.
+\item[($F_{19}$)] There exists a permutation matrix $P$ such that $PAP^T$ satisfies ($E_{17}$) or ($E_{18}$)
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($G_{20}$)] $A$ is \defword{positive stable}; that is, the real part of each eigenvalue of $A$ is positive
 \item[($G_{21}$)] There exists a symmetric positive definite matrix $W$ such that
 \[
 AW+WA^T
 \]
 is positive definite.
-\item[($G_{22}$)] $A+I$ is nonsingular and
+\item[($G_{22}$)] $A+\II$ is nonsingular and
 \[
-G=(A+I)^{-1}(A-I)
+G=(A+\II)^{-1}(A-\II)
 \]
-is convergent.
-\item[($G_{23}$)] $A+I$ is nonsingular and for 
+is convergent
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($G_{23}$)] $A+\II$ is nonsingular and for 
 \[
-G=(A+I)^{-1}(A-I)
+G=(A+\II)^{-1}(A-\II)
 \]
 there exists a positive definite matrix $W$ such that
 \[
 W-G^TWG
 \]
-is positive definite.
+is positive definite
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
 \item[($H_{24}$)] There exists a positive diagonal matrix $D$ such that 
 \[
 AD+DA^T
 \]
-is positive definite.
+is positive definite
 \item[($H_{25}$)] The exists a positive diagonal matrix $E$ such that for $B=E^{-1}AE$, the matrix
 \[
 (B+B^T)/2
 \]
-is positive definite.
-\item[($H_{26}$)] For each positive semidefinite matrix $Q$, the matrix $QA$ has a positive diagonal element.
-\item[($I_{27}$)] $A$ is \emph{semipositive}; that is, there exists $x\gg 0$ with $Ax\gg 0$.
-\item[($I_{28}$)] There exists $x>0$ with $Ax\gg 0$.
-\item[($I_{29}$)] There exists a positive diagonal matrix $D$ such that $AD$ has all positive row sums.
-\item[($J_{30}$)] There exists $x\gg 0$ with $Ax>0$ and
+is positive definite
+\item[($H_{26}$)] For each positive semidefinite matrix $Q$, the matrix $QA$ has a positive diagonal element
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($I_{27}$)] $A$ is \defword{semipositive}; that is, there exists $\bx\gg\b0$ with $A\bx\gg\b0$
+\item[($I_{28}$)] There exists $\bx>\b0$ with $A\bx\gg\b0$
+\item[($I_{29}$)] There exists a positive diagonal matrix $D$ such that $AD$ has all positive row sums
+\item[($J_{30}$)] There exists $\bx\gg\b0$ with $A\bx>\b0$ and
 \[
-\sum_{j=1}^i a_{ij}x_j>0,\quad i=1,\ldots,n.
+\sum_{j=1}^n a_{ij}x_j>0,\quad i=1,\ldots,n
 \]
-\item[($K_{31}$)] There exists a permutation matrix $P$ such that $PAP^T$ satisfies ($J_{30}$).
-\item[($L_{32}$)] There exists $x\gg 0$ with $y=Ax>0$ such that if $y_{i_0}=0$, then there exists a sequence of indices $i_1,\ldots,i_r$ with $a_{i_{j-1}i_j}\neq 0$, $j=1,\ldots,r$ and with $y_{i_r}\neq 0$.
-\item[($L_{33}$)] There exists $x\gg 0$ with $y=Ax>0$ such that the matrix $\hat A=[\hat a_{ij}]$ defined by
+\item[($K_{31}$)] There exists a permutation matrix $P$ such that $PAP^T$ satisfies ($J_{30}$)
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($L_{32}$)] There exists $\bx\gg\b0$ with $\by=A\bx>\b0$ such that if $y_{i_0}=0$, then there exists a sequence of indices $i_1,\ldots,i_r$ with $a_{i_{j-1}i_j}\neq 0$, $j=1,\ldots,r$ and with $y_{i_r}\neq 0$
+\item[($L_{33}$)] There exists $\bx\gg\b0$ with $\by=A\bx>\b0$ such that the matrix $\hat A=[\hat a_{ij}]$ defined by
 \[
 \hat a_{ij} =
 \begin{cases}
-1 & \textrm{if } a_{ij}\neq 0\textrm{ or }y_i\neq 0 \\
-0 & \textrm{otherwise,}
+1 & \text{if } a_{ij}\neq 0\text{ or }y_i\neq 0 \\
+0 & \text{otherwise}
 \end{cases}
 \]
-is irreducible.
-\item[($M_{34}$)] There exists $x\gg 0$ such that for each signature matrix $S$,
+is irreducible
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($M_{34}$)] There exists $\bx\gg\b0$ such that for each signature matrix $S$
 \[
-SASx\gg 0.
+SAS\bx\gg\b0
 \]
-\item[($M_{35}$)] $A$ has all positive diagonal elements and there exists a positive diagonal matrix $D$ such that $AD$ is \emph{strictly diagonally dominant}; that is,
+\item[($M_{35}$)] $A$ has all positive diagonal elements and there exists a positive diagonal matrix $D$ such that $AD$ is \defword{strictly diagonally dominant}; that is
 \[
-a_{ii}d_i>\sum{j\neq i}|a_{ij}d_j|,\qquad i=1,\ldots,n.
+a_{ii}d_i>\sum_{j\neq i}|a_{ij}d_j|,\qquad i=1,\ldots,n
 \]
-\item[($M_{36}$)] $A$ has all positive diagonal elements and there exists a positive diagonal matrix $E$ such that $E^{-1}AE$ is strictly diagonally dominant.
-\item[($M_{37}$)] $A$ has all positive diagonal elements and there exists a positive diagonal matrix $D$ such that $AD$ is \emph{lower semistrictly diagonally dominant}; that is,
+\item[($M_{36}$)] $A$ has all positive diagonal elements and there exists a positive diagonal matrix $E$ such that $E^{-1}AE$ is strictly diagonally dominant
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($M_{37}$)] $A$ has all positive diagonal elements and there exists a positive diagonal matrix $D$ such that $AD$ is \defword{lower semistrictly diagonally dominant}; that is,
 \[
-a_{ii}d_i\geq\sum{j\neq i}|a_{ij}d_j|,\qquad i=1,\ldots,n
+a_{ii}d_i\geq\sum_{j\neq i}|a_{ij}d_j|,\qquad i=1,\ldots,n
 \]
 and
 \[
-a_{ii}d_i>\sum{j=1}^{i-1}|a_{ij}d_j|,\qquad i=2,\ldots,n.
+a_{ii}d_i>\sum_{j=1}^{i-1}|a_{ij}d_j|,\qquad i=2,\ldots,n.
 \]
-\item[($N_{38}$)] $A$ is \emph{inverse-positive}; that is, $A^{-1}$ exists and
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($N_{38}$)] $A$ is \defword{inverse-positive}; that is, $A^{-1}$ exists and
 \[
-A^{-1}\geq 0.
+A^{-1}\geq 0
 \]
-\item[($N_{39}$)] $A$ is \emph{monotone}; that is,
+\item[($N_{39}$)] $A$ is \defword{monotone}; that is,
 \[
-Ax\geq 0\Rightarrow x\geq 0\quad\textrm{for all }x\in\IR^n.
+Ax\geq 0\Rightarrow x\geq 0\quad\textrm{for all }x\in\IR^n
 \]
 \item[($N_{40}$)] There exists inverse-positive matrices $B_1$ and $B_2$ such that
 \[
-B_1\leq A\leq B_2.
+B_1\leq A\leq B_2
 \]
-\item[($N_{41}$)] There exists an inverse-positive matrix $B\geq A$ such that $I-B^{-1}A$ is convergent.
-\item[($N_{42}$)] There exists an inverse-positive matrix $B\geq A$ and $A$ satisfies ($I_{27}$), ($I_{28}$) and ($I_{29}$).
+\item[($N_{41}$)] There exists an inverse-positive matrix $B\geq A$ such that $I-B^{-1}A$ is convergent
+\item[($N_{42}$)] There exists an inverse-positive matrix $B\geq A$ and $A$ satisfies ($I_{27}$), ($I_{28}$) and ($I_{29}$)
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
 \item[($N_{43}$)] There exists an inverse-positive matrix $B\geq A$ and a nonsingular M-matrix $C$ such that
 \[
-A=BC.
+A=BC
 \]
 \item[($N_{44}$)] There exists an inverse-positive matrix $B$ and a nonsingular M-matrix $C$ such that
 \[
-A=BC.
+A=BC
 \]
-\item[($N_{45}$)] $A$ has a \emph{convergent regular splitting}; that is, $A$ has a representation 
+\item[($N_{45}$)] $A$ has a \defword{convergent regular splitting}; that is, $A$ has a representation 
 \[
-A=M-N,\quad M^{-1}\geq 0,\quad N\geq 0,
+A=M-N,\quad M^{-1}\geq 0,\quad N\geq 0
 \]
-where $M^{-1}N$ is convergent.
-\item[($N_{46}$)] $A$ has a \emph{convergent weak regular splitting}; that is, $A$ has a representation
+where $M^{-1}N$ is convergent
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\addtocounter{theorem}{-1}
+\begin{theorem}[Continued]
+\begin{enumerate}
+\item[($N_{46}$)] $A$ has a \defword{convergent weak regular splitting}; that is, $A$ has a representation
 \[
-A=M-N,\quad M^{-1}\geq 0,\quad M^{-1}N\geq 0,
+A=M-N,\quad M^{-1}\geq 0,\quad M^{-1}N\geq 0
 \]
-where $M^{-1}N$ is convergent.
-\item[($O_{47}$)] Each weak regular splitting of $A$ is convergent.
-\item[($P_{48}$)] Every regular splitting of $A$ is convergent.
-\item[($Q_{49}$)] For each $y\geq 0$ the set
+where $M^{-1}N$ is convergent
+\item[($O_{47}$)] Each weak regular splitting of $A$ is convergent
+\item[($P_{48}$)] Every regular splitting of $A$ is convergent
+\item[($Q_{49}$)] For each $\by\geq\b0$ the set
 \[
-S_y=\{x\geq 0; A^Tx\leq y\}
+S_\by=\{\bx\geq\b0: A^T\bx\leq\by\}
 \]
-is bounded and $A$ is nonsingular.
-\item[($Q_{50}$)] $S_0=\{0\}$; that is, the inequalities $A^Tx\leq 0$ and $x\geq 0$ have only the trivial solution $x=0$ and $A$ is nonsingular.
+is bounded and $A$ is nonsingular
+\item[($Q_{50}$)] $S_\b0=\{\b0\}$; that is, the inequalities $A^bx\leq\b0$ and $\bx\geq\b0$ have only the trivial solution $\bx=\b0$ and $A$ is nonsingular
 \end{enumerate}
 \end{theorem}
 \end{frame}
