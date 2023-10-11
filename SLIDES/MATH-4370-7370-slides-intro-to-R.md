@@ -43,7 +43,6 @@ University of Manitoba*
 <div style = "font-size:18px; margin-top:-10px; padding-bottom:30px;"></div>
 
 Canadian Centre for Disease Modelling
-Canadian COVID-19 Mathematical Modelling Task Force
 NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 <div style = "text-align: justify; position: relative; bottom: -5%; font-size:18px;">
@@ -55,7 +54,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 # Outline
 
 - Foreword: the R language
-- Data types
+- Data types and data structures
 - Flow control
 
 ---
@@ -94,7 +93,8 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 - Shiny: easily create an interactive web site running R code
 - [Shiny server](https://www.rstudio.com/products/shiny/shiny-server/): run Shiny apps on a Linux server
 - Rmarkdown: markdown that incorporates R commands. Useful for generating reports in html or pdf, can make slides as well..
-- RSweave: LaTeX incorporating R commands. Useful for generating reports. Not used as much as Rmarkdown these days
+- RSweave: LaTeX incorporating R commands. Useful for generating reports. Not used as much as Rmarkdown these days but very useful if you are a $\LaTeX$ user, e.g., to make Beamer slides
+- Quarto: intended successor to RSweave and Rmarkdown; personally, I am not yet sure what the intent is...
 
 ---
 
@@ -108,7 +108,17 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->Data types
+# <!--fit-->Data types and data structures
+
+---
+
+# Data types
+
+- character: "a", "truc"
+- numeric (real or decimal): 3, 12.5
+- integer: 3L (the L forces the type to be integer)
+- logical: TRUE, FALSE (or T, F)
+- complex: 1-2i
 
 ---
 
@@ -127,6 +137,140 @@ X = 10
 ```
 
 First version is preferred by R purists.. I don't really care
+
+---
+
+# Vectors
+
+```R
+x = 1:10
+y <- c(x, 12)
+> y
+ [1]  1  2  3  4  5  6  7  8  9 10 12
+z = c("red", "blue")
+> z
+[1] "red"  "blue"
+z = c(z, 1)
+> z
+[1] "red"  "blue" "1"
+```
+Note that in `z`, since the first two entries are characters, the added entry is also a character. Vectors have all entries of the same type, so whatever you put in there first is what it is
+
+---
+
+# Adding entries to a vector
+
+Let us do something inefficacious but illustrative
+
+```R
+x = c()
+for (i in 1:10) {
+    x = c(x, i)
+}
+```
+would give us the same as `x = 1:10`
+
+---
+
+# Vector operations
+
+Vector addition can be frustrating. Say you write `x=1:10`, i.e., make the vector
+```R
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10
+```
+Then `x+1` gives
+```R
+> x+1
+ [1]  2  3  4  5  6  7  8  9 10 11
+ ```
+ i.e., adds 1 to all entries in the vector
+
+ Beware of this in particular when addressing sets of indices in lists, vectors or matrices
+
+---
+
+# Matrices
+
+Matrix (or vector) of size $\text{nr}\times\text{nc}$ full of zeros
+```R
+A <- mat.or.vec(nr = 2, nc = 3)
+```
+
+Matrix with prescribed entries
+
+```R
+B <- matrix(c(1,2,3,4), nr = 2, nc = 2)
+> B
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+C <- matrix(c(1,2,3,4), nr = 2, nc = 2, byrow = TRUE)
+> C
+     [,1] [,2]
+[1,]    1    2
+[2,]    3    4
+```
+
+Remark that here and elsewhere, naming the arguments (e.g., `nr = 2`) allows to use arguments in any order
+
+---
+
+# Matrix multiplication
+
+Probably the biggest annoyance in R compared to other languages
+
+- The notation `A*B` is the *Hadamard product* $A\circ B$ (what would be denoted `A.*B` in matlab), not the standard matrix multiplication
+- Matrix multiplication is written `A %*% B`
+
+---
+
+# For the matlab-ers here
+
+- R does not have the keyword `end` to access the last entry in a matrix/vector/list..
+- Use `length` (lists or vectors), `nchar` (character chains), `dim` (matrices.. careful, of course returns 2 values)
+
+---
+
+# Accessing entries in a matrix
+
+```R
+A[i,j]         # Element (i,j)
+A[i,]          # Row i
+A[,j]          # Column j
+A[i,dim(A)[2]] # Last entry in row i
+```
+
+---
+
+# Adding/replacing rows/columns in a matrix
+
+```R
+A[i,] <- c(1,2,3) # Replace row i by 1,2,3
+B[,j] <- c(1,2)   # Replace column j by 1,2
+```
+Beware, in this case, the dimensions must make sense.. the above operations will fail if $A$ is not $N\times 3$ and $B$ is not $2\times N$
+
+---
+
+# Data frames
+
+- Data frames are matrices on steroids..
+- Matrices have all entries of the same type, data frames do not
+- This leads to quite a lot of frustration, e.g., when you want to make a matrix out of a data frame or if you want to add a column to a matrix with a different entry type and forget about this difference...
+
+---
+
+# Useful functions for data frames and matrices
+
+- `head()` - shows first 6 rows; override with, e.g., `head(dataframe, n = 10)`
+- `tail()` - shows last 6 rows
+- `dim()` - returns number of rows and number of columns
+- `nrow()` - number of rows
+- `ncol()` - number of columns
+- `str()` - structure of data frame - name, type and preview of data in each column
+- `names()` or `colnames()` - show the names attribute for a data frame
+- `sapply(dataframe, class)` - shows the class of each column in the data frame
 
 ---
 
@@ -155,100 +299,6 @@ $a
 [1] "Plouf plouf"
 ```
 
----
-
-# Vectors
-
-```R
-x = 1:10
-y <- c(x, 12)
-> y
- [1]  1  2  3  4  5  6  7  8  9 10 12
-z = c("red", "blue")
-> z
-[1] "red"  "blue"
-z = c(z, 1)
-> z
-[1] "red"  "blue" "1"
-```
-Note that in `z`, since the first two entries are characters, the added entry is also a character. Contrary to lists, vectors have all entries of the same type
-
----
-
-# Matrices
-
-Matrix (or vector) of zeros
-```R
-A <- mat.or.vec(nr = 2, nc = 3)
-```
-
-Matrix with prescribed entries
-
-```R
-B <- matrix(c(1,2,3,4), nr = 2, nc = 2)
-> B
-     [,1] [,2]
-[1,]    1    3
-[2,]    2    4
-C <- matrix(c(1,2,3,4), nr = 2, nc = 2, byrow = TRUE)
-> C
-     [,1] [,2]
-[1,]    1    2
-[2,]    3    4
-```
-
-Remark that here and elsewhere, naming the arguments (e.g., `nr = 2`) allows to use arguments in any order
-
----
-
-# Matrix operations
-
-Probably the biggest annoyance in R compared to other languages
-
-- The notation `A*B` is the *Hadamard product* $A\circ B$ (what would be denoted `A.*B` in matlab), not the standard matrix multiplication
-- Matrix multiplication is written `A %*% B`
-
----
-
-# Vector operations
-
-Vector addition is also frustrating. Say you write `x=1:10`, i.e., make the vector
-```R
-> x
- [1]  1  2  3  4  5  6  7  8  9 10
-```
-Then `x+1` gives
-```R
-> x+1
- [1]  2  3  4  5  6  7  8  9 10 11
- ```
- i.e., adds 1 to all entries in the vector
-
- Beware of this in particular when addressing sets of indices in lists, vectors or matrices
-
----
-
-# For the matlab-ers here
-
-- R does not have the keyword `end` to access the last entry in a matrix/vector/list..
-- Use `length` (lists or vectors), `nchar` (character chains), `dim` (matrices.. careful, of course returns 2 values)
-
----
-
-# Data frames
-
----
-
-# Useful functions for data frames and matrices
-
-- `head()` - shows first 6 rows (override with, e.g., `head(dataframe, n = 10)`
-- `tail()` - shows last 6 rows
-- `dim()` - returns number of rows and number of columns
-- `nrow()` - number of rows
-- `ncol()` - number of columns
-- `str()` - structure of data frame - name, type and preview of data in each column
-- `names()` or `colnames()` - show the names attribute for a data frame
-- `sapply(dataframe, class)` - shows the class of each column in the data frame
 
 ---
 
@@ -257,13 +307,6 @@ Then `x+1` gives
 `is.type` functions (e.g., `is.numeric`, `is.character`, `is.matrix`, `is.list`) allow to check the type of an object, `as.type` functions (e.g., `as.numeric`, `as.character`, `as.matrix`, `as.list`) allow to convert an object to a given type
 
 The result of data typing can be weird, so it may take a few tries to get things right
-
----
-
-# <!--fit-->Important difference between matrices and data frames
-
-- Matrices have all entries of the same type, data frames do not
-- This leads to quite a lot of frustration, e.g., when you want to make a matrix out of a data frame or if you want to add a column to a matrix with a different entry type and forget about this difference...
 
 ---
 
