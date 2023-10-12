@@ -29,6 +29,9 @@ Note that it is likely that these slides include typos.
       {% if file.path contains 'pdf' %}
           <li><a href="https://julien-arino.github.io/math-4370-7370/SLIDES/{{ file.basename }}.pdf">{{ file.basename }}</a></li>
       {% endif %}
+      {% if file.path contains 'html' %}
+          <li><a href="https://julien-arino.github.io/math-4370-7370/SLIDES/{{ file.basename }}.html">{{ file.basename }}</a></li>
+      {% endif %}
     {% endif %}
   {% endif %}
 {% endfor %}
