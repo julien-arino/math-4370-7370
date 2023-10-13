@@ -556,3 +556,40 @@ print_date = function(date_format = "YYYY-MM-DD") {
 # <!--fit-->Rmarkdown, Sweave and Quarto
 
 ---
+
+- Rmarkdown, Sweave and Quarto are notebook-type document generating mechanisms
+- The idea is to weave together "regular text" and `R` commands
+- When `R` is run, it goes through the document.. text is formated as prescribed by the type of program used (markdown for Rmarkdown and Quarto, $\LaTeX$ for Sweave), and `R` commands are run, with the output incorporated to the text
+- This is a good way to produce dynamic documents, if for instance you are getting some of the data used for your computations from a dynamic website
+
+---
+
+# Rmarkdown
+
+- Uses markdown to typeset text. Markdown is a very simple text formatting language. See, e.g., [here](https://daringfireball.net/projects/markdown/syntax) for a summary of commands
+
+---
+
+# R code within Rmarkdown
+
+- `R` **code chunks** are included in the text as
+````R
+```{R}
+Some R code
+```
+````
+
+You **must** use `{R}` after the first three backticks. Blocks like
+
+````R
+```R
+Some R code
+```
+````
+or
+````
+```
+Some R code
+```
+````
+are **pure markdown** code blocks, `R` does not execute the `R` commands there
