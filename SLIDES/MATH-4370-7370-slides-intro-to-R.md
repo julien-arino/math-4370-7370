@@ -235,10 +235,11 @@ Probably the biggest annoyance in R compared to other languages
 # Accessing entries in a matrix
 
 ```R
-A[i,j]         # Element (i,j)
-A[i,]          # Row i
-A[,j]          # Column j
-A[i,dim(A)[2]] # Last entry in row i
+A[i,j]                 # Entry (i,j)
+A[i,]                  # Row i
+A[,j]                  # Column j
+A[i,dim(A)[2]]         # Last entry in row i
+A[dim(A)[1],dim(A)[2]] # Last entry in matrix
 ```
 
 ---
