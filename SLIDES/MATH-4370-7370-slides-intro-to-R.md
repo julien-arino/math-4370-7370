@@ -313,6 +313,94 @@ The result of data typing can be weird, so it may take a few tries to get things
 
 ---
 
+# Logical statements
+
+In `if` statements (see later) and many other places, you need to evaluate the truth value of a statement. Use `==` for equality, `!=` for inequality, `>`, `<`, `>=`, `<=` for the obvious. `&` is the logical `and`, `|` is the logical `or`, `!` is the logical `not`
+
+---
+
+# Logical tests on vector entries and `which`
+
+Make a vector of 5 uniformly distributed numbers (by default in $[0,1]$)
+```R
+> v = runif(5)
+> v
+[1] 0.682311734 0.612788785 0.681121278 0.003132367 0.842270188
+```
+Then using logical statements and `which` helps for selection
+```R
+> v <= 0.5
+[1] FALSE FALSE FALSE  TRUE FALSE
+> which(v <= 0.5)
+[1] 4
+```
+(`which` returns indices for which the statement is `TRUE`)
+
+---
+
+# Logical tests on matrix entries and `which` (1)
+
+Make a matrix of 9 uniformly distributed numbers
+```R
+> A = matrix(data = runif(9), nr = 3)
+> A
+          [,1]       [,2]      [,3]
+[1,] 0.1605460 0.18508003 0.6043105
+[2,] 0.7762981 0.02225763 0.3739177
+[3,] 0.8170578 0.88845646 0.5842683
+```
+Then using logical statements and `which` helps for selection
+```R
+> A <= 0.5
+      [,1]  [,2]  [,3]
+[1,]  TRUE  TRUE FALSE
+[2,] FALSE  TRUE  TRUE
+[3,] FALSE FALSE FALSE
+```
+
+---
+
+# Logical tests on matrix entries and `which` (2)
+
+Note that by default, `which` returns indices of the matrix enumerated column-wise (1-3 are first column, 4-6 are second, etc.)
+```R
+> which(A <= 0.5)
+[1] 1 4 5 8
+```
+
+If you want "proper" matrix indices, use
+```R
+> which(A <= 0.5, arr.ind = TRUE)
+     row col
+[1,]   1   1
+[2,]   1   2
+[3,]   2   2
+[4,]   2   3
+```
+
+
+---
+
+# <!--fit-->Using `which` to set vector/matrix entries
+
+Make a vector of 5 / matrix of 9 uniformly distributed numbers (by default in $[0,1]$) and set all those with value $<0.5$ to zero
+```R
+> v = runif(5)
+> v[which(v<0.5)] = 0
+> v
+[1] 0.8877751 0.9500462 0.0000000 0.0000000 0.0000000
+
+> A = matrix(data = runif(9), nr = 3)
+> A[which(A<0.5)] = 0
+> A
+          [,1]      [,2]      [,3]
+[1,] 0.9365261 0.0000000 0.0000000
+[2,] 0.8927255 0.0000000 0.0000000
+[3,] 0.7267821 0.8341371 0.6286996
+```
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Flow control
 
@@ -338,12 +426,6 @@ if (condition is true) {
   ...
 }
 ```
-
----
-
-# Logical statements
-
-In `if` statements and many other places,  you need to evaluate the truth value of a statement. Use `==` for equality, `!=` for inequality, `>`, `<`, `>=`, `<=` for the obvious. `&` is the logical `and`, `|` is the logical `or`, `!` is the logical `not`
 
 ---
 
@@ -567,7 +649,15 @@ print_date = function(date_format = "YYYY-MM-DD") {
 
 # Rmarkdown
 
-- Uses markdown to typeset text. Markdown is a very simple text formatting language. See, e.g., [here](https://daringfireball.net/projects/markdown/syntax) for a summary of commands
+- Uses markdown to typeset text. Markdown is a very simple text formatting language. See, e.g., [here](https://daringfireball.net/projects/markdown/syntax) for a summary of commands. The most common
+```markdown
+# Section
+## Subsection
+### Subsubsection
+**bold text**
+*italicised text*
+[linked text](https://www.google.ca/)
+```
 
 ---
 
@@ -575,12 +665,12 @@ print_date = function(date_format = "YYYY-MM-DD") {
 
 - `R` **code chunks** are included in the text as
 ````R
-```{R}
+```{r}
 Some R code
 ```
 ````
 
-You **must** use `{R}` after the first three backticks. Blocks like
+You **must** use `{r}` after the first three backticks. Blocks like
 
 ````R
 ```R
@@ -594,3 +684,77 @@ Some R code
 ```
 ````
 are **pure markdown** code blocks, `R` does not execute the `R` commands there
+
+---
+
+# Chunk names
+
+It is a good idea to name chunks: when your code gets lengthy or complicated, debugging is greatly facilitated with named chunks, since errors will refer to the chunk name; with unnamed chunks, they will just refer to chunk number... RStudio also shows chunk names in the quick selection box
+
+Chunk names appear in the `{r}` statement at the beginning of a chunk, e.g., in the RStudio `Rmd` skeleton file, the first chunk
+
+````R
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+````
+is named `setup`
+
+---
+
+# Chunk options
+
+Chunk options follow the chunk name, if any, separated with commas. For instance, in the RStudio `Rmd` skeleton file, the first chunk
+
+````R
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+````
+
+is set with `include=FALSE`, which prevents the code and results to show in the rendered file. See a list of options [here](https://yihui.org/knitr/options/)
+
+---
+
+# Global chunk options
+
+Note that the RStudio skeleton file includes the statement
+```R
+knitr::opts_chunk$set(echo = TRUE)
+```
+which sets the chunk options globally (unless overridden in a specific chunk). For instance, if you want the default behaviour to be that your code is not shown, you could do
+
+````R
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+````
+and override this in a specific chunk with
+````R
+```{r some name, echo=TRUE}
+Some commands
+```
+````
+
+
+---
+
+# Inline R code within Rmarkdown
+
+- The syntax on the previous slides will display your `R` code as a code block (unless you choose to hide the code or the output)
+- You can also use `R` "inline", that is, within a regular markdown statement instead of a code chunk, using `` `r r-command` ``, where `r-command` is the `R` command you want to use
+
+For example, the default `Rmd` file generated by RStudio uses the `R` example dataset `cars`. To show the number of rows in a regular sentence, outside of a code chunk, you could write
+
+```markdown
+The cars dataset contains `r dim(cars)[1]` rows.
+```
+which renders as
+> The cars dataset contains 50 rows.
+
+---
+
+# Output type
+
+- Rmarkdown can render your file in `html`, `pdf` or as a Word file
+- To generate a `pdf`, you will need to have $\LaTeX$ installed
