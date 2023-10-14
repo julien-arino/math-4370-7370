@@ -56,6 +56,8 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 - Foreword: the R language
 - Data types and data structures
 - Flow control
+- Functions
+- Rmarkdown, Sweave and Quarto
 
 ---
 
@@ -439,3 +441,156 @@ for (i in 1:dim(tmp)[1]) {
 
 There is still a loop, but you can split this list, use it on different machines, etc. And can use `parLapply`
 
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Functions
+
+---
+
+# Why make your own functions?
+
+- Like most programming languages, additionally to built-in functions and functions provided by libraries, you can make your own functions 
+- This is useful to avoid duplicated (or multiplicated) code when you are performing the same type of operation repeatedly
+- Allows also to have one place debugging and editing
+
+---
+
+# Defining a function
+
+A function needs three things
+- A name by which to be called
+- Argument(s) on which to operate (optional)
+- Something to return (optional)
+
+Generic form ([ ] indicates something optional)
+```R
+function_name <- function([arguments]) {
+  set of instructions
+  [return value]
+}
+```
+
+---
+
+# Function (and variables) naming conventions
+
+- No super specific instructions, except that the name cannot contain dashes and other special characters. `_` is allowed and often used for space
+- Read a bit about naming conventions for instance [here](https://curc.readthedocs.io/en/latest/programming/coding-best-practices.html). The main ones:
+  - camel case: `firstName`, `lastName`
+  - pascal case: `FirstName`, `LastName`
+  - snake case: `first_name`, `last_name`
+  - kebab case: `first-name`, `last-name`. **Not allowed** in `R`!
+- The same is true for variables
+- Not important which one you choose (unless specific instructions are given), but it is good to try to stick to one form
+
+---
+
+# What's a good function name?
+
+- Everyone has different ideas about this
+- In an advanced project, you will have multiple functions, so a function name should be informative
+- However, the name should also not be too long
+
+---
+
+# Arguments - No arguments
+
+A function can have no arguments, in which case it looks like this
+```R
+function_name <- function() {
+  set of instructions
+  [return value]
+}
+```
+and is used by calling as `function_name()`. E.g.,
+```R
+print_date = function() {
+  print(Sys.Date())
+}
+```
+is used as
+```R
+> print_date()
+[1] "2023-10-13"
+```
+
+---
+
+# Arguments
+
+- Arguments can be grouped together in vector or a list, or enumerated individually
+- Each has pros and cons
+
+---
+
+# Default values for arguments
+
+You can (and should when possible) set default values for arguments to a function
+```R
+print_date = function(date_format = "YYYY-MM-DD") {
+  date = as.character(Sys.Date())
+  tmp = strsplit(date, "-")
+  YYYY = tmp[[1]][1]
+  MM = tmp[[1]][2]
+  DD = tmp[[1]][3]
+  if (date_format == "MM-DD-YYYY") {
+    OUT = sprintf("%s-%s-%s", MM, DD, YYYY)
+  } else if (date_format == "DD-MM-YYYY") {
+    OUT = sprintf("%s-%s-%s", DD, MM, YYYY)
+  } else {
+    OUT = date
+  }
+  return(OUT)
+}
+
+> print_date()
+[1] "2023-10-13"
+> print_date("DD-MM-YYYY")
+[1] "13-10-2023"
+
+```
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Rmarkdown, Sweave and Quarto
+
+---
+
+- Rmarkdown, Sweave and Quarto are notebook-type document generating mechanisms
+- The idea is to weave together "regular text" and `R` commands
+- When `R` is run, it goes through the document.. text is formated as prescribed by the type of program used (markdown for Rmarkdown and Quarto, $\LaTeX$ for Sweave), and `R` commands are run, with the output incorporated to the text
+- This is a good way to produce dynamic documents, if for instance you are getting some of the data used for your computations from a dynamic website
+
+---
+
+# Rmarkdown
+
+- Uses markdown to typeset text. Markdown is a very simple text formatting language. See, e.g., [here](https://daringfireball.net/projects/markdown/syntax) for a summary of commands
+
+---
+
+# R code within Rmarkdown
+
+- `R` **code chunks** are included in the text as
+````R
+```{R}
+Some R code
+```
+````
+
+You **must** use `{R}` after the first three backticks. Blocks like
+
+````R
+```R
+Some R code
+```
+````
+or
+````
+```
+Some R code
+```
+````
+are **pure markdown** code blocks, `R` does not execute the `R` commands there
