@@ -497,18 +497,31 @@ PARAMS <span class="hljs-operator">=</span> <span class="hljs-built_in">list</sp
   <span class="hljs-punctuation">}</span>
   <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>OUT<span class="hljs-punctuation">)</span>
 <span class="hljs-punctuation">}</span>
-
 <span class="hljs-operator">&gt;</span> print_date<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
 <span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">]</span> <span class="hljs-string">&quot;2023-10-13&quot;</span>
 <span class="hljs-operator">&gt;</span> print_date<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;DD-MM-YYYY&quot;</span><span class="hljs-punctuation">)</span>
 <span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">]</span> <span class="hljs-string">&quot;13-10-2023&quot;</span>
-
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-background-image="linear-gradient(to bottom, #f1c40f, 20%, white)" data-theme="default" style="--background-image:linear-gradient(to bottom, #f1c40f, 20%, white);--theme:default;background-image:linear-gradient(to bottom, #f1c40f, 20%, white);background-position:center;background-repeat:no-repeat;background-size:cover;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-theme="default" style="--theme:default;">
+<h1 is="marp-h1" data-auto-scaling id="using-a-function-of-several-variables-as-a-function-of-one-variable">Using a function of several variables as a function of one variable</h1>
+<p>Often, you will create a function of several variables, but will want to use it as a function of fewer, e.g., in a minimisation routine</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-R">my_silly_function <span class="hljs-operator">=</span> <span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>x<span class="hljs-punctuation">,</span>y<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-built_in">return</span><span class="hljs-punctuation">(</span>x<span class="hljs-operator">+</span>y<span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>To use as a function of, say, <code>x</code> with <code>y=5</code>,</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-R"><span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>t<span class="hljs-punctuation">)</span> my_silly_function<span class="hljs-punctuation">(</span>x <span class="hljs-operator">=</span> t<span class="hljs-punctuation">,</span> y <span class="hljs-operator">=</span> <span class="hljs-number">5</span><span class="hljs-punctuation">)</span>
+</code></pre>
+<p>whereas to use as a function of <code>y</code> with <code>x=2</code></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-R"><span class="hljs-keyword">function</span><span class="hljs-punctuation">(</span>t<span class="hljs-punctuation">)</span> my_silly_function<span class="hljs-punctuation">(</span>x <span class="hljs-operator">=</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span> y <span class="hljs-operator">=</span> t<span class="hljs-punctuation">)</span>
+</code></pre>
+<p>You can use any letter in the call to <code>function</code>; I am not using <code>x</code> here to make it obvious, but you could do <code>function(x) my_silly_function(x = x, y = 5)</code></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-background-image="linear-gradient(to bottom, #f1c40f, 20%, white)" data-theme="default" style="--background-image:linear-gradient(to bottom, #f1c40f, 20%, white);--theme:default;background-image:linear-gradient(to bottom, #f1c40f, 20%, white);background-position:center;background-repeat:no-repeat;background-size:cover;">
 <h1 is="marp-h1" data-auto-scaling id="rmarkdown-sweave-and-quarto">Rmarkdown, Sweave and Quarto</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-theme="default" style="--theme:default;">
 <ul>
 <li>Rmarkdown, Sweave and Quarto are notebook-type document generating mechanisms</li>
 <li>The idea is to weave together &quot;regular text&quot; and <code>R</code> commands</li>
@@ -516,7 +529,7 @@ PARAMS <span class="hljs-operator">=</span> <span class="hljs-built_in">list</sp
 <li>This is a good way to produce dynamic documents, if for instance you are getting some of the data used for your computations from a dynamic website</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-theme="default" style="--theme:default;">
 <h1 id="rmarkdown">Rmarkdown</h1>
 <ul>
 <li>Uses markdown to typeset text. Markdown is a very simple text formatting language. See, e.g., <a href="https://daringfireball.net/projects/markdown/syntax">here</a> for a summary of commands. The most common</li>
@@ -529,7 +542,7 @@ PARAMS <span class="hljs-operator">=</span> <span class="hljs-built_in">list</sp
 [<span class="hljs-string">linked text</span>](<span class="hljs-link">https://www.google.ca/</span>)
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-theme="default" style="--theme:default;">
 <h1 id="r-code-within-rmarkdown">R code within Rmarkdown</h1>
 <ul>
 <li><code>R</code> <strong>code chunks</strong> are included in the text as</li>
@@ -550,7 +563,7 @@ Some R code
 </code></pre>
 <p>are <strong>pure markdown</strong> code blocks, <code>R</code> does not execute the <code>R</code> commands there</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-theme="default" style="--theme:default;">
 <h1 id="chunk-names">Chunk names</h1>
 <p>It is a good idea to name chunks: when your code gets lengthy or complicated, debugging is greatly facilitated with named chunks, since errors will refer to the chunk name; with unnamed chunks, they will just refer to chunk number... RStudio also shows chunk names in the quick selection box</p>
 <p>Chunk names appear in the <code>{r}</code> statement at the beginning of a chunk, e.g., in the RStudio <code>Rmd</code> skeleton file, the first chunk</p>
@@ -560,7 +573,7 @@ knitr::opts_chunk$set(echo = TRUE)
 </code></pre>
 <p>is named <code>setup</code></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-theme="default" style="--theme:default;">
 <h1 id="chunk-options">Chunk options</h1>
 <p>Chunk options follow the chunk name, if any, separated with commas. For instance, in the RStudio <code>Rmd</code> skeleton file, the first chunk</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-R">```{r setup, include=FALSE}
@@ -569,7 +582,7 @@ knitr::opts_chunk$set(echo = TRUE)
 </code></pre>
 <p>is set with <code>include=FALSE</code>, which prevents the code and results to show in the rendered file. See a list of options <a href="https://yihui.org/knitr/options/">here</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-theme="default" style="--theme:default;">
 <h1 id="global-chunk-options">Global chunk options</h1>
 <p>Note that the RStudio skeleton file includes the statement</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-R">knitr<span class="hljs-operator">::</span>opts_chunk<span class="hljs-operator">$</span>set<span class="hljs-punctuation">(</span>echo <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span>
@@ -585,7 +598,7 @@ Some commands
 ```
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-theme="default" style="--theme:default;">
 <h1 id="inline-r-code-within-rmarkdown">Inline R code within Rmarkdown</h1>
 <ul>
 <li>The syntax on the previous slides will display your <code>R</code> code as a code block (unless you choose to hide the code or the output)</li>
@@ -599,7 +612,7 @@ Some commands
 <p>The cars dataset contains 50 rows.</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-theme="default" style="--theme:default;">
 <h1 id="output-type">Output type</h1>
 <ul>
 <li>Rmarkdown can render your file in <code>html</code>, <code>pdf</code> or as a Word file</li>

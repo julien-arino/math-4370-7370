@@ -630,8 +630,28 @@ print_date = function(date_format = "YYYY-MM-DD") {
 [1] "2023-10-13"
 > print_date("DD-MM-YYYY")
 [1] "13-10-2023"
-
 ```
+
+---
+
+# <!--fit-->Using a function of several variables as a function of one variable
+
+Often, you will create a function of several variables, but will want to use it as a function of fewer, e.g., in a minimisation routine
+
+```R
+my_silly_function = function(x,y) {
+  return(x+y)
+}
+```
+To use as a function of, say, only `x` with `y=5`,
+```R
+function(t) my_silly_function(x = t, y = 5)
+```
+whereas to use as a function of `y` with `x=2`
+```R
+function(t) my_silly_function(x = 2, y = t)
+```
+You can use any letter in the call to function, I am not using `x` here just to make it obvious, but you could do `function(x) my_silly_function(x = x, y = 5)`
 
 ---
 
