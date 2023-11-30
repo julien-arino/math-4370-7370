@@ -1,0 +1,481 @@
+\documentclass[aspectratio=169]{beamer}
+
+%\documentclass[handout]{beamer}
+%% To make 4 per page
+%\usepackage{pgfpages}
+%\mode<handout>{\setbeamercolor{background canvas}{bg=white}}
+%\pgfpagesuselayout{4 on 1}[letterpaper,landscape]%,border shrink=5mm]
+
+\input{slides_setup_nonLightBoard_whiteBG.tex}
+
+% To have theorems and everything derived prefixed by the slide set
+% number
+\renewcommand{\thetheorem}{5.\arabic{theorem}}
+
+
+
+\title{Norms and Matrix Norms}
+\author{Julien Arino}
+\date{Fall 2023}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% The title page
+\begin{frame}[noframenumbering,plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[above right,inner sep=0pt] at (current page.south west)
+    {
+        \includegraphics[width=\paperwidth]{title-page-picture.png}
+    };
+\end{tikzpicture}
+	\titlepage
+\end{frame}
+\addtocounter{page}{-1}
+  
+  
+\begin{frame}{Outline}
+	  \tableofcontents[hideallsubsections]
+\end{frame}
+\addtocounter{page}{-1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vector norms}
+\label{sec:vector_norms}
+
+
+\begin{frame}
+\begin{definition}[Norm]
+Let $V$ be a vector space over a field $\IF$. A function $\| \cdot \|: V\to \IR_{+}$ is a \defword{norm} if for all $\bx,\by\in V$ and for all $c\in \IF$
+\begin{enumerate}
+    \item $\|\bx\| \geq 0$ \hfill[\defword{Nonnegativity}]
+    \item $\|\bx\|=0 \iff\bx=\b0$ \hfill[\defword{Positivity}]
+    \item $\|c\bx\| =|c|\ \|\bx\|$ \hfill[\defword{Homogeneity}]
+    \item $\|\bx+\by \|\leq \|\bx\| + \|\by\|$ \hfill[\defword{Triangle Inequality}]
+\end{enumerate}
+\end{definition}
+\vfill
+\begin{remark}
+If we have 1, 3, and 4 but not 2, then we have a \defword{seminorm}
+\end{remark}
+\end{frame}
+
+
+\begin{frame}
+\begin{definition}[Inner product]
+Let $V$ be a vector space over $\IF$. A function $\langle\cdot,\cdot\rangle:  V \times V\to \IF$ is an \defword{inner product} if for all $\bx,\by,\bz\in V$ and all $c\in \IF$
+\begin{enumerate}
+    \item $\langle\bx,\bx\rangle \geq 0$
+    \item $\langle\bx,\bx\rangle = 0 \iff \bx=0$
+    \item $\langle\bx+\by,\bz\rangle=\langle\bx,\bz\rangle+\langle\by,\bz\rangle$
+    \item $\langle c\bx,\by\rangle= c\langle\bx,\by\rangle$
+    \item $\langle\bx,\by\rangle=\overline{\langle\by,\bx\rangle}$
+\end{enumerate}
+\end{definition}
+\vfill
+\begin{theorem}[Cauchy-Schwartz]
+Let $\langle\cdot,\cdot\rangle$ be an inner product on a vector space $V$ over $\IF$, then 
+\[
+|\langle \bx,\by\rangle|^2
+\leq \langle\bx,\bx\rangle\langle\by,\by\rangle
+\]
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}
+\begin{corollary}
+If $\langle \cdot,\cdot \rangle$ is an inner product on a real or complex vector space $V$, then $\|\cdot\| : V\to \IR_{+}$ defined by $\| \bx \| = \langle \bx,\bx\rangle^{1/2}$ is a norm on $V$
+\end{corollary}
+\vfill
+\begin{remark}
+If $\langle \cdot,\cdot\rangle$ is a semi-inner product, then the resulting $\| \bx \| = \langle \bx, \bx\rangle^{1/2}$ is a seminorm
+\end{remark}
+\end{frame}
+
+
+
+\begin{frame}
+\begin{theorem}
+ Consider the norm $\| \cdot \|$. Then $\| \cdot \|$ is derived from an inner product if and only if it satisfies the parallelogram identity
+ \[\dfrac{1}{2}\left( \|\bx+\by\|^2 +\|\bx-\by\|^2\right)= \|\bx\|^2+\|\by\|^2\]
+\end{theorem}
+
+\begin{theorem}
+If $\|\cdot\|$ is a nom on $\IC^n$ and a matrix $T\in \M_n$ which is non-singular. Then 
+\[
+    \|\bx\|_T= \| T\bx \|
+\]
+is also a norm on $\IC^n$
+\end{theorem}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analytic properties of norms}
+\label{sec:analytic_properties_norms}
+
+
+\begin{frame}
+\begin{definition}
+Let $V$ be a vector space over $\IF=\IR$ or $\IC$. Take a norm $\|\cdot\|$ on $V$. The sequence $\{\bx^{(k)}\}$ of vectors in $V$ converges to $\bx\in V$ with respect to the norm $\|\cdot\|$ if and only if $\| \bx^{(k)}-\bx\|\to 0$ as $k \to \infty$
+\end{definition}
+\vfill
+We write $\lim\limits_{k \to \infty} \bx^{(k)}=\bx$ with respect to $\|\cdot\|$ or 
+\[
+    \bx^{(k)} \xrightarrow{\| \cdot \|} \bx 
+\]
+\end{frame}
+
+
+\begin{frame}
+\begin{theorem}
+Every (vector) norm in $\IC^n$ is uniformly continuous
+\end{theorem}
+\vfill
+\begin{corollary}
+Let $\| \cdot \|_{\alpha}$ and $\| \cdot \|_{\beta}$ be any two norms on a finite-dimensional vector space $V$. Then there exist $C_m, C_r>0$ such that 
+\[
+    C_m\| \bx\|_{\alpha} \leq 
+    \| \bx \|_{\beta}\leq 
+    C_r\| \bx\|_{\alpha}, \forall \bx\in V
+\]
+\end{corollary}
+\end{frame}
+
+
+\begin{frame}
+\begin{corollary}
+ Let $\|\cdot\|_{\alpha}$ and $\|\cdot\|_{\beta}$ norms on a finite-dimensional vector space $V$ over $\IR$ or $\IC$, $\{\bx^{(k)}\}$ a given sequence in $V$, then 
+ \[
+    \bx^{(k)} \xrightarrow{\| \cdot \|_{\alpha}} \bx 
+    \iff 
+    \bx^{(k)} \xrightarrow{\| \cdot \|_{\beta}}\bx 
+ \]
+\end{corollary}
+\end{frame}
+
+\begin{frame}
+\begin{definition}[Equivalent norms]
+Two norms are \defword{equivalent}\index{equivalent} if whenever a sequence $\{\bx^{(k)}\}$ converges to $\bx$ with respect to one of the norm, it converges to $\bx$ in the other norm
+\end{definition}
+\vfill
+\begin{theorem}
+In finite-dimensional vector spaces, all norm are equivalent
+\end{theorem}
+\end{frame}
+
+
+
+\begin{frame}
+\begin{definition}[Dual norm]
+Let $f$ be a pre-norm on $V=\IR^n$ or $\IC^n$. The function 
+\[f_d=(\by) \max\limits_{f(\bx)=1} \Rel \by^* \bx\]
+is the \defword{dual norm} of $f$
+\end{definition}
+\vfill
+\begin{remark}
+The dual norm is well defined. $\Rel\by^*\bx$ is a continuous function for all $\by\in V$ fixed. The set $\{f(\bx)=1\}$ is compact 
+\end{remark}
+\vfill
+Equivalent definition for dual norm: $f^D(\by)= \max\limits_{f(\bx)=1} | \by^*\bx\mid$
+\end{frame}
+
+
+\begin{frame}
+\begin{lemma}[Extension of Cauchy-Schwartz]
+Let $f$ be a prenorm on $V=\IR^n$ or $\IC^n$ for all $\bx,\by\in V$. Then 
+\begin{align*}
+    & |\by^*\bx\mid \leq f(\bx)f^D(\by)\\
+    & | \by^*\bx | \leq f^D(\bx)f(\bx)
+\end{align*}
+\end{lemma}
+\vfill
+\begin{remark}
+\begin{itemize}
+    \item The dual norm of a pre-norm is a norm
+    \item The only norm that equals its dual norm is the Euclidean norm 
+\end{itemize}
+\end{remark}
+\end{frame}
+
+
+
+\begin{frame}
+\begin{theorem}
+Let $\|\cdot\|$ be a norm on $\IC^n$ or $\IR^n$, and $\|\cdot\|^D$ its dual, $c>0$ given. Then for all $\bx\in V$, $\|\bx\|= c\|\bx\|^d \iff \|\cdot\|= \sqrt{c}\|\cdot\|^d$.
+In particular, $\|\cdot\|= \|\cdot\|^2 \iff \|\cdot\|= \|\cdot\|_2$
+\end{theorem}
+\vfill
+\begin{definition}
+Let $x\in \IF^n$. Denote $| x|= [|x_i|]$ ($|\cdot |$ entry-wise), and write that $|x|\leq |y |$ if $|x_i|\leq |y_i|$ for all $i= 1, \dots, n$. Assume $\|\cdot\|$ is 
+\begin{enumerate}
+    \item monotone if $|\bx|\leq |\by| \implies \|\bx\| \leq \|\by\|$ for all $\bx,\by$
+    \item absloute if $\left \| |\bx| \right\| $ for all $\bx\in V$
+\end{enumerate}
+\end{definition}
+\end{frame}
+
+
+
+\begin{frame}
+\begin{theorem}
+Let $\|\cdot\|$ be a norm on $\IF^n$. Then
+\begin{enumerate}
+    \item If $\|\cdot\|$ is absolute, then 
+    \[
+        \|\by\|^D= \max\limits_{\bx\neq 0}= \dfrac{|\by|^T |\bx|}{\|\bx\|}
+    \]
+    for all $\by\in V$
+    \item If $\|\cdot\|$ absolute, then $\|\cdot\|^D$ is absolute and monotone
+    \item $\|\cdot\|$ absolute if and only if $\|\cdot\|$
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Matrix Norms}
+\label{sec:matrix_norms}
+
+
+\begin{frame}
+\begin{definition}[Matrix norm]
+Let $\Nt{\cdot} $ be a function from $\M_n\to \IR$. $\Nt{\cdot}$ is a \defword{matrix norm} if for all $A,B\in \M_n$ and $c\in\IC$, it satisfies the following
+\begin{enumerate}
+    \item $\Nt{A} \geq 0$ \hfill[\defword{nonnegativity}]
+    \item $\Nt{A}  =0 \iff A=0$ \hfill[\defword{positivity}]
+    \item $\Nt{cA} = |c|\ \Nt{A}$ \hfill[\defword{homogeneity}]
+    \item $\Nt{A+B} \leq \Nt{A}  +\tripbar B \tripbar$ \hfill[\defword{triangle inequality}]
+    \item $\tripbar AB \tripbar \leq \tripbar A\tripbar \tripbar B \tripbar$
+    \hfill[\defword{submultiplicativity}]
+\end{enumerate}
+\end{definition}
+\vfill
+\begin{remark}
+    As with vector norms, if property 2 does not hold, $\Nt{\cdot}$ is a \defword{matrix semi-norm}
+\end{remark}
+\end{frame} 
+
+
+
+\begin{frame}
+
+\begin{remark}
+ $\tripbar A^2 \tripbar = \tripbar A A\tripbar\leq \tripbar A \tripbar^2 $ [for any matrix norm].\\
+ 
+If $A^2= A$, then 
+ \[\tripbar A^2 \tripbar = \tripbar A \tripbar\leq \tripbar A\tripbar^2 \implies \tripbar A \tripbar \geq 1.\]
+ 
+ In particular, $\tripbar I \tripbar \geq 1$ for any matrix norm. \\
+ 
+ Assume that $A$ is invertible, then $AA^{-1}=I$, thus 
+ \begin{align}
+     &\tripbar I \tripbar = \tripbar AA^{-1} \tripbar \leq \tripbar A \tripbar \tripbar A^{-1}\tripbar\\
+     &\tripbar A^{-1} \tripbar\geq \dfrac{\tripbar I \tripbar }{\tripbar A\tripbar}
+ \end{align}
+\end{remark}
+\end{frame}
+
+
+
+
+\begin{frame}
+\begin{definition}[Induced matrix norm]\label{def:induced_matrix_norm}
+Let $\|\cdot\|$ be a norm on $\IC^n$. Define $\Nt{\cdot}$ on $\M_n(\IC)$ by 
+\[
+    \tripbar A\tripbar  = \max\limits_{\|\bx\|=1} \|A\bx\|
+\]
+Then $\Nt{\cdot}$ is the \defword{matrix norm induced} by $\|\cdot\|$
+\end{definition}
+\vfill
+\begin{theorem}
+The function $\Nt{\cdot}$ defined in Definition~\ref{def:induced_matrix_norm} has the following properties
+\begin{enumerate}
+    \item $\tripbar\II\tripbar =1$
+    \item $\| A\by \| \leq \tripbar A \tripbar \|\by\|$ for all $A\in \M_n(\IC)$ and all $\by \in \IC^n$
+    \item $\Nt{\cdot}$ is a matrix norm on $\M_n(\IC)$.
+    \item $\tripbar A \tripbar = \max\limits_{\|\bx\|= \|\by\|^D} |\by^* A\bx|$
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}
+\begin{definition}[Induced norm/Operator norm]
+$\Nt{\cdot}$ defined from $\|\cdot\|$ by any of the previous methods is the matrix norm induced by $\|\cdot\|$. It is also called the \defword{operator norm}
+\end{definition}
+\vfill
+\begin{definition}[Unital norm]
+A norm such that $\tripbar \mathbb{I} \tripbar=1$ is \defword{unital}
+\end{definition}
+\vfill
+\begin{remark}
+ Every induced matrix norm is unital. Every induced norm is a matrix norm
+\end{remark}
+\end{frame}
+
+
+\begin{frame}
+\begin{proposition}
+For all $U,\, V$ unitary matrices, we have $\tripbar UAV\tripbar_2= \tripbar A\tripbar_2$
+\end{proposition}
+\vfill
+\begin{theorem}
+Let $\Nt{\cdot}$ be a matrix norm in $\M_n$ and let $S\in \M_n$ be nonsingular. 
+Then for all $A\in \M_n$, $\tripbar A\tripbar_S= \tripbar SAS^{-1}\tripbar$ is a matrix norm. 
+Furthermore, if $\Nt{\cdot}$ on $\IC^n$, then $\|\bx\|_S= \|S\bx\|$ induces $\Nt{\cdot}_S$ on $\M_n$
+\end{theorem}
+\vfill
+\begin{theorem}
+Let $\Nt{\cdot}$ be a matrix norm on $\M_n$, $A\in \M_n$ and $\lambda\in \sigma(A)$. 
+Then 
+\begin{enumerate}
+    \item $|\lambda |\leq \rho(A) \leq \tripbar A\tripbar$
+    \item If $A$ is nonsingular, then 
+    \[
+        \rho(A)\geq |\lambda |\geq \dfrac{1}{\tripbar A^{-1} \tripbar}
+    \]
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+
+
+\begin{frame}
+\begin{lemma}
+Let $A\in \M_n$. If there exists a norm $\Nt{\cdot}$ on $\M_n$ such that $\tripbar A\tripbar< 1$, then $\lim\limits_{k \to \infty}A^k=0$ entry-wise
+\end{lemma}
+\vfill
+\begin{remark}
+ When $\tripbar A\tripbar <1$ for some norm, we say that $A$ is \defword{convergent}
+\end{remark}
+\vfill
+\begin{theorem}
+Let $A\in \M_n$, then 
+\[
+    \lim\limits_{k \to \infty} A^k=0 \iff \rho(A)<1
+\]
+\end{theorem}
+\end{frame}
+
+
+
+\begin{frame}
+\begin{theorem}[Gelfand Formula] 
+    Let $\Nt{\cdot}$ be a matrix norm on $\M_n$, let $A\in \M_n$. Then 
+    \[
+        \rho(A)= \lim\limits_{k \to \infty} \tripbar A^k \tripbar^{1/k}
+    \]
+\end{theorem}
+\vfill
+\begin{theorem}
+ Let $R$ be the radius of convergence of the (scalar) power series $\sum\limits_{k=0}^{\infty} a_kz^k$ and $A\in \M_n$. 
+ Then the matrix power series $\sum\limits_{k=1}^{\infty} a_k A^k$ converges if $\rho(A)<R$
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}
+\begin{remark}
+ The convergence condition for the matrix power series is ``there exists a matrix norm $\Nt{\cdot}$ such that $\tripbar A \tripbar <R$''
+\end{remark}
+\vfill
+\begin{corollary}
+  Let $A\in \M_n$ be nonsingular, if there $\Nt{\cdot}$ matrix norm such that $\tripbar \mathbb{I}-A\tripbar \leq 1$
+\end{corollary}
+\vfill
+\begin{corollary}
+  Let $A\in \M_n$ is such that $|a_{ii}| > \sum\limits_{j \neq i} |a_{ij}|$ for all $i = 1, \dots, n$. Then $A$ is invertible
+\end{corollary}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Matrix norms and Singular values}
+\label{sec:matrixNorms_SVD}
+
+\begin{frame}
+Let $V = \M_{mn}(\IC)$ with Frobenius inner product 
+\[
+    \langle A, \, B \rangle_{F}= \tr(B^*A)
+\]
+The norm derived from the Frobenius inner product is 
+\[\|A\|_2= (\tr(A^*A))^{1/2}\]
+is the $\ell$-2 norm (or Frobenius norm)
+\end{frame}
+
+\begin{frame}
+The spectral norm $\Nt{\cdot}$ defined on $\M_n$ by 
+\[\tripbar A\tripbar_2= \sigma_1(A),\]
+where $\sigma_1(A)$ is the largest singular value of $A$ is induced by the $\ell$-2 norm on $\IC^n$. \\
+Inded, from the singular value decomposition theorem, let 
+\[A= V \Sigma W^*\]
+be a singular value decomposition of $A$, where $V, \, W$ unitary, $\Sigma= \sigma(\sigma_1, \dots, \sigma_n)$ and $\sigma_1 \geq \dots \geq \sigma_n\geq 0$ are the non-increasingly ordered singular values of $A$
+\end{frame}
+
+
+\begin{frame}
+From unitary invariance and monotonicity of the Euclidean norm, we say that 
+\begin{align*}
+\max \|Ax\|_1&= \max_{\|x\|_1} \|V\Sigma W^*\|_2\\
+&= \max_{\|x\|_2} \|\Sigma W^* x\|_2\\
+&= \max_{\|Wy\|_2=1}\|\Sigma y\|_2\\
+&= \max_{\|y\|_2}\|\Sigma y\|_2\\
+& \leq \max_{\|y\|_2}\|\sigma_1 y\|_2\\
+&= \sigma_1 \max_{\| y \|_2} \|y\|_2\\
+&= \sigma_1
+\end{align*}
+Since $\| \Sigma y\|_2= \sigma_1$ for $y= e_1$, 
+\[\max_{\|x\|_2=1} \|Ax\|_2= \sigma_1(A)\]
+\end{frame}
+
+
+\begin{frame}
+We could have used 
+\begin{align*}
+\max_{\|x\|_2=1}=\|Ax\|_2^2&= \max_{\|x\|_2=1}x^*A^*AX\\
+&= \lambda_{max}(A^*A)\\
+&= \sigma_1(A)
+\end{align*}
+
+
+\begin{remark}
+	For all $U,\, V$ unitary $\M_{n}$ matrices, for all $A\in \M_n$, $\tripbar UAV\tripbar_2= \tripbar A\tripbar_2$
+\end{remark}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+\begin{frame}[allowframebreaks]
+    \frametitle{References}
+    \bibliographystyle{amsalpha}
+    \bibliography{MATH-4370-7370-lecture-notes.bib}
+\end{frame}
+    
+
+\end{document}
