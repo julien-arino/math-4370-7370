@@ -625,7 +625,6 @@ print_date = function(date_format = "YYYY-MM-DD") {
   }
   return(OUT)
 }
-
 > print_date()
 [1] "2023-10-13"
 > print_date("DD-MM-YYYY")
@@ -643,7 +642,7 @@ my_silly_function = function(x,y) {
   return(x+y)
 }
 ```
-To use as a function of, say, only `x` with `y=5`,
+To use as a function of, say, `x` with `y=5`,
 ```R
 function(t) my_silly_function(x = t, y = 5)
 ```
@@ -651,7 +650,7 @@ whereas to use as a function of `y` with `x=2`
 ```R
 function(t) my_silly_function(x = 2, y = t)
 ```
-You can use any letter in the call to function, I am not using `x` here just to make it obvious, but you could do `function(x) my_silly_function(x = x, y = 5)`
+You can use any letter in the call to `function`; I am not using `x` here to make it obvious, but you could do `function(x) my_silly_function(x = x, y = 5)`
 
 ---
 
@@ -777,4 +776,5 @@ which renders as
 # Output type
 
 - Rmarkdown can render your file in `html`, `pdf` or as a Word file
-- To generate a `pdf`, you will need to have $\LaTeX$ installed
+- To generate a `pdf`, you need to have $\LaTeX$ installed
+
