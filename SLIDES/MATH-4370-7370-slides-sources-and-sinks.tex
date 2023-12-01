@@ -15,7 +15,7 @@
 % number
 \renewcommand{\thetheorem}{7.\arabic{theorem}}
 
-\title{A worked out example using matrices}
+\title{An example from metapopulations}
 \author{Julien Arino}
 \date{Fall 2023}
 
@@ -52,7 +52,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\begin{frame}{Why do this?}
+	This is mostly about dynamics
+	\vfill
+	Looping back to our first few lectures: \emph{matrices are everywhere}!
+	\vfill
+	This is a (rather abstract) problem in theoretical ecology (or mathematical ecology?)
+	\vfill
+	We will be using a surprising number of results we have already seen
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%
@@ -81,6 +89,7 @@
 	\]
 \end{frame}
 	
+\maxFrameImage{FIGS/source-sinks-nicolas-steve}
 	
 \begin{frame}{Position of the problem}
 	Assume a metapopulation of patches connected through transport of individuals between them
@@ -122,7 +131,7 @@
 	\textbf{Obvious special cases}
 \end{frame}
 
-\begin{frame}{This is not good}
+\begin{frame}{This should not be good for the species}
     \begin{center}
         \begin{tikzpicture}
             \node[inner sep=-30pt] (sink1) at (0,0)
@@ -145,7 +154,7 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{This probably is}
+\begin{frame}{This is probably good for the species}
     \begin{center}
         \begin{tikzpicture}
             \node[inner sep=-30pt] (sink1) at (0,0)
@@ -236,11 +245,11 @@
 	\[
 	\D_t = \diag\left(r_{S+1},\ldots,r_N\right)
 	\]
-	\[
+	\begin{equation}\label{eq:M_blocks}
 	\begin{pmatrix}
 	\M_s & \M_{st} \\ \M_{ts} & \M_t
 	\end{pmatrix} = \M
-	\]
+	\end{equation}
 \end{frame}
 
 
@@ -290,7 +299,7 @@
 	Thus all eigenvalues of $-\M+\varepsilon\II$ have positive real parts
 	\vfill
 	Furthermore, $-\M$ and $-\M+\varepsilon\II$ are of class $Z_n$: they have nonpositive offdiagonal entries. 
-	As a consequence, by \cite[Theorem 5.1.1(18)]{Fiedler2008}, $-\M+\varepsilon\II$ is of class $K$, i.e., an M-matrix.
+	\cite[Theorem 5.1.1(18)]{Fiedler2008} $\implies$ $-\M+\varepsilon\II$ is of class $K$, i.e., an M-matrix.
 	Since this is true for all $\varepsilon>0$, \cite[Theorem 5.2.1(1)]{Fiedler2008} implies that $-\M$ is of class $K_0$. 
 	So $-\M$ is an M-matrix and it is singular
 \end{frame}
@@ -300,7 +309,7 @@
 		\begin{enumerate}
 			\item $s(\M+d\II)=d$, $\forall d\in\IR$ \label{prop:perturbation_mvtMatrix_d}
 			\item $s(\M+D)\in\sigma(\M+D)$ associated to $\bv>\b0$. If $\M$ irreducible, $s(\M+D)$ has  multiplicity 1 and is associated to $\bv\gg \b0$ \label{prop:perturbation_mvtMatrix_D}
-			\item If $\diag (D)\gg \b0$, then $D-\M$ invertible M-matrix and $(D-\M)^{-1}> \b0$ \label{prop:perturbation_mvtMatrix_DmM1}
+			\item $\diag (D)\gg \b0$ $\implies$ $D-\M$ invertible M-matrix and $(D-\M)^{-1}> \b0$ \label{prop:perturbation_mvtMatrix_DmM1}
 			\item $\M$ irreducible and $\diag(D)>\b0$ $\Longrightarrow$ $D-\M$ nonsingular irreducible M-matrix and $(D-\M)^{-1}\gg \b0$ \label{prop:perturbation_mvtMatrix_DmM2}
 		\end{enumerate}
 	\end{proposition}
@@ -317,17 +326,21 @@
 
 \begin{frame}{Proof of Proposition~\ref{prop:perturbation_mvtMatrix} (cont'd)}
 \noindent\ref{prop:perturbation_mvtMatrix_DmM1}.
-Define $\underline{d}=\min_{i=1,\ldots,N}d_{ii}$. $\diag (D)\gg \b0$ $\implies$ $\underline{d}>0$ $\implies$ $-\M\leq d\II-\M\leq D-\M$. From \cite[Theorem 5.2.5]{Fiedler2008}, $d\II-\M$ is an M-matrix. 
-Since $s(\M)=0$, using a ``spectrum shift'' \cite[Problem 1.2.P8]{HornJohnson2013}, all eigenvalues of $d\II-\M$ have real parts larger
+Define $\underline{d}=\min_{i=1,\ldots,N}d_{ii}$. Then
+\[
+\diag (D)\gg \b0 \implies \underline{d}>0 \implies -\M\leq d\II-\M\leq D-\M
+\]
+From \cite[Theorem 5.2.5]{Fiedler2008}, $d\II-\M$ is an M-matrix. 
+Since $s(\M)=0$, using a ``spectrum shift'', all eigenvalues of $d\II-\M$ have real parts larger
 than $\underline{d}$, so $\underline{d}\II-\M$ is a nonsingular M-matrix. 
 In turn, \cite[Theorem 5.1.1(4)]{Fiedler2008} $\implies$ $D-\M$ nonsingular M-matrix and \cite[Theorem 5.1.1(11)]{Fiedler2008} leads to the conclusion
 \vfill
 \noindent\ref{prop:perturbation_mvtMatrix_DmM2}. 
-Suppose that $\M$ is irreducible. 
+Suppose $\M$ irreducible. 
 Let $\overline{d}=\max_{i=1,\ldots,N}d_{ii}>0$.
 Then $D-\M$ is  irreducible and diagonally dominant with all columns $k=1,\ldots,N$ such that $d_{kk}=\overline{d}$ satisfying the strict diagonal
 dominance requirement. (Other columns with nonzero entries in $D$ also satisfy the requirement.)
-As a consequence, \cite[Theorem 1.11]{Varga2010} implies that $D-\M$ is nonsingular and inverse positivity follows from \cite[Theorem 5.2.10]{Fiedler2008}
+As a consequence, \cite[Theorem 1.11]{Varga2010} implies that $D-\M$ nonsingular and inverse positivity follows from \cite[Theorem 5.2.10]{Fiedler2008}
 \end{frame}
 
 \begin{frame}{$-\M$ is also the Laplacian matrix of a digraph}
@@ -463,7 +476,11 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 \end{frame}
 
 \begin{frame}{Proof of Lemma~\ref{lemma:S_nonzero_at_ends} (cont'd)}
-	Applying the permutation matrix $P$ to $J_{\textrm{PFE}}^N$ gives a block upper triangular matrix $P^TJ_{\textrm{PFE}}^NP$ with, for $i=1,\ldots,C$, the $n(i)\times n(i)$ diagonal blocks $\M_{ii}+E_i$ being irreducible and with
+	Applying the permutation matrix $P$ to $J_{\textrm{PFE}}^N$ gives a block upper triangular matrix 
+	\[
+	P^TJ_{\textrm{PFE}}^NP
+	\]
+	with, for $i=1,\ldots,C$, the $n(i)\times n(i)$ diagonal blocks $\M_{ii}+E_i$ being irreducible and with
 	\[
 	E_i = \underline{r}\II
 	+\diag\left(e_{k(1)},\ldots,e_{k(n(i))}\right)
@@ -498,6 +515,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	\ldots,
 	s(\M_{11}+\underline{r}\II)\}
 	\]
+	\vfill
 	As a consequence, $s(J_{\textrm{PFE}}^N)\geq \underline{r}>0$
 \end{frame}
 
@@ -536,10 +554,11 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	&= \M+\diag(r_1,\ldots,r_{\xi},\varepsilon,-r_{\xi+2},\ldots,-r_N) \\
 	&\quad -\M-\diag(-r_1,\ldots,-r_N) \\
 	&= \diag(2r_1,\ldots,2r_{\xi},\varepsilon+r_{\xi+1},0,\ldots,0) \\
-	&>\b0,
+	&>\b0
 	\end{align*}
-	since $\varepsilon\in[-r_{\xi+1},r_{\xi+1}]$. 
-	Computing $J_{\textrm{PFE}}^{N}-J_{\textrm{PFE}}^{\xi,\varepsilon}$ at the other endpoint works similarly, giving \eqref{ineq:bounds_J}. 
+	since $\varepsilon\in[-r_{\xi+1},r_{\xi+1}]$
+	\vfill
+	Computing $J_{\textrm{PFE}}^{N}-J_{\textrm{PFE}}^{\xi,\varepsilon}$ at the other endpoint works similarly, giving \eqref{ineq:bounds_J}
 \end{frame}
 
 \begin{frame}{Proof of Lemma~\ref{lemma:Mness_of_Jinterval} (cont'd)}
@@ -574,7 +593,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 \end{frame}
 
 \begin{frame}{Proof of Proposition~\ref{prop:spectral_abs_increasing} (cont'd)}	
-	Now, assume that $\M$ is reducible. Then there exists a permutation matrix $P$ such that $P^T\M P$ is block upper triangular. Consider $S\in[0,N]\subset\IR$ and use \eqref{eq:xi_epsilon_ri} to obtain a corresponding pair $(\xi,\varepsilon)\in\{0,\ldots,N\}\times [-r_{\xi},r_{\xi}]$. Apply the same permutation to $J_{\textrm{PFE}}^{\xi,\varepsilon}$, giving
+	Now, assume that $\M$ is reducible. $\implies$ $\exists$ permutation matrix $P$ such that $P^T\M P$ block upper triangular. Consider $S\in[0,N]\subset\IR$ and use \eqref{eq:xi_epsilon_ri} to obtain a corresponding pair $(\xi,\varepsilon)\in\{0,\ldots,N\}\times [-r_{\xi},r_{\xi}]$. Apply the same permutation to $J_{\textrm{PFE}}^{\xi,\varepsilon}$, giving
 	\[
 	P^TJ_{\textrm{PFE}}^{\xi,\varepsilon}P
 	=
@@ -583,20 +602,22 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	0 & \M_{22}+E_2 & & \\
 	&&\ddots & \\
 	0 & \cdots & 0 & \M_{CC}+E_C
-	\end{pmatrix},
+	\end{pmatrix}
 	\]
 	where $C$ is the number of strong components in the digraph of patches and
 	\[
 	E_1\oplus\cdots\oplus E_C = P^T\diag(r_1,\ldots,r_{\xi},\varepsilon,-r_{\xi+2},\ldots,-r_N)P
 	\]
-	with the matrix on the right hand side having $\varepsilon$ as $(\xi+1)^{\textrm{th}}$ diagonal entry.
-	As in the proof of Lemma~\ref{lemma:S_nonzero_at_ends}, we have denoted $\M_{ii}$ the diagonal blocks in the reduced form of $\M$.
+	with matrix on right hand side having $\varepsilon$ as $(\xi+1)^{\textrm{th}}$ diagonal entry.
+	As in the proof of Lemma~\ref{lemma:S_nonzero_at_ends}, we have denoted $\M_{ii}$ the diagonal blocks in the reduced form of $\M$
 \end{frame}
 
 \begin{frame}{Proof of Proposition~\ref{prop:spectral_abs_increasing} (cont'd)}	
-	For $j=1,\ldots,C$, each of the matrices $\M_{jj}$ is irreducible; $C-1$ of the matrices $E_j$ are diagonal with entries $-r_i$ and $r_i$ on the diagonal (with some having only $-r_i$, some having only $r_i$ and some having both types of entries). The remaining $E_j$ matrix is diagonal, with potentially $-r_i$ and $r_i$ as the others, but also $\varepsilon$. Let us call $\eta\in\{1,\ldots,C\}$ the index of the strong component containing the matrix with $\varepsilon$.
-	
-	As a consequence, for all $j=1,\ldots,C$, $\M_{jj}+E_j$ are irreducible essentially nonnegative matrices, with only matrix $\M_{\eta\eta}+E_\eta$ having an $\varepsilon$ added to one of its diagonal entries.
+	For $j=1,\ldots,C$, each of the matrices $\M_{jj}$ is irreducible; $C-1$ of the matrices $E_j$ are diagonal with entries $-r_i$ and $r_i$ on the diagonal (with some having only $-r_i$, some having only $r_i$ and some having both types of entries)
+	\vfill
+	The remaining $E_j$ matrix is diagonal, with potentially $-r_i$ and $r_i$ as the others, but also $\varepsilon$. Call $\eta\in\{1,\ldots,C\}$ the index of the strong component containing the matrix with $\varepsilon$
+	\vfill
+	As a consequence, for all $j=1,\ldots,C$, $\M_{jj}+E_j$ are irreducible essentially nonnegative matrices, with only matrix $\M_{\eta\eta}+E_\eta$ having an $\varepsilon$ added to one of its diagonal entries
 \end{frame}
 
 \begin{frame}{Proof of Proposition~\ref{prop:spectral_abs_increasing} (cont'd)}
@@ -604,8 +625,9 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	\[
 	s(P^TJ_{\textrm{PFE}}^{\xi,\varepsilon}P)
 	=
-	\max\left\{s(\M_{11}+E_1),\ldots,s(\M_{CC}+E_C)\right\}.
+	\max\left\{s(\M_{11}+E_1),\ldots,s(\M_{CC}+E_C)\right\}
 	\]
+	\vfill
 	Except for $\M_{\eta\eta}+E_\eta$, all matrices $\M_{ii}+E_i$ have fixed spectral abscissa.
 	Concerning matrix $\M_{\eta\eta}+E_\eta$, it is clear that the reasoning in the proof of Lemma~\ref{lemma:Mness_of_Jinterval}(\ref{lemma:Mness_of_Jinterval_increase}) carries through and thus,
 	\[
@@ -614,10 +636,11 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	\varepsilon_1<\varepsilon_2
 	\implies
 	J_{\textrm{PFE}}^{\xi,\varepsilon_1}
-	< J_{\textrm{PFE}}^{\xi,\varepsilon_2}.
+	< J_{\textrm{PFE}}^{\xi,\varepsilon_2}
 	\]
+	\vfill
 	Hence $s(J_{\textrm{PFE}}^{\xi,\varepsilon})$ is the maximum of a set of $C$ functions, $C-1$ of which are constant in $\varepsilon$ and one of which is increasing in $\varepsilon$. 
-	It now follows that $s(J_{\textrm{PFE}}^S)$ is a nondecreasing function of $S$, as desired. 
+	It now follows that $s(J_{\textrm{PFE}}^S)$ is a nondecreasing function of $S$, as desired
 	%Using \cite[Corollary 4.3.2(3)]{Smith1995} gives the result in %terms of spectral abscissae.
 \end{frame}
 
@@ -653,14 +676,14 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 
 \begin{frame}{We have a reproduction number when $\M$ irreducible}
 	\begin{proposition}\label{prop:R0}
-		Suppose the movement matrix $\M$ is irreducible. 
-		Define the basic reproduction number
+		Suppose $\M$ irreducible. 
+		Define the \emph{basic reproduction number}
 		\begin{equation}\label{eq:R0}
 			\R_0 = \rho\left(
 			\left(\M_s+\M_{st}(\D_t-\M_{t})^{-1}\M_{ts}\right)^{-1}\D_s
 			\right)
 		\end{equation}
-		where $\M_s,\M_t,\M_{st},\M_{ts}$ are defined as in \eqref{eq:M_blocks}, $\D_s$ and $\D_t$ are defined as in Section~\ref{sec:LAS_PFE}
+		where $\M_s,\M_t,\M_{st},\M_{ts}$ are defined as in \eqref{eq:M_blocks}, $\D_s=\diag(r_1,\ldots,r_S)$ and $\D_t=\diag(r_{S+1},\ldots,r_N)$.
 		Then
 		\begin{equation}
 			s(J_{\textrm{PFE}}^S)<0 \iff \R_0<1 \textrm{ and }
@@ -684,7 +707,12 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 		\[
 		\alpha\bv = (\tilde\D_t-\M)\bv-\tilde\D_s\bv
 		\]
-		By the assumption of irreducibility of $\M$, it follows from Proposition~\ref{prop:perturbation_mvtMatrix}(\ref{prop:perturbation_mvtMatrix_DmM2}) that $\tilde\D_t-\M$ is an irreducible nonsingular M-matrix and $(\tilde\D_t-\M)^{-1}\gg\b0$.
+\end{frame}
+
+
+\begin{frame}{Proof of Proposition~\ref{prop:R0} (cont'd)}
+		By the assumption of irreducibility of $\M$, it follows from Proposition~\ref{prop:perturbation_mvtMatrix}(\ref{prop:perturbation_mvtMatrix_DmM2}) that $\tilde\D_t-\M$ is an irreducible nonsingular M-matrix and $(\tilde\D_t-\M)^{-1}\gg\b0$
+		\vfill
 		Then
 		\[
 		\alpha\left(
@@ -695,10 +723,12 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 		\right)^{-1}
 		\tilde\D_s\bv
 		\]
-		with the matrix $(\tilde\D_t-\M)^{-1}\tilde\D_s>\b0$. As a consequence, from the Perron-Frobenius Theorem, the spectral radius of $(\tilde\D_t-\M)^{-1}\tilde\D_s$ is an eigenvalue and is associated to a nonnegative eigenvector
+		with the matrix $(\tilde\D_t-\M)^{-1}\tilde\D_s>\b0$
+		\vfill
+		As a consequence, from the Perron-Frobenius Theorem, the spectral radius of $(\tilde\D_t-\M)^{-1}\tilde\D_s$ is an eigenvalue and is associated to a nonnegative eigenvector
 \end{frame}
 		
-\begin{frame}{Proof of Proposition~\ref{prop:R0}}
+\begin{frame}{Proof of Proposition~\ref{prop:R0} (cont'd)}
 		Let $\bu$ be such an eigenvector, normalised so that $\bu^T\bv=1$.
 		Then
 		\[
@@ -709,6 +739,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 		\rho\left\{\left(\tilde\D_t-\M\right)^{-1}\tilde\D_s\right\}
 		\right)
 		\]
+		\vfill
 		Thus
 		\[
 		\alpha>0 \iff \rho\left\{\left(\tilde\D_t-\M\right)^{-1}\tilde\D_s\right\} <1
@@ -717,18 +748,22 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 		\[
 		\alpha<0 \iff \rho\left\{\left(\tilde\D_t-\M\right)^{-1}\tilde\D_s\right\} >1
 		\]
+\end{frame}
+
+\begin{frame}{Proof of Proposition~\ref{prop:R0} (cont'd)}
 		From the structure of $\tilde\D_s$, the spectral radius of $(\tilde\D_t-\M)^{-1}\tilde\D_s$ is the spectral radius of 
 		\[
 		\left(\tilde\D_t-\M\right)^{-1}_{[11]}\D_s
 		\]
-		where $(\tilde\D_t-\M)^{-1}_{[11]}$ is the (1,1) block in $(\tilde\D_t-\M)^{-1}$.
+		where $(\tilde\D_t-\M)^{-1}_{[11]}$ is the (1,1) block in $(\tilde\D_t-\M)^{-1}$
+		\vfill
 		Writing $\M$ as \eqref{eq:M_blocks}, we have by the formula for the inverse of a $2\times 2$ block matrix that 
 		\[
 		\left(\tilde\D_t-\M\right)^{-1}_{[11]}=(-\M_s-\M_{st}(\D_t-\M_t)^{-1}\M_{ts})^{-1}
 		\]
 \end{frame}
 
-\begin{frame}{Proof of Proposition~\ref{prop:R0}}
+\begin{frame}{Proof of Proposition~\ref{prop:R0} (cont'd)}
 		Clearly,
 		\begin{multline*}
 			\rho\left(
@@ -816,7 +851,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	\begin{itemize}
 		\item in the case $\M$ irreducible, \eqref{sys:simple_model} is strongly monotone (by [Hirsch (1984) -- Th. 1.7])
 		\item the origin is an equilibrium
-		\item all solutions of \eqref{sys:simple_model} are bounded in $\IR_+^N$
+		\item all solutions of \eqref{sys:simple_model} are bounded in $\IR_+^N$ (not shown here, but not hard)
 	\end{itemize}
 	\vfill
 	$\implies$ by other results (\emph{e.g.}, Hirsch \emph{ibid}), there exists $\bP^*\gg \b0$
