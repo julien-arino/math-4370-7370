@@ -13,7 +13,7 @@
 
 % To have theorems and everything derived prefixed by the slide set
 % number
-\renewcommand{\thetheorem}{7.\arabic{theorem}}
+\renewcommand{\thetheorem}{8.\arabic{theorem}}
 
 \title{An example from metapopulations}
 \author{Julien Arino}
@@ -284,23 +284,23 @@
 \begin{frame}{Proof of Lemma~\ref{lemma:mvt_matrix}}
 \ref{lemma:mvt_matrix_0ev}. The result is obvious: all column sums of $\M$ equal zero, i.e., $\nbOne^T\M=0\nbOne^T$
 \vfill
-\noindent\ref{lemma:mvt_matrix_SB_eq0}. Using the Gershgorin Disk Theorem \cite{Varga2010} on $\M$ indicates that all Gershgorin disks are tangent to the imaginary axis at $(0,0)$. As 0 is an eigenvalue of $\M$, it follows that $s(\M)=0$
+\noindent\ref{lemma:mvt_matrix_SB_eq0}. Using the Gershgorin Disk Theorem ~\ref{th:Gershgorin} on $\M$ indicates that all Gershgorin disks are tangent to the imaginary axis at $(0,0)$. As 0 is an eigenvalue of $\M$, it follows that $s(\M)=0$
 \vfill
-\noindent\ref{lemma:mvt_matrix_SB_mult1}. This is a direct consequence of using the Perron-Frobenius Theorem on the essentially nonnegative matrix $\M$
+\noindent\ref{lemma:mvt_matrix_SB_mult1}. This is a direct consequence of using the Perron-Frobenius Theorem~\ref{th:PerronFrobenius} on the essentially nonnegative matrix $\M$
 \end{frame}
 
 \begin{frame}{Proof of Lemma~\ref{lemma:mvt_matrix} (cont'd)}
 	\noindent\ref{lemma:mvt_matrix_MMmatrix}. 
-	From the Gershgorin Disk Theorem \cite{Varga2010}, all eigenvalues of $-\M$ belong to disks that lie to the right of the imaginary axis and, from the zero column sums, are tangent to that axis at $(0,0)$
+	From the Gershgorin Disk Theorem ~\ref{th:Gershgorin}, all eigenvalues of $-\M$ belong to disks that lie to the right of the imaginary axis and, from the zero column sums, are tangent to that axis at $(0,0)$
 	\vfill
 	Now consider $-\M+\varepsilon\II$, for $\varepsilon>0$. 
-	This shifts the centers of all Gershgorin disks to the right by $\varepsilon$ \cite[Problem 1.2.P8]{HornJohnson2013} but does not change their radii, so all disks now lie strictly to the right of the imaginary axis 
+	This shifts the centers of all Gershgorin disks to the right by $\varepsilon$ Theorem~\ref{th:HJ_problem_1_2_P8} but does not change their radii, so all disks now lie strictly to the right of the imaginary axis 
 	\vfill
 	Thus all eigenvalues of $-\M+\varepsilon\II$ have positive real parts
 	\vfill
-	Furthermore, $-\M$ and $-\M+\varepsilon\II$ are of class $Z_n$: they have nonpositive offdiagonal entries. 
-	\cite[Theorem 5.1.1(18)]{Fiedler2008} $\implies$ $-\M+\varepsilon\II$ is of class $K$, i.e., an M-matrix.
-	Since this is true for all $\varepsilon>0$, \cite[Theorem 5.2.1(1)]{Fiedler2008} implies that $-\M$ is of class $K_0$. 
+	Furthermore, $-\M$ and $-\M+\varepsilon\II$ are of class $Z_n$ (Definition~\ref{def:Z_n}). 
+	Theorem~\ref{th:Fiedler2008}(\ref{th:Fiedler2008_18}) $\implies$ $-\M+\varepsilon\II$ is of class $K$, i.e., an M-matrix.
+	Since this is true for all $\varepsilon>0$, Theorem~\ref{th:Fiedler2008_K0}(\ref{th:Fiedler2008_K0_1}) implies that $-\M$ is of class $K_0$. 
 	So $-\M$ is an M-matrix and it is singular
 \end{frame}
 
@@ -317,9 +317,9 @@
 
 
 \begin{frame}{Proof of Proposition~\ref{prop:perturbation_mvtMatrix}}
-\ref{prop:perturbation_mvtMatrix_d}. From Lemma~\ref{lemma:mvt_matrix}(\ref{lemma:mvt_matrix_SB_eq0}), $s(\M)=0$. Therefore, using a ``spectrum shift'' \cite[Problem 1.2.P8]{HornJohnson2013}, $s(\M+d\II)=d$
+\ref{prop:perturbation_mvtMatrix_d}. From Lemma~\ref{lemma:mvt_matrix}(\ref{lemma:mvt_matrix_SB_eq0}), $s(\M)=0$. Therefore, using a ``spectrum shift'' Theorem~\ref{th:HJ_problem_1_2_P8}, $s(\M+d\II)=d$
 \vfill
-\noindent\ref{prop:perturbation_mvtMatrix_D}. These are direct consequences of applying the Perron-Frobenius Theorem to the essentially nonnegative matrix $\M+D$
+\noindent\ref{prop:perturbation_mvtMatrix_D}. These are direct consequences of applying the Perron-Frobenius Theorem~\ref{th:PerronFrobenius} to the essentially nonnegative matrix $\M+D$
 \vfill
 \end{frame}
 
@@ -330,17 +330,17 @@ Define $\underline{d}=\min_{i=1,\ldots,N}d_{ii}$. Then
 \[
 \diag (D)\gg \b0 \implies \underline{d}>0 \implies -\M\leq d\II-\M\leq D-\M
 \]
-From \cite[Theorem 5.2.5]{Fiedler2008}, $d\II-\M$ is an M-matrix. 
+From Theorem~\ref{th:Fiedler2008_K0}(\ref{th:Fiedler2008_K0_5}), $d\II-\M$ is an M-matrix. 
 Since $s(\M)=0$, using a ``spectrum shift'', all eigenvalues of $d\II-\M$ have real parts larger
 than $\underline{d}$, so $\underline{d}\II-\M$ is a nonsingular M-matrix. 
-In turn, \cite[Theorem 5.1.1(4)]{Fiedler2008} $\implies$ $D-\M$ nonsingular M-matrix and \cite[Theorem 5.1.1(11)]{Fiedler2008} leads to the conclusion
+In turn, Theorem~\ref{th:Fiedler2008}(\ref{th:Fiedler2008_4}) $\implies$ $D-\M$ nonsingular M-matrix and Theorem~\ref{th:Fiedler2008}(\ref{th:Fiedler2008_11}) leads to the conclusion
 \vfill
 \noindent\ref{prop:perturbation_mvtMatrix_DmM2}. 
 Suppose $\M$ irreducible. 
 Let $\overline{d}=\max_{i=1,\ldots,N}d_{ii}>0$.
 Then $D-\M$ is  irreducible and diagonally dominant with all columns $k=1,\ldots,N$ such that $d_{kk}=\overline{d}$ satisfying the strict diagonal
 dominance requirement. (Other columns with nonzero entries in $D$ also satisfy the requirement.)
-As a consequence, \cite[Theorem 1.11]{Varga2010} implies that $D-\M$ nonsingular and inverse positivity follows from \cite[Theorem 5.2.10]{Fiedler2008}
+As a consequence, \cite[Theorem 1.11]{Varga2010} implies that $D-\M$ nonsingular and inverse positivity follows from Theorem~\ref{th:Fiedler2008_5_2_10}
 \end{frame}
 
 \begin{frame}{$-\M$ is also the Laplacian matrix of a digraph}
@@ -431,7 +431,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	\]
 	\vfill
 	From Proposition~\ref{lemma:mvt_matrix}(\ref{lemma:mvt_matrix_SB_eq0}), $s(\M) = 0$. 
-	Note that this follows from using the Gershgorin Theorem, where for $\M$, all Gershgorin disks are left of the imaginary axis and tangent to origin of the complex plane
+	Note that this follows from using the Gershgorin Disk Theorem ~\ref{th:Gershgorin}, where for $\M$, all Gershgorin disks are left of the imaginary axis and tangent to origin of the complex plane
 	\vfill
 	Then the centres of the Gershorin disks of $\M+\diag (-r_1,\ldots,-r_N)$ are shifted left by $r_1,\ldots,r_N$ while the radii remain the same
 	\vfill
@@ -456,7 +456,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	\vfill
 	Then $J_{\textrm{PFE}}^N$ is an irreducible essentially nonnegative matrix
 	\vfill
-	Since $J_{\textrm{PFE}}^N\geq \M+\underline{r}\II$, \cite[Corollary 4.3.2(3)]{Smith1995} $\implies$
+	Since $J_{\textrm{PFE}}^N\geq \M+\underline{r}\II$, Theorem~\ref{th:Smith1995_4_3_2}(\ref{th:Smith1995_4_3_2_3}) $\implies$
 	\[
 		s(J_{\textrm{PFE}}^N)\geq s(\M+\underline{r}\II)=\underline{r}
 	\]
@@ -589,7 +589,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 \end{frame}
 
 \begin{frame}{Proof of Proposition~\ref{prop:spectral_abs_increasing}}
-	First, assume $\M$ is irreducible. Then, by Lemma~\ref{lemma:Mness_of_Jinterval} and the fact that $\M$ is irreducible (and thus so is $J_{\textrm{PFE}}^S$), \cite[Corollary 4.3.2(3)]{Smith1995} gives the result
+	First, assume $\M$ is irreducible. Then, by Lemma~\ref{lemma:Mness_of_Jinterval} and the fact that $\M$ is irreducible (and thus so is $J_{\textrm{PFE}}^S$), Theorem~\ref{th:Smith1995_4_3_2}(\ref{th:Smith1995_4_3_2_3}) gives the result
 \end{frame}
 
 \begin{frame}{Proof of Proposition~\ref{prop:spectral_abs_increasing} (cont'd)}	
@@ -641,12 +641,12 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	\vfill
 	Hence $s(J_{\textrm{PFE}}^{\xi,\varepsilon})$ is the maximum of a set of $C$ functions, $C-1$ of which are constant in $\varepsilon$ and one of which is increasing in $\varepsilon$. 
 	It now follows that $s(J_{\textrm{PFE}}^S)$ is a nondecreasing function of $S$, as desired
-	%Using \cite[Corollary 4.3.2(3)]{Smith1995} gives the result in %terms of spectral abscissae.
+	%Using Theorem~\ref{th:Smith1995_4_3_2}(\ref{th:Smith1995_4_3_2_3}) gives the result in %terms of spectral abscissae.
 \end{frame}
 
 \begin{frame}{We now can do Part 1 of Theorem~\ref{th:main_result}}
 	As $J_{\textrm{PFE}}^S$ is essentially nonnegative, its spectral abscissa $s(J_{\textrm{PFE}}^S)$ is an eigenvalue.
-	Eigenvalues of $J_{\textrm{PFE}}^S$ depend continuously on $S$ \cite[Theorem 2.4.9.2]{HornJohnson2013}. By Lemma~\ref{lemma:S_nonzero_at_ends}, $s(J_{\textrm{PFE}}^0)<0$ and $s(J_{\textrm{PFE}}^N)>0$, so by the Intermediate Value Theorem, there exists at least one point $S^c\in(0,N)$ such that $s(J_{\textrm{PFE}}^{S^c})=0$
+	Eigenvalues of $J_{\textrm{PFE}}^S$ depend continuously on $S$ (Theorem~\ref{th:HJ_2_4_9_2}). By Lemma~\ref{lemma:S_nonzero_at_ends}, $s(J_{\textrm{PFE}}^0)<0$ and $s(J_{\textrm{PFE}}^N)>0$, so by the Intermediate Value Theorem, there exists at least one point $S^c\in(0,N)$ such that $s(J_{\textrm{PFE}}^{S^c})=0$
 	\vfill
 	In the case where $\M$ is irreducible, $s(J_{\textrm{PFE}}^S)$ is increasing by Proposition~\ref{prop:spectral_abs_increasing} and as a consequence, $S^c$ is unique. In the case where $\M$ is reducible, $s(J_{\textrm{PFE}}^S)$ is nondecreasing, therefore there exists an interval $\S_{int}$, possibly reduced to a single point, such that $s(J_{\textrm{PFE}}^S)=0$ for all $S\in\S_{int}$
 	\vfill
@@ -725,7 +725,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 		\]
 		with the matrix $(\tilde\D_t-\M)^{-1}\tilde\D_s>\b0$
 		\vfill
-		As a consequence, from the Perron-Frobenius Theorem, the spectral radius of $(\tilde\D_t-\M)^{-1}\tilde\D_s$ is an eigenvalue and is associated to a nonnegative eigenvector
+		As a consequence, from the Perron-Frobenius Theorem~\ref{th:PerronFrobenius}, the spectral radius of $(\tilde\D_t-\M)^{-1}\tilde\D_s$ is an eigenvalue and is associated to a nonnegative eigenvector
 \end{frame}
 		
 \begin{frame}{Proof of Proposition~\ref{prop:R0} (cont'd)}
@@ -1095,6 +1095,173 @@ And $\sigma(B_{\textrm{PFE}}^S) \subset \sigma(J_{\textrm{PFE}}^S)$
 	\flushright$\square$
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\section{Appendix -- Used results}
+\setcounter{theorem}{0}
+\renewcommand{\thetheorem}{A.\arabic{theorem}}
+
+\begin{frame}{\cite{HornJohnson2013}}
+	\begin{theorem}[{\cite[Problem 1.2.P8]{HornJohnson2013}}]
+		\label{th:HJ_problem_1_2_P8}
+		Let $A\in\M_n$ and $\lambda\in\IC$ be given. 
+		Suppose that the eigenvalues of $A$ are $\lambda_1,\ldots,\lambda_n$.
+		Explain why $p_{A+\lambda\II}(t)=p_A(t-\lambda)$ and deduce from this identity that the eigenvalues of $A+\lambda\II$ are $\lambda_1+\lambda,\ldots,\lambda_n+\lambda$
+	\end{theorem}
+\end{frame}
+
+\begin{frame}
+	\begin{theorem}[{\cite[Theorem 2.4.9.2]{HornJohnson2013}}]
+		\label{th:HJ_2_4_9_2}
+		Let an infinite sequence $A_1,A_2,\ldots\in\M_n$ be given and suppose that $\lim_{k\to\infty} A_k = A$ (entrywise convergence)
+		\vskip0.5cm
+		Let $\lambda(A) = [\lambda_1(A)\cdots\lambda_n(A)]^T$ and $\lambda(A_k) = [\lambda_1(A_k)\cdots \lambda_n(A_k)]^T$ be given presentations of the eigenvalues of $A$ and $A_k$, respectively, for $k=1,2,\ldots$. Let $S_n = \{\pi : \pi\text{ is a permutation of }\{1,2,\ldots,n\}\}$. 
+		Then for each given $\varepsilon>0$ there exists a positive integer $N = N(\varepsilon)$ such that
+		\[
+			\min_{\pi\in S_n}\max_{i=1,\ldots,n}\left\{|\lambda_{\pi(i)}(A_k)-\lambda_i(A)|\right\}\leq\varepsilon\text{ for all }k\geq N
+		\]
+	\end{theorem}
+\end{frame}
+
+\begin{frame}{\cite{Varga2010}}
+	Let $A\in \M_n(\IC)$. Denote $N=\{1,\ldots,n\} $. For $i\in N$, define 
+	\[r_i (A)= \sum\limits_{j\in N\setminus \{i\}} | a_{ij}|\]
+	to be
+	the $i$th deleted row sums of $A$. Assume that $r_i(A)=0$ if $n=1$. Let 
+	\[\Gamma_i(A)=\{z\in \IC \mid |z-a_{ii}|\leq r_i(A)\} \qquad i\in N\]
+	 be the $i$th \textbf{Gershgorin disk}\index{Gershgorin disk} of $A$ and 
+	\[\Gamma(A)= \bigcup\limits_{i\in N} \Gamma_i (A)\]
+	be the \textbf{Gershgorin set}\index{Gershgorin set} of $A$. $\Gamma_i$ and $\Gamma$ are closed and bounded in $\IC$. $\Gamma_i(A)$ is a disk centred at $a_{ii}$ and with radius $r_i(A)$, $i\in N$.
+\end{frame}
+	
+	
+\begin{frame}
+	\begin{theorem}[Gershgorin, 1931]
+		\label{th:Gershgorin}
+	For all $A\in \M_{n}(\IC)$ and for all $\lambda\in \sigma(A)$, there exists $k\in \IN$ such that 
+	\[
+	  |\lambda -a_{kk}|\leq r_k(A)
+	\]
+	i.e., $\lambda\in \Gamma_k(A)$ and thus $\lambda \in \Gamma(A)$. Since this is true for all $\lambda$, we have 
+	\[
+	  \sigma(A)\subseteq \Gamma(A)
+	\]
+	\end{theorem}
+	\vfill
+	\begin{remark}
+	This also works with deleted column sums; indeed, just consider $A^T$ in this case. However, this typically gives different disks
+	\end{remark}
+\end{frame}
+
+\begin{frame}{\cite{Fiedler2008}}
+	\begin{theorem}[Perron-Frobenius {\cite[Theorem 4.2.1]{Fiedler2008}}]
+		\label{th:PerronFrobenius}
+		$A\geq 0$ be irreducible. Then $\rho(A)$ is a simple positive eigenvalue of $A$ and there exists a positive eigenvector $\bx$ associated to $\rho(A)$. No other nonnegative vector is associated with any other eigenvalue of $A$
+	\end{theorem}
+\end{frame}
+
+\begin{frame}
+	\begin{definition}
+	\label{def:Z_n}
+	A matrix is of class $Z_n$ if it is in $\M_n(\IR)$ and such that $a_{i,j}\leq 0$, $i \neq j$, $i,j=1,\ldots,n$
+	\[
+		Z_n=\{A\in \M_n: a_{i,j}\leq 0, i\neq j\}
+	\]
+	We also say that $A\in Z_n$ has the \defword{$Z$-sign pattern}
+	\end{definition}
+\end{frame}
+	
+	
+\begin{frame}
+	\begin{theorem}[{\cite[Theorem 5.1.1]{Fiedler2008}}]
+	\label{th:Fiedler2008}
+	Let $A\in Z_n$. TFAE and define matrices of class $K$ (or nonsingular $M$-matrix)
+	\begin{enumerate}
+		\item There is a nonnegative vector $x$ such that $Ax>0$
+		\item There is a positive vector $x$ such that $Ax>0$
+		\item There is a diagonal matrix $\diag(D)>0$ such that the entries in $AD=[w_{ik}]$ are such that 
+		\[w_{ii}> \sum\limits_{k\neq i} | w_{ik}| \forall i\]
+		\item For any $B\in Z_n$ such that $A\geq A$, then $B$ is nonsingular 
+		\label{th:Fiedler2008_4}
+		\item Every real eigenvalue of any principal submatrix of $A$ is positive.
+		\item All principal minors of $A$ are positive
+	\end{enumerate}
+	\end{theorem}
+\end{frame}
+	
+\begin{frame}
+	\addtocounter{theorem}{-1}
+	\begin{theorem}[{\cite[Theorem 5.1.1]{Fiedler2008}} (continued)]
+	\begin{enumerate}
+		\setcounter{enumi}{6}
+		\item For all $k= 1, \dots, n$, the sum of all principal minors is positive
+		\item Every real eigenvalue of $A$ is positive
+		\item There exists a matrix $C\geq 0$ and a number $k > \rho(A)$ such that $A= k\mathbb{I}-C$
+		\item There exists a splitting $A=P-Q$ of the matrix $A$ such that $P^{-1}\geq 0$, $Q\geq 0$, and $\rho(P^{-1}Q<1)$
+		\item $A$ is nonsingular and $A^{-1}\geq 0$
+		\label{th:Fiedler2008_11}
+		\item
+		\item
+		\item
+		\item
+		\item
+		\item
+		\item The real part of any eigenvalue of $A$ is positive \label{th:Fiedler2008_18}
+	\end{enumerate}
+	\end{theorem}
+\end{frame}
+	
+
+\begin{frame}
+	\begin{theorem}[{\cite[Theorem 5.2.1]{Fiedler2008}}]
+	\label{th:Fiedler2008_K0}
+	Let $A\in Z_n$. TFAE and define matrices of class $K_0$
+	\begin{enumerate}
+		\item $A+\varepsilon \II\in K$ for all $\varepsilon>0$ 
+		\label{th:Fiedler2008_K0_1}
+		\item Every real eigenvalue of a principal submatrix of $A$ is nonnegative
+		\item All principal minors of $A$ are nonnegative
+		\item The sum of all principal minors of order $k= 1, \dots, n$ is nonnegative
+		\item Every real eigenvaue of $A$ is nonegative
+		\label{th:Fiedler2008_K0_5}
+		\item There exists $C\geq 0$ and $k\geq \rho(C)$ such that $A= k \mathbb{I}-C$
+		\item Every eigenvalue of $A$ has nonnegative real part
+	\end{enumerate}
+	\end{theorem}
+\end{frame}
+	
+
+\begin{frame}
+	\begin{theorem}[{\cite[Theorem 5.2.10]{Fiedler2008}}]
+	\label{th:Fiedler2008_5_2_10}
+	Let $A\in Z$ be irreducible. TFAE
+	\begin{enumerate}
+		\item $\exists\bx>\b0$ s.t. $A\bx>0$
+		\item $\exists\bx>\b0$ s.t. $A\bx\geq\b0$ and $A\bx\neq\b0$
+		\item $A\in K$
+		\item $A^{-1}>0$
+	\end{enumerate}
+	\end{theorem}
+\end{frame}
+
+\begin{frame}{\cite{Smith1995}}
+	\begin{theorem}[{\cite[Corollary 4.3.2]{Smith1995}}]
+		\label{th:Smith1995_4_3_2}
+		Let $A$ be quasi-positive. Then $s(A)\in\sigma(A)$ and $\exists\bv>\b0$ such that $A\bv=s(A)\bv$.
+		Moreover, $\Re\lambda<s(A)$ for all $\lambda\in\sigma(A)\setminus\{s(A)\}$. If, in addition, $A$ is irreducible, then
+		\begin{enumerate}
+			\item $s(A)$ has algebraic multiplicity 1
+			\item $\bv\gg\b0$ and any eigenvector $\bw>\b0$ of $A$ is a positive multiple of $\bv$
+			\item If $B$ is a matrix satisfying $B>A$, then $S(B)>s(A)$
+			\label{th:Smith1995_4_3_2_3}
+			\item If $s(A)<0$ then $-A^{-1}\gg\b0$
+		\end{enumerate}
+	\end{theorem}
+\end{frame}
 
 \bibliographystyle{apalike}
 \bibliography{math,biblio_Arino_Julien,ecology}
