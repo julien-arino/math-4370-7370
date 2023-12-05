@@ -53,7 +53,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Why do this?}
-	This is mostly about dynamics
+	This work is mostly about dynamics
 	\vfill
 	Looping back to our first few lectures: \emph{matrices are everywhere}!
 	\vfill
@@ -391,13 +391,58 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 
 
 \begin{frame}{Continuous perturbation of the spectrum}
+	We have assumed that patches are ordered so that the first $S$ patches are sources and the remaining $N-S$ are sinks
+	\vfill
+	From previous argument, as $S$ varies from $0$ to $N$, there should be a point where $s(J_{\textrm{PFE}}^S)$ changes signs
+	\vfill
+	Thinking about it, $s(J_{\textrm{PFE}}^S)$ can probably be made to vary continuously
+	\vfill
+	We need to describe a continuous perturbation of the spectrum of $J_{\textrm{PFE}}^S$ as $S$ varies from $0$ to $N$
+	\vfill
+
+\end{frame}
+
+\begin{frame}
 	\underline{For $S\in\{0,\ldots,N-1\}$}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw [thick] (0,0) -- (6,0);
+			\fill[black] (0,0) circle (1mm) node[above=2mm] {$0$};
+			\fill[black] (3,0) circle (1mm) node[above=2mm] {$S$};
+			\fill[black] (3.15,0) circle (1mm) node[below=2mm] {$\varepsilon$};
+			\fill[black] (4,0) circle (1mm) node[above=2mm] {$S+1$};
+			\fill[black] (6,0) circle (1mm) node[above=2mm] {$N$};
+		\end{tikzpicture}
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw [thick] (0,0) -- (6,0);
+			\fill[black] (0,0) circle (1mm) node[above=2mm] {$0$};
+			\fill[black] (3,0) circle (1mm) node[above=2mm] {$S$};
+			\fill[black] (3.5,0) circle (1mm) node[below=2mm] {$\varepsilon$};
+			\fill[black] (4,0) circle (1mm) node[above=2mm] {$S+1$};
+			\fill[black] (6,0) circle (1mm) node[above=2mm] {$N$};
+		\end{tikzpicture}
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw [thick] (0,0) -- (6,0);
+			\fill[black] (0,0) circle (1mm) node[above=2mm] {$0$};
+			\fill[black] (3,0) circle (1mm) node[above=2mm] {$S$};
+			\fill[black] (3.85,0) circle (1mm) node[below=2mm] {$\varepsilon$};
+			\fill[black] (4,0) circle (1mm) node[above=2mm] {$S+1$};
+			\fill[black] (6,0) circle (1mm) node[above=2mm] {$N$};
+		\end{tikzpicture}
+	\end{center}
 	\[
 	J_{\textrm{PFE}}^{S,\varepsilon} =
 	\M+\diag(r_1,\ldots,r_S,\varepsilon,-r_{S+2},\ldots,-r_N)
 	\]
 	where $\varepsilon\in[-r_{S+1},r_{S+1}]$ is in $(S+1)^{\textrm{th}}$ position
-	\vfill
+\end{frame}
+
+
+\begin{frame}
 	\underline{For $S\in[0,N]$}
 	\begin{equation}\label{eq:xi_epsilon_ri}
 	J_{\textrm{PFE}}^{S}=J_{\textrm{PFE}}^{\xi,\varepsilon},
@@ -414,6 +459,8 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	\quad\textrm{and}\quad
 	J_{\textrm{PFE}}^{S,r_{S+1}} = J_{\textrm{PFE}}^{S+1}
 	\]
+	\vfill
+	\eqref{eq:xi_epsilon_ri} translates a continuous value of $S$ into a pair $(\xi,\varepsilon)$ giving the actual (integer) number $\xi$ of source patches and an ``offset'' $\varepsilon$
 \end{frame}
 
 \begin{frame}{The spectral abscissa $s(J_{\textrm{PFE}}^S)$ switches signs}
@@ -547,7 +594,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 \begin{frame}{Proof of Lemma~\ref{lemma:Mness_of_Jinterval}}
 \ref{lemma:Mness_of_Jinterval_bounds}.
 	Let $S\in(0,N)$ be fixed.
-	Using \eqref{eq:xi_epsilon_ri}, this gives a pair $(\xi,\varepsilon)\in\{0,\ldots,N\}\times[-r_i,r_i]$, for $i=1\ldots N$, such that $J_{\textrm{PFE}}^{S}=J_{\textrm{PFE}}^{\xi,\varepsilon}$.
+	Using \eqref{eq:xi_epsilon_ri}, we get a pair $(\xi,\varepsilon)\in\{0,\ldots,N\}\times[-r_i,r_i]$, for $i=1\ldots N$, such that $J_{\textrm{PFE}}^{S}=J_{\textrm{PFE}}^{\xi,\varepsilon}$.
 	We have
 	\begin{align*}
 	J_{\textrm{PFE}}^{\xi,\varepsilon}-J_{\textrm{PFE}}^{0} 
@@ -574,7 +621,9 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 	2r_{\xi_2},\varepsilon_2+r_{\xi_2+1},0,\ldots,0) \\
 	&>\b0
 	\end{align*}
-	since $\varepsilon_1 \in[-r_{\xi_1+1},r_{\xi_1+1}],$ and $\varepsilon_2\in[-r_{\xi_2+1},r_{\xi_2+1}]$. Now assume $\xi_1=\xi_2$. Then, since $S_1<S_2$, we find that $\varepsilon_1<\varepsilon_2$ and the diagonal matrix in the subtraction $J_{\textrm{PFE}}^{\xi_2,\varepsilon_2}-J_{\textrm{PFE}}^{\xi_2,\varepsilon_1}$ takes the form $\diag(0,\ldots,0,\varepsilon_2-\varepsilon_1,0,\ldots,0)>\b0$. So \eqref{eq:J_increasing} holds
+	since $\varepsilon_1 \in[-r_{\xi_1+1},r_{\xi_1+1}],$ and $\varepsilon_2\in[-r_{\xi_2+1},r_{\xi_2+1}]$
+	\vfill
+	Now assume $\xi_1=\xi_2$. Then, since $S_1<S_2$, we find that $\varepsilon_1<\varepsilon_2$ and the diagonal matrix in the subtraction $J_{\textrm{PFE}}^{\xi_2,\varepsilon_2}-J_{\textrm{PFE}}^{\xi_2,\varepsilon_1}$ takes the form $\diag(0,\ldots,0,\varepsilon_2-\varepsilon_1,0,\ldots,0)>\b0$. So \eqref{eq:J_increasing} holds
 \end{frame}
 
 
@@ -623,7 +672,7 @@ However, the main concern here is with the spectral abscissa, so this is not nee
 \begin{frame}{Proof of Proposition~\ref{prop:spectral_abs_increasing} (cont'd)}
 	As $P^TJ_{\textrm{PFE}}^{\xi,\varepsilon}P$ is block upper triangular, we have
 	\[
-	s(P^TJ_{\textrm{PFE}}^{\xi,\varepsilon}P)
+	s\left(P^TJ_{\textrm{PFE}}^{\xi,\varepsilon}P\right)
 	=
 	\max\left\{s(\M_{11}+E_1),\ldots,s(\M_{CC}+E_C)\right\}
 	\]
@@ -1094,6 +1143,31 @@ And $\sigma(B_{\textrm{PFE}}^S) \subset \sigma(J_{\textrm{PFE}}^S)$
 	\]
 	\flushright$\square$
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\section[About w.l.o.g.]{Mathematical w.l.o.g. $\neq$ numerical w.l.o.g.}
+
+\begin{frame}{Ordering of vertices is important}
+	To show mathematical results, we have assumed (without loss of generality) that sources came first
+	\vfill
+	When digraph is complete, no problem
+	\vfill
+	When digraph not complete, not that clear
+\end{frame}
+
+\begin{frame}{Digraphs for investigation of effect of vertex order}
+	\includegraphics[width=0.45\textwidth]{graph_10v_BA}
+	\quad
+	\includegraphics[width=0.45\textwidth]{graph_10v_ER}
+	\vfill
+	Consider 10! = 3,628,800 vertex permutations on each graph
+\end{frame}
+
+\maxFrameImage{graph_10v_violinplot}
 
 
 %%%%%%%%%%%%%%%%%%%%%
