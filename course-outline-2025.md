@@ -103,7 +103,7 @@ There are 3 types of assignments.
 	- **4 Coding Assignments (CA)**. Each of these assignments involves writing some matrix analysis functions. Authorised languages are `R`, `Python` and `Octave` (a `MatLab` lookalike), although `R` is preferred. (syzygy.ca is now available to UofM students and works well with `R`.)  Coding assignments 1-3 can be returned in any order and at any time before coding assignment 4, bearing in mind the constraint of *cumulative evaluation weight* detailed below. Coding assignment 4 is summative of preceding assignments and due (electronically) Friday 5 December 2025 at 2359.
 	- **2 Project Assignments (PA)**. These assignments are designed to help you define and get started on your final project. They must be returned in sequence and have due dates. Project assignment 1 is due at 2359 on 10 October 2025, project assignment 2 is due at 2359 on 21 November 2025.
 2. Further remarks on assignments.
-    - **Cumulative evaluation weight constraint**. Although most assignments do not have due dates, it is *imperative* that by 24 November at 2359, I have received 3 out of the 4 mathematics assignments, 3 out of the 4 coding assignments and, of course, the 2 project assignments due before then. I will only mark 1 more mathematics assignment and 1 more coding assignment received after that date, regardless of how many you do submit.
+    - **Cumulative evaluation weight constraint**. Although most assignments do not have due dates, it is *imperative* that by VW (18 November 2025), I have received and marked 3 out of the 4 Mathematics Assignments, 3 out of the 4 Coding Assignments and the first project assignment. As a consequence, you **must** have returned 3 MA, 3 CA and PA #1 by 14 November 2025 at 2359.
 	- All *assignments* (i.e., except the *Final project*) must have been handed out by the last day of classes, 8 December 2025 at 2359. Any assignment handed in after that date will receive a mark of zero.
 	- All assignments should be submitted electronically on UMLearn. Hand-written mathematics or project assignments are **not** acceptable for students registered in MATH 7370. $\LaTeX$ is preferred, but projects using LibreOffice or Word are acceptable. Instructions on typesetting will be distributed during the term.
 	- For those assignments with due dates, late assignments will not be accepted.
@@ -114,6 +114,23 @@ There are 3 types of assignments.
     - See more extensive information [here](project-information.html).
 
 
+### Use of generative AI (genAI)
+We are in a period of rapid change and the policies regarding the use of genAI evolve all the time. 
+I recommend reading material posted by the UM Copyright Office ([link 1](https://umanitoba.ca/copyright/copyright-office/generative-ai), [link 2](https://umanitoba.ca/copyright/copyright-office/generative-ai/research-rights-and-generative-ai)) and the UM Centre for the Advancement of Teaching and Learning ([link](https://umanitoba.ca/centre-advancement-teaching-learning/integrity/artificial-intelligence)).
+
+I strongly believe that genAI should be used in teaching and research, but also believe that this should be done *wisely*.
+genAI is a fantastic tool to help *experts*: in short, if you know what you are doing, it can dramatically reduce the time that it takes you to do things.
+In the previous sentence, I want to stress "*if you know what you are doing*". In this and other courses, you are acquiring the methods and tools that allow you to become an expert in your field.
+
+So although I will not forbid you from using genAI, I want to encourage you to do as much as possible without using it.
+That is how you will gain the skills that will make genAI extremely useful for you.
+If you are using genAI, then I will ask that you indicate so. In Coding Assignments and the Final Project, add a comment at the top of your file(s) indicating that you have used a genAI. Also indicate the specific tool you used (ChatGPT, Claude, Copilot, Gemini, etc.)
+In Mathematics or Project Assignments, indicate so in the text. (Word of warning: genAI is good at some but not all math.)
+
+Please note that I have been using genAI for some time and am quite familiar with some of their quirks and habits. If I see something that looks "straight out of AI" with no intervention on your part, I will split the mark between you and the machine.
+And will declare an Academic Dishonesty to the Head of the Department of Mathematics if you do not acknowledge genAI use even though it is obvious.
+
+
 ### Note on self-declarations of absences
 
 The University of Manitoba allows self-declaration of short duration absences of less than 5 days.
@@ -121,8 +138,6 @@ The University of Manitoba allows self-declaration of short duration absences of
 Self-declarations are meant to be used for sporadic absences, not as a general mechanism to delay evaluations. As a consequence, I will not admit more than one submission during the term. If you have issues that necessitate more absences than this, talk to me, talk to you faculty, etc., but do not use a form as I will not accept it.
 
 The self-declaration form is available [here](https://umanitoba.ca/student-supports/academic-supports/student-advocacy/self-declaration-policy-students).
-
-A self-declaration form "buys you" 5 days (at most: you can declare fewer).
 
 
 ### Voluntary Withdrawal deadline
