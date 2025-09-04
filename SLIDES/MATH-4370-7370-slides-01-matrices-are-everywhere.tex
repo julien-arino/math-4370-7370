@@ -6,7 +6,7 @@
 %\mode<handout>{\setbeamercolor{background canvas}{bg=white}}
 %\pgfpagesuselayout{4 on 1}[letterpaper,landscape]%,border shrink=5mm]
 
-\input{slides_setup_nonLightBoard_whiteBG.tex}
+\input{slides-setup-white-background.tex}
 
 % To have theorems and everything derived prefixed by the slide set
 % number
@@ -25,7 +25,7 @@
 	\begin{tikzpicture}[remember picture,overlay]
 		\node[above right,inner sep=0pt] at (current page.south west)
 		{
-			\includegraphics[width=\paperwidth]{title-page-picture.png}
+			\includegraphics[width=\paperwidth]{FIGS/title-page-picture}
 		};
 	\end{tikzpicture}	
 	\titlepage
@@ -44,7 +44,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-We give a few examples that illustrate how ubiquitous matrices are in mathematics
+Here are a few examples illustrating how ubiquitous matrices are in mathematics
 \vfill
 In the process, we introduce some concepts that are used later
 \vfill
@@ -63,83 +63,93 @@ However, precise definitions are given in subsequent chapter; here concepts are 
 \section{Linear systems of difference equations}
 \label{sec:linear_DE}
 \begin{frame}{Linear systems of difference equations}
-Let $x(t)\in \IR^n$ be a \defword{state variable} and $t\in \IN$ be an \defword{independent variable}, typically thought of as \defword{time}. Let $A\in \mathcal{M}_n(\IR)$. 
+Let $\bx(t)=(x_1(t),\ldots,x_n(t))\in \IR^n$ be a \defword{state variable} and $t\in \IN$ be an \defword{independent variable}, typically thought of as \defword{time}. Let $A\in \mathcal{M}_n(\IR)$. ($\M_n(\IR)$ is also sometimes denoted $\IR^{n\times n}$)
+\vfill
 An \defword{autonomous homogeneous linear system of difference equations} is a sequence defined by
 \begin{subequations}\label{sys:DE}
 \begin{align}
-x(t+1) &= Ax(t) \label{sys:DE_dx}\\
-x(0) &=x_0\in \IR^n, \label{sys:DE_IC}
+\bx(t+1) &= A\bx(t) \label{sys:DE_dx}\\
+\bx(0) &=\bx_0\in \IR^n, \label{sys:DE_IC}
 \end{align}	
 \end{subequations}
-where $x_0$ is called the \defword{initial condition} (IC)
+where $\bx_0$ is called the \defword{initial condition} (IC)
 \vfill
-(Autonomous: $A$ is a constant that does not depend on $t$. Homogeneous: the system is not of the form $x(t+1)=Ax(t)+b$)
+(Autonomous: $A$ is a constant that does not depend on $t$. Homogeneous: the system is not of the form $\bx(t+1)=A\bx(t)+\bb$)
 \end{frame}
 
 \begin{frame}
-Given the initial condition $x(0)=x_0$, we have from \eqref{sys:DE_dx} that
+Given the initial condition $\bx(0)=\bx_0$, we have from \eqref{sys:DE_dx} that
 \begin{align*}
- &x(1)= Ax(0)=Ax_0\\
- & x(2)= Ax(1)= AAx_0=A^2x_0 \\
- &x(3)=Ax(2)=AA^2x_0=A^3x_0
+ \bx(1) &= A\bx(0)=A\bx_0\\
+ \bx(2) &= A\bx(1)= AA\bx_0=A^2\bx_0 \\
+ \bx(3) &= A\bx(2)=AA^2\bx_0=A^3\bx_0
 \end{align*}
 \vfill
 By induction,
 \[
-x(t)=A^tx_0
+\bx(t)=A^t\bx_0
 \] 
 for all $t\in\IN$.
-Thus the behaviour of $x(t)$ as $t\to\infty$ depends on $A^t$
+Thus the behaviour of $\bx(t)$ as $t\to\infty$ depends on $A^t$
 \vfill
 In order to understand what this behaviour could be, the following two questions should be answered
 \begin{enumerate}
-	\item What is (if it exists) $\lim_{t\to \infty} x(t)$? 
+	\item What is (if it exists) $\lim_{t\to \infty} \bx(t)$? 
 	\item What is (if it exists) $\lim_{t \to \infty} A^t$? 
 \end{enumerate}
 \end{frame}
 
 \begin{frame}
-Let $v$ be an eigenvector associated to the eigenvalue $\lambda$ of $A$, \ie, $\lambda$ be such that $v\neq 0$ satisfies $Av=\lambda v$. Then we have
+Let $\bv$ be an eigenvector associated to the eigenvalue $\lambda$ of $A$, \ie, $\lambda$ be such that $\bv\neq \b0$ satisfies $A\bv=\lambda \bv$. Then we have
  \begin{align*}
- A^2v &= A(Av) \\
- &=A(\lambda v) \\
- &=\lambda Av \\
- &=\lambda^2 v
+ A^2\bv &= A(A\bv) \\
+ &=A(\lambda \bv) \\
+ &=\lambda A\bv \\
+ &=\lambda^2 \bv
  \end{align*}
-\ie, $v$ is also an eigenvector of $A^2$ and is associated to the eigenvalue $\lambda^2$.
+\ie, $\bv$ is also an eigenvector of $A^2$ and is associated to the eigenvalue $\lambda^2$.
 By induction
 \[
-A^kv=\lambda^k v
+A^k\bv=\lambda^k \bv
 \]
-\ie, $v$ is an eigenvector of the matrix $A^k$ associated to the eigenvalue $\lambda^k$. $A^kv$ is a vector in $\IF^n$; we can thus take its norm $\|A^kv\|$, where $\|\cdot\|$ is some norm on $\IF^n$. It follows that if $|\lambda|<1$, then $\|A^kv\|=|\lambda|^k\|v\|$ goes to zero as $k\to\infty$
+\ie, $\bv$ is an eigenvector of the matrix $A^k$ associated to the eigenvalue $\lambda^k$
+\vfill
+$A^k\bv$ is a vector in $\IF^n$; we can thus take its norm $\|A^k\bv\|$, where $\|\cdot\|$ is some norm on $\IF^n$. It follows that if $|\lambda|<1$, then $\|A^k\bv\|=|\lambda|^k\|\bv\|$ goes to zero as $k\to\infty$
 \end{frame}
 
 
 \begin{frame}
 \begin{theorem}\label{th:TFAE_DE}
-Let $A\in\M_n(\IR)$, consider the map $Ax$. TFAE:
+Let $A\in\M_n(\IR)$, consider the map $A\bx$. TFAE:
 \begin{enumerate}
-\item There exists a norm $\|\;\|_\alpha$ on $\IR^n$ and a constant $0<\mu<1$ such that for any $x\in\IR^n$, the iterates satisfy, for all $k\geq 0$
+\item There exists a norm $\|\;\|_\alpha$ on $\IR^n$ and a constant $0<\mu<1$ such that for any $\bx\in\IR^n$, the iterates satisfy, for all $k\geq 0$
 \[
-\|A^kx\|_\alpha\leq \mu^k\|x\|_\alpha
+\|A^k\bx\|_\alpha\leq \mu^k\|\bx\|_\alpha
 \]
-\item For any norm $\|\;\|_\beta$ on $\IR^n$, there exists constants $0<\mu<1$ and $C\geq 1$ such that all $x\in\IR^n$ and all $k\geq 0$
+\item For any norm $\|\;\|_\beta$ on $\IR^n$, there exists constants $0<\mu<1$ and $C\geq 1$ such that all $\bx\in\IR^n$ and all $k\geq 0$
 \[
-\|Ax\|_\beta\leq C\mu^k\|x\|_\beta
+\|A\bx\|_\beta\leq C\mu^k\|\bx\|_\beta
 \]
 \item All the eigenvalues $\lambda$ of $A$ satisfy $|\lambda|<1$
 \end{enumerate}
 \end{theorem}
+\vfill
+TFAE: ``the following are equivalent''
 \end{frame}
 
 \begin{frame}
 To use the result above, we need to ensure all eigenvalues lie inside the unit disk in $\IC$
 \vfill
 For certain classes of matrices, this can be achieved without explicitly computing the eigenvalues
-\vfill
+\end{frame}
 
-A linear map corresponding to a matrix with all eigenvalues of modulus less than 1 is a \defword{linear contraction}, with the origin a \defword{linear sink} or \defword{attracting fixed point}. If all eigenvalues have modulus larger than 1, then the map induced by $A$ is a \defword{linear expansion}, and the origin is a \defword{linear source} or \defword{repelling fixed point}.
-The map $Ax$ is a \defword{hyperbolic linear map} if all eigenvalues of $A$ have modulus different of 1
+
+\begin{frame}{Definitions stemming from Theorem~\ref{th:TFAE_DE}}
+A linear map corresponding to a matrix with all eigenvalues of modulus less than 1 is a \defword{linear contraction}, with the origin a \defword{linear sink} or \defword{attracting fixed point}
+\vfill
+If all eigenvalues have modulus larger than 1, then the map induced by $A$ is a \defword{linear expansion}, and the origin is a \defword{linear source} or \defword{repelling fixed point}
+\vfill
+The map $A\bx$ is a \defword{hyperbolic linear map} if all eigenvalues of $A$ have modulus different of 1
 \end{frame}
 
 \begin{frame}
@@ -147,7 +157,7 @@ The map $Ax$ is a \defword{hyperbolic linear map} if all eigenvalues of $A$ have
 Let $\M_n$ be the set of square $n\times n$ matrices. For $A\in\M_n$, denote $\sigma(A)$ the set of its eigenvalues, \ie,
 \[
 \sigma(A)=\left\{
-\lambda\in\IC; \exists v\neq 0,\; Av=\lambda v
+\lambda\in\IC; \exists \bv\neq \b0,\; A\bv=\lambda \bv
 \right\}
 \]
 which we call the \defword{spectrum} of $A$. We call \defword{spectral radius} of $A$ the real number
@@ -159,7 +169,7 @@ which we call the \defword{spectrum} of $A$. We call \defword{spectral radius} o
 \vfill
 %%
 \begin{theorem}\label{th:matrix_everywhere_rho_l_1_goes0}
-If $\rho(A)<1$, then $\lim\limits_{t\to \infty} x(t)=0$ for system \eqref{sys:DE}
+If $\rho(A)<1$, then $\lim\limits_{t\to \infty} \bx(t)=\b0$ for system \eqref{sys:DE}
 \end{theorem}
 \end{frame}
 
@@ -170,7 +180,7 @@ If $\rho(A)<1$, then $\lim\limits_{t\to \infty} x(t)=0$ for system \eqref{sys:DE
 Leslie matrices arise when considering the \emph{age-structured} dynamics of populations reproducing every year, such as most fish
 \vfill
 Assume $n$ is the maximum age observed for that species. Time $t$ is taken in years and is \emph{discrete}.
-Let $x(t)=(x_1(t),\ldots,x_n(t))^T$ be the vector of distribution of the population in ages, \ie, $x_i(t)$ is the population of fish of age $a$ between $i-1$ and $i$ at time $t$
+Let $\bx(t)=(x_1(t),\ldots,x_n(t))^T$ be the vector of distribution of the population in ages, \ie, $x_i(t)$ is the population of fish of age $a$ between $i-1$ and $i$ at time $t$
 \vfill
 
 
@@ -193,7 +203,7 @@ x_1(t+1)=f_1x_1(t)+f_2x_2(t)+\cdots+f_nx_n(t)
 \end{frame}
 
 \begin{frame}
-Suppose that on the first year counts are taken, we observe an initial age distribution $x(0)=(x_1(0),\ldots,x_n(0))^T$
+Suppose that on the first year counts are taken, we observe an initial age distribution $\bx(0)=(x_1(0),\ldots,x_n(0))^T$
 \vfill
 Assume the survival rates $s_i$ and fecundity constants $f_i$ are known
 \vfill
@@ -220,7 +230,7 @@ x_1(t) \\ x_2(t) \\ x_3(t) \\ \vdots \\ x_n(t)
 \end{equation}
 which we summarize as
 \begin{equation}\label{eq:Leslie_short}
-x(t+1)=Lx(t)
+\bx(t+1)=L\bx(t)
 \end{equation}
 with $L$ the matrix in \eqref{eq:Leslie_long}, \ie, a \defword{nonnegative} matrix with only the first row and the first sub-diagonal nonzero
 \end{frame}
@@ -237,9 +247,9 @@ s_1 & 0 & 0 & \cdots & 0 & 0 \\
 \end{pmatrix}
 \]
 \vfill
-By Theorem~\ref{th:matrix_everywhere_rho_l_1_goes0}, if $\rho(L)<1$ then $x(t)\to 0$ at $t\to\infty$, so in this case, the population would become extinct
+By Theorem~\ref{th:matrix_everywhere_rho_l_1_goes0}, if $\rho(L)<1$ then $\bx(t)\to \b0$ at $t\to\infty$, so in this case, the population would become extinct if $x_i(t)\geq 0$ for all $i,t$
 \vfill
-By the discussion earlier, if $\rho(L)=1$, then $\|x(t)\|$ (the total population) stays constant
+By the discussion earlier, if $\rho(L)=1$, then $\|\bx(t)\|$ (the total population) stays constant
 \vfill
 If $\rho(L)>1$, the population increases
 \end{frame}
@@ -253,26 +263,26 @@ If $\rho(L)>1$, the population increases
 \begin{frame}{ODE}
 An \defword{ordinary differential equation} (ODE) is an equation of the form 
 \begin{equation}\label{eq:nonlinear_ODE}
-\dfrac{d}{dt}x(t)= f(x(t))
+\dfrac{d}{dt}\bx(t)= f(\bx(t))
 \end{equation}
-where $x(t)\in \IR^n$ is a \emph{function} and $f:\IR^n \to \IR^n$
+where $\bx(t)\in \IR^n$ is a \emph{function} and $f:\IR^n \to \IR^n$ is a \defword{vector field}
 \vfill
-An \defword{initial value problem} (IVP) is the consideration of \eqref{eq:nonlinear_ODE} together with an initial condition $x(t_0)=x_0\in\IR^n$
+An \defword{initial value problem} (IVP) is the consideration of \eqref{eq:nonlinear_ODE} together with an initial condition $\bx(t_0)=\bx_0\in\IR^n$
 \vfill
-A solution to \eqref{eq:nonlinear_ODE} is a function $\phi(t)$ that satisfies \eqref{eq:nonlinear_ODE}. A solution to the IVP with $x(t_0)=x_0$ associated to \eqref{eq:nonlinear_ODE} is, among all solutions to \eqref{eq:nonlinear_ODE}, the one (typically the only one) that additionally satisfies the initial condition, \ie, such that $\phi(t_0)=x_0$
+A solution to \eqref{eq:nonlinear_ODE} is a function $\phi(t)$ that satisfies \eqref{eq:nonlinear_ODE}. A solution to the IVP with $\bx(t_0)=\bx_0$ associated to \eqref{eq:nonlinear_ODE} is, among all solutions to \eqref{eq:nonlinear_ODE}, the one (typically the only one) that additionally satisfies the initial condition, \ie, such that $\phi(t_0)=\bx_0$
 \end{frame}
 
 \begin{frame}{Linear systems}
 Consider the autonomous linear system
 \begin{equation}\label{eq:Lin_EDO_cc_hom}
-x'(t)=Ax(t)
+\bx'(t)=A\bx(t)
 \end{equation}
 where $A\in\M_n$ is a constant
 \vfill
 Let $\sigma(A)=\{\lambda_1,\ldots,\lambda_n\}$ be the spectrum of $A$.
-Let $w_j=u_j+iv_j$ be a generalized eigenvector of $A$ corresponding to an eigenvalue $\lambda_j=a_j+ib_j$, with $v_j=0$ if $b_j=0$, and 
+Let $\bw_j=\bu_j+i\bv_j$ be a generalized eigenvector of $A$ corresponding to an eigenvalue $\lambda_j=a_j+ib_j$, with $\bv_j=\b0$ if $b_j=0$, and 
 \[
-B=\{u_1,\ldots,u_k,u_{k+1},v_{k+1},\ldots,u_m,v_m\}
+B=\{\bu_1,\ldots,\bu_k,\bu_{k+1},\bv_{k+1},\ldots,\bu_m,\bv_m\}
 \]
 be a basis of $\mathbb{R}^n$, with $n=2m-k$, where $k$ is the number of real eigenvalues in $\sigma(A)$
 \end{frame}
@@ -297,7 +307,7 @@ E^c=\textrm{Span}\{u_j,v_j:a_j=0\}
 \begin{definition}
 The mapping $e^{At}:\mathbb{R}^n\to\mathbb{R}^n$ is the \defword{flow} of the linear system \eqref{eq:Lin_EDO_cc_hom}
 \end{definition}
-The term \defword{flow} is used since $e^{At}$ describes the motion of points $x_0\in\mathbb{R}^n$ along trajectories of \eqref{eq:Lin_EDO_cc_hom}
+The term \defword{flow} is used since $e^{At}$ describes the motion of points $\bx_0\in\mathbb{R}^n$ along trajectories of \eqref{eq:Lin_EDO_cc_hom}
 %%
 \vfill
 %%
@@ -342,51 +352,45 @@ Instead of seeking explicit solutions, we use \defword{qualitative analysis}, wh
 \begin{frame}
 Suppose you are given a system of ordinary differential equations
 \begin{equation}\label{sys:ODE}
-x'=f(x),
+\bx'=f(\bx),
 \end{equation}
-where $x\in\IR^n$ and $f:\IR^n\to\IR^n$ is $C^1$. A standard step when studying \eqref{sys:ODE} \defword{qualitatively} is to seek \defword{equilibria} of \eqref{sys:ODE}, \ie, points $x^\star\in\IR^n$ such that
+where $\bx\in\IR^n$ and $f:\IR^n\to\IR^n$ is $C^1$. A standard step when studying \eqref{sys:ODE} \defword{qualitatively} is to seek \defword{equilibria} of \eqref{sys:ODE}, \ie, points $\bx^\star\in\IR^n$ such that
 \begin{equation}\label{eq:equilibrium}
-f(x^\star)=0.
+f(\bx^\star)=\b0.
 \end{equation}
-At such a point, $x'=0$, meaning that system \eqref{sys:ODE} is at rest. If you were to consider solutions to \eqref{sys:ODE} with an initial condition $x(0)=x^\star$, then there would hold that $x(t)=x^\star$ for all $t\geq 0$
+At such a point, $\bx'=\b0$, meaning that system \eqref{sys:ODE} is at rest. If you were to consider solutions to \eqref{sys:ODE} with an initial condition $\bx(0)=\bx^\star$, then there would hold that $\bx(t)=\bx^\star$ for all $t\geq 0$
 \vfill
-What would happen if instead of starting at $x^\star$, you were to choose an initial condition $x(0)$ close to but distinct from $x^\star$?
+What would happen if instead of starting at $\bx^\star$, you were to choose an initial condition $\bx(0)$ close to but distinct from $\bx^\star$?
 \end{frame}
 
 \begin{frame}{Simplified version of Hartman-Grobman}
 \begin{definition}
-An equilibrium point $x^\star$ is \textbf{hyperbolic}\index{hyperbolic equilibrium point} if the Jacobian matrix $Df$ of \eqref{sys:ODE} evaluated at $x^\star$, denoted $Df(x^\star)$, has no eigenvalues with zero real part, \ie, is invertible
+An equilibrium point $\bx^\star$ is \defword{hyperbolic} if the Jacobian matrix $Df$ of \eqref{sys:ODE} evaluated at $\bx^\star$, denoted $Df(\bx^\star)$, has no eigenvalues with zero real part, \ie, $Df(\bx^\star)$ is invertible
 \end{definition}
 \vfill
 \begin{theorem}[Hartman-Grobman]\label{th:HartmanGrobman}
-Let $x^\star$ be a hyperbolic equilibrium point of \eqref{sys:ODE}.
-Then in some neighbourhood $\mathcal{N}(x^\star)$ of $x^\star$, the flow of \eqref{sys:ODE} is topologically equivalent to the flow of the linear system 
+Let $\bx^\star$ be a hyperbolic equilibrium point of \eqref{sys:ODE}.
+Then in some neighbourhood $\mathcal{N}(\bx^\star)$ of $\bx^\star$, the flow of \eqref{sys:ODE} is topologically equivalent to the flow of the linear system 
 \begin{equation}\label{sys:linearized}
-x'=Df(x^\star)(x-x^\star)
+\bx'=Df(\bx^\star)(\bx-\bx^\star)
 \end{equation} 
-where $Df(x^\star)$ is the Jacobian matrix $Df$ of $f$ evaluated at $x^\star$
+where $Df(\bx^\star)$ is the Jacobian matrix $Df$ of $f$ evaluated at $\bx^\star$
 \end{theorem}
 \end{frame}
 
 \begin{frame}
 \begin{theorem}[Stable manifold theorem]\label{th:stable_manifold}
-Let $E$ be an open subset of $\IR^n$ containing the origin, let $f\in
-C^1(E)$, and let $\phi_t$ be the flow of the nonlinear system
-\eqref{sys:ODE}. Suppose that $f(0)=0$ and that $Df(0)$ has $k$
-eigenvalues with negative real part and $n-k$ eigenvalues with
-positive real part. Then there exists a $k$-dimensional differentiable
-manifold $S$ tangent to the stable subspace $E^s$ of the linear system
-(\ref{sys:linearized}) at 0 such that for all $t\geq 0$,
-$\phi_t(S)\subset S$ and for all $x_0\in S$
+Let $E$ be an open subset of $\IR^n$ containing the origin, let $f\in C^1(E)$ and let $\phi_t$ be the flow of the nonlinear system \eqref{sys:ODE}. 
+Suppose that $f(\b0)=\b0$ and that $Df(\b0)$ has $k$
+eigenvalues with negative real part and $n-k$ eigenvalues with positive real part. 
+Then there exists a $k$-dimensional differentiable
+manifold $S$ tangent to the stable subspace $E^s$ of the linear system \eqref{sys:linearized} at $\b0$ such that for all $t\geq 0$, $\phi_t(S)\subset S$ and for all $\bx_0\in S$
 \[
-\lim_{t\to\infty} \phi_t(x_0)=0
+\lim_{t\to\infty} \phi_t(\bx_0)=\b0
 \]
-and there exists an $(n-k)$-dimensional differentiable manifold $U$
-tangent to the unstable subspace $E^u$ of (\ref{sys:linearized}) at 0
-such that for all $t\leq 0$, $\phi_t(U)\subset U$ and for all $x_0\in
-U$
+and there exists an $(n-k)$-dimensional differentiable manifold $U$ tangent to the unstable subspace $E^u$ of (\ref{sys:linearized}) at $\b0$ such that for all $t\leq 0$, $\phi_t(U)\subset U$ and for all $\bx_0\in U$
 \[
-\lim_{t\to-\infty}\phi_t(x_0)=0
+\lim_{t\to-\infty}\phi_t(\bx_0)=\b0
 \]
 \end{theorem}
 %%
@@ -552,107 +556,119 @@ The same type of analysis can be conducted at the interior equilibrium $\xi_I^\s
 \begin{definition}[Linear ODE]
 A \emph{linear} ODE is a differential equation taking the form
 \begin{equation}\label{sys:linear_general}
-\frac{d}{dt}x=A(t)x+B(t),\tag{LNH}
+\frac{d}{dt}\bx=A(t)\bx+\bB(t),\tag{LNH}
 \end{equation}
-where $A(t)\in\mathcal{M}_n(\IR)$ with continuous entries, $B(t)\in\IR^n$ with real valued, continuous coefficients, and $x\in\IR^n$. The associated IVP takes the form 
+where $A(t)\in\mathcal{M}_n(\IR)$ with continuous entries, $\bB(t)\in\IR^n$ with real valued, continuous coefficients, and $\bx\in\IR^n$
+\vskip0.5cm
+The associated IVP takes the form 
 \begin{equation}\label{sys:IVP_linear_general}
 \begin{aligned}
-\frac{d}{dt}x &= A(t)x+B(t) \\
-x(t_0)&=x_0.
+\frac{d}{dt}\bx &= A(t)\bx+\bB(t) \\
+\bx(t_0)&=\bx_0
 \end{aligned}
 \end{equation}
 \end{definition}
 }
 
-\frame{\frametitle{Types of systems}
+\frame{\frametitle{Types of linear systems}
 \begin{itemize}
-\item $x'=A(t)x+B(t)$ is linear nonautonomous ($A(t)$ depends on $t$) nonhomogeneous (also called \emph{affine} system).
-\item $x'=A(t)x$ is linear nonautonomous homogeneous.
-\item $x'=Ax+B$, that is, $A(t)\equiv A$ and $B(t)\equiv B$, is linear autonomous nonhomogeneous (or affine autonomous).
-\item $x'=Ax$ is linear autonomous homogeneous.
+\item $\bx'=A(t)\bx+\bB(t)$ is linear nonautonomous ($A(t)$ depends on $t$) nonhomogeneous (also called \emph{affine} system)
+\vfill
+\item $\bx'=A(t)\bx$ is linear nonautonomous homogeneous
+\vfill
+\item $\bx'=A\bx+\bB$, that is, $A(t)\equiv A$ and $\bB(t)\equiv \bB$, is linear autonomous nonhomogeneous (or affine autonomous)
+\vfill
+\item $\bx'=A\bx$ is linear autonomous homogeneous
 \end{itemize}
 }
 
 
 \frame{\frametitle{Existence and uniqueness of solutions}
 \begin{theorem}[Existence and Uniqueness]
-Solutions to \eqref{sys:IVP_linear_general} exist and are unique on the whole interval over which $A$ and $B$ are continuous.
-
-In particular, if $A,B$ are constant, then solutions exist on $\IR$.
+Solutions to \eqref{sys:IVP_linear_general} exist and are unique on the whole interval over which $A$ and $\bB$ are continuous
+\vskip0.5cm
+In particular, if $A,\bB$ are constant, then solutions exist on $\IR$
 \end{theorem}
 }
 
 \frame{\frametitle{Autonomous linear systems}
 Consider the autonomous affine system
 \begin{equation}\label{sys:affine_auton}
-\frac{d}{dt}x=Ax+B,\tag{A}
+\frac{d}{dt}\bx=A\bx+\bB\tag{A}
 \end{equation}
 and the associated homogeneous autonomous system
 \begin{equation}\label{sys:lin_auton}
-\frac{d}{dt}x=Ax.\tag{L}
+\frac{d}{dt}\bx=A\bx\tag{L}
 \end{equation}
 }
 
 \frame{\frametitle{Exponential of a matrix}
 \begin{definition}[Matrix exponential]
-Let $A\in\M_n(\IF)$ with $\IF=\IR$ or $\IC$. The \emph{exponential} of $A$, denoted $e^{At}$, is a matrix in $\M_n(\IF)$, defined by
+Let $A\in\M_n(\IF)$ with $\IF=\IR$ or $\IC$. 
+The \defword{matrix exponential} of $A$, denoted $e^{At}$, is a matrix in $\M_n(\IF)$, defined by
 \[
-e^{At}=\II +\sum_{k=1}^\infty \frac{t^k}{k!}A^k,
+e^{At}=\II +\sum_{k=1}^\infty \frac{t^k}{k!}A^k
 \]
-where $\II$ is the identity matrix in $\M_n(\IF)$.
+where $\II$ is the identity matrix in $\M_n(\IF)$
 \end{definition}
 }
 
-\frame{\frametitle{Properties of the matrix exponential}
+\begin{frame}\frametitle{Properties of the matrix exponential}
 \begin{itemize}
-\item $e^{At_1}e^{At_2}=e^{A(t_1+t_2)}$ for all $t_1,t_2\in\IR$.
-1\item $Ae^{At}=e^{At}A$ for all $t\in\IR$.
-\item $(e^{At})^{-1}=e^{-At}$ for all $t\in\IR$.
-\item The unique solution $\phi$ of \eqref{sys:lin_auton} with $\phi(t_0)=x_0$ is given by
+\item $e^{At_1}e^{At_2}=e^{A(t_1+t_2)}$ for all $t_1,t_2\in\IR$
+\vfill
+\item $Ae^{At}=e^{At}A$ for all $t\in\IR$
+\vfill
+\item $(e^{At})^{-1}=e^{-At}$ for all $t\in\IR$
+\vfill
+\item The unique solution $\phi$ of \eqref{sys:lin_auton} with $\phi(t_0)=\bx_0$ is given by
 \[
-\phi(t)=e^{A(t-t_0)}x_0.
+\phi(t)=e^{A(t-t_0)}\bx_0
 \]
 \end{itemize}
-}
+\end{frame}
 
-\frame{\frametitle{Computing the matrix exponential}
+\begin{frame}\frametitle{Using the matrix exponential}
 Let $P$ be a nonsingular matrix in $\M_n(\IR)$. We transform the IVP
 \begin{equation}\label{IVP:lin_auton}
 \begin{aligned}
-\frac{d}{dt}x &= Ax\\
-x(t_0)&=x_0
+\frac{d}{dt}\bx &= A\bx\\
+\bx(t_0)&=\bx_0
 \end{aligned}\tag{LIVP}
 \end{equation}
-using the transformation $x=Py$ or $y=P^{-1}x$.
-\vfill
-The dynamics of $y$ is $y'=P^{-1}APy$.
-% \begin{align*}
-% y' &= (P^{-1}x)' \\
-% &= P^{-1}x' \\
-% &= P^{-1}Ax \\
-% &= P^{-1}APy
-% \end{align*}
-The initial condition is $y_0=P^{-1}x_0$.
-}
+using the transformation $\bx=P\by$ or $\by=P^{-1}\bx$
+\end{frame}
 
-\frame{
+\begin{frame}
+The dynamics of $\by$ is $\by'=P^{-1}AP\by$
+\begin{align*}
+\by' &= (P^{-1}\bx)' \\
+&= P^{-1}\bx' \\
+&= P^{-1}A\bx \\
+&= P^{-1}AP\by
+\end{align*}
+\vfill
+The initial condition is $\by_0=P^{-1}\bx_0$
+\end{frame}
+
+\begin{frame}
 We have thus transformed IVP \eqref{IVP:lin_auton} into
 \begin{equation}\label{IVP:lin_auton2}
 \begin{aligned}
-\frac{d}{dt}y &= P^{-1}APy\\
-y(t_0)&=P^{-1}x_0
+\frac{d}{dt}\by &= P^{-1}AP\by\\
+\by(t_0)&=P^{-1}\bx_0
 \end{aligned}\tag{L\_IVP\_y}
 \end{equation}
 From the earlier result, we then know that the solution of \eqref{IVP:lin_auton2} is given by
 \[
-\psi(t)=e^{P^{-1}AP(t-t_0)}P^{-1}x_0,
+\psi(t)=e^{P^{-1}AP(t-t_0)}P^{-1}\bx_0,
 \]
-and since $x=Py$, the solution to \eqref{IVP:lin_auton} is given by
+and since $\bx=P\by$, the solution to \eqref{IVP:lin_auton} is given by
 \[
-\phi(t)=Pe^{P^{-1}AP(t-t_0)}P^{-1}x_0.
+\phi(t)=Pe^{P^{-1}AP(t-t_0)}P^{-1}\bx_0.
 \]
-So everything depends on $P^{-1}AP$.
-}
+So everything depends on $P^{-1}AP$
+\end{frame}
 
 \frame{\frametitle{The cases}
 \begin{itemize}
@@ -673,7 +689,7 @@ P^{-1}x_0.
 
 \frame{
 \begin{theorem}
-For all $(t_0,x_0)\in\IR\times\IR^n$, there is a unique solution $x(t)$ to \eqref{IVP:lin_auton} defined for all $t\in\IR$. Each coordinate function of $x(t)$ is a linear combination of functions of the form
+For all $(t_0,\bx_0)\in\IR\times\IR^n$, there is a unique solution $\bx(t)$ to \eqref{IVP:lin_auton} defined for all $t\in\IR$. Each coordinate function of $\bx(t)$ is a linear combination of functions of the form
 \[
 t^ke^{\alpha t}\cos(\beta t)\quad\textrm{and}\quad t^ke^{\alpha t}\sin(\beta t)
 \]
@@ -683,14 +699,14 @@ where $\alpha+i\beta$ is an eigenvalue of $A$ and $k$ is less than the algebraic
 
 \frame{\frametitle{Generalized eigenvectors, nilpotent matrix}
 \begin{definition}[Generalized eigenvectors]
-Let $A\in\M_r(\IR)$. Suppose $\lambda$ is an eigenvalue of $A$ with multiplicity $m\leq n$. Then, for $k=1,\ldots,m$, any nonzero solution $v$ of
+Let $A\in\M_r(\IR)$. Suppose $\lambda$ is an eigenvalue of $A$ with multiplicity $m\leq n$. Then, for $k=1,\ldots,m$, any nonzero solution $\bv$ of
 \[
-(A-\lambda\II)^kv=0
+(A-\lambda\II)^k\bv=\b0
 \]
 is called a \emph{generalized eigenvector} of $A$.
 \end{definition}
 \begin{definition}[Nilpotent matrix]
-Let $A\in\M_n(\IR)$. $A$ is \emph{nilpotent} (of order $k$) if $A^{j}\neq 0$ for $j=1,\ldots,k-1$, and $A^k=0$.
+Let $A\in\M_n(\IR)$. $A$ is \emph{nilpotent} (of order $k$) if $A^{j}\neq 0$ for $j=1,\ldots,k-1$, and $A^k=\b0$.
 \end{definition}
 }
 
@@ -716,16 +732,16 @@ the matrix $N=A-S$ is nilpotent of order $k\leq n$, and $S$ and $N$ commute, i.e
 
 \frame{
 \begin{theorem}
-Under conditions of the Jordan normal form Theorem, the linear system $x'=Ax$ with initial condition $x(0)=x_0$, has solution
+Under conditions of the Jordan normal form Theorem, the linear system $\bx'=A\bx$ with initial condition $\bx(0)=\bx_0$, has solution
 \[
-x(t)=P\diag\left(e^{\lambda_j t}\right)P^{-1}\left(\II+Nt+\cdots\frac{t^k}{k!}N^k\right) x_0.
+\bx(t)=P\diag\left(e^{\lambda_j t}\right)P^{-1}\left(\II+Nt+\cdots\frac{t^k}{k!}N^k\right) \bx_0.
 \]
 \end{theorem}
 The result is particularly easy to apply in the following case.
 \begin{theorem}[Case of an eigenvalue of multiplicity $n$]
-Suppose that $\lambda$ is an eigenvalue of multiplicity $n$ of $A\in\M_n(\IR)$. Then $S=\diag(\lambda)$, and the solution of $x'=Ax$ with initial value $x_0$ is given by
+Suppose that $\lambda$ is an eigenvalue of multiplicity $n$ of $A\in\M_n(\IR)$. Then $S=\diag(\lambda)$, and the solution of $\bx'=A\bx$ with initial value $\bx_0$ is given by
 \[
-x(t)=e^{\lambda t}\left(\II+Nt+\cdots\frac{t^k}{k!}N^k\right) x_0.
+\bx(t)=e^{\lambda t}\left(\II+Nt+\cdots\frac{t^k}{k!}N^k\right) \bx_0.
 \]
 \end{theorem}
 In the simplified case, we do not need the matrix $P$ (the basis of generalized eigenvectors).
@@ -737,12 +753,12 @@ In the simplified case, we do not need the matrix $P$ (the basis of generalized 
 % \begin{subequations}\label{sys:lin_nonlin}
 % \begin{align}
 % x' &= Ax+B(t) \\
-% x(t_0) &= x_0,
+% \bx(t_0) &= \bx_0,
 % \end{align}
 % \end{subequations}
-% where $B:\IR\to\IR^n$ a smooth function on $\IR$, and let $e^{A(t-t_0)}$ be matrix exponential associated to the homogeneous system $x'=Ax$. Then the solution $\phi$ of \eqref{sys:lin_nonlin} is given by
+% where $B:\IR\to\IR^n$ a smooth function on $\IR$, and let $e^{A(t-t_0)}$ be matrix exponential associated to the homogeneous system $\bx'=A\bx$. Then the solution $\phi$ of \eqref{sys:lin_nonlin} is given by
 % \begin{equation}
-% \phi(t)=e^{A(t-t_0)}x_0 + \int_{t_0}^t e^{A(t-s)}B(s)ds.
+% \phi(t)=e^{A(t-t_0)}\bx_0 + \int_{t_0}^t e^{A(t-s)}B(s)ds.
 % \end{equation}
 % \end{theorem}
 % }
@@ -861,7 +877,7 @@ p_{n1} & p_{n2} & \cdots & p_{nn}
 %%
 \vfill
 %%
-Assume w.l.o.g. that $M$ is row stochastic, \ie, $M$ has row sums 1. In vector form, $M\nbOne=\nbOne$. Now remember that $\lambda$ is an eigenvalue of $M$, with associated eigenvector $v\neq 0$, if and only if $Mv=\lambda v$. So, in the expression $M\nbOne=\nbOne$, we read an eigenvector, $\nbOne$, and an eigenvalue, $1$
+Assume w.l.o.g. that $M$ is row stochastic, \ie, $M$ has row sums 1. In vector form, $M\nbOne=\nbOne$. Now remember that $\lambda$ is an eigenvalue of $M$, with associated eigenvector $\bv\neq \b0$, if and only if $M\bv=\lambda \bv$. So, in the expression $M\nbOne=\nbOne$, we read an eigenvector, $\nbOne$, and an eigenvalue, $1$
 \vfill
 Proving the first conclusion of Theorem~\ref{th:spectrum_stochastic_matrix} involves a theorem called the Perron-Frobenius Theorem, which we will see in much detail later
 \end{frame}
@@ -945,13 +961,13 @@ Mu=\lambda u
 \]
 $u$ is the (right) eigenvector corresponding to $\lambda$, and if
 \[
-v^TM=\lambda v^T
+\bv^TM=\lambda \bv^T
 \]
-then $v$ is the left eigenvector corresponding to $\lambda$
+then $\bv$ is the left eigenvector corresponding to $\lambda$
 \vfill 
 To a given eigenvalue there corresponds one left and one right eigenvector (to multiples)
 \vfill
-$(v^TM)=(\lambda v^T)^T\iff M^Tv=\lambda v$, so if your numeric/symbolic solver spits out right eigenvectors, to get left ones, compute eigenvectors of $M^T$
+$(\bv^TM)=(\lambda \bv^T)^T\iff M^T\bv=\lambda \bv$, so if your numeric/symbolic solver spits out right eigenvectors, to get left ones, compute eigenvectors of $M^T$
 \end{frame}
 
 \begin{frame}{Back to the regular MC}
