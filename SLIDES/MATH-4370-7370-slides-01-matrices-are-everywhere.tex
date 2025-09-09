@@ -657,16 +657,18 @@ We have thus transformed IVP \eqref{IVP:lin_auton} into
 \begin{aligned}
 \frac{d}{dt}\by &= P^{-1}AP\by\\
 \by(t_0)&=P^{-1}\bx_0
-\end{aligned}\tag{L\_IVP\_y}
+\end{aligned}\tag{LIVP$_y$}
 \end{equation}
+\vfill
 From the earlier result, we then know that the solution of \eqref{IVP:lin_auton2} is given by
 \[
-\psi(t)=e^{P^{-1}AP(t-t_0)}P^{-1}\bx_0,
+\psi(t)=e^{P^{-1}AP(t-t_0)}P^{-1}\bx_0
 \]
 and since $\bx=P\by$, the solution to \eqref{IVP:lin_auton} is given by
 \[
-\phi(t)=Pe^{P^{-1}AP(t-t_0)}P^{-1}\bx_0.
+\phi(t)=Pe^{P^{-1}AP(t-t_0)}P^{-1}\bx_0
 \]
+\vfill
 So everything depends on $P^{-1}AP$
 \end{frame}
 
@@ -681,9 +683,10 @@ e^{\lambda_1t} & & 0 \\
 & \ddots & \\
 0 & & e^{\lambda_nt}
 \end{pmatrix}
-P^{-1}x_0.
+P^{-1}x_0
 \]
-\item $P^{-1}AP$ is not diagonal, then use Jordan form (slightly more complicated).
+\vfill
+\item $P^{-1}AP$ is not diagonal, then use Jordan form (slightly more complicated)
 \end{itemize}
 }
 
@@ -693,7 +696,7 @@ For all $(t_0,\bx_0)\in\IR\times\IR^n$, there is a unique solution $\bx(t)$ to \
 \[
 t^ke^{\alpha t}\cos(\beta t)\quad\textrm{and}\quad t^ke^{\alpha t}\sin(\beta t)
 \]
-where $\alpha+i\beta$ is an eigenvalue of $A$ and $k$ is less than the algebraic multiplicity of the eigenvalue.
+where $\alpha+i\beta$ is an eigenvalue of $A$ and $k$ is less than the algebraic multiplicity of the eigenvalue
 \end{theorem}
 }
 
@@ -703,29 +706,30 @@ Let $A\in\M_r(\IR)$. Suppose $\lambda$ is an eigenvalue of $A$ with multiplicity
 \[
 (A-\lambda\II)^k\bv=\b0
 \]
-is called a \emph{generalized eigenvector} of $A$.
+is called a \emph{generalized eigenvector} of $A$
 \end{definition}
+\vfill
 \begin{definition}[Nilpotent matrix]
-Let $A\in\M_n(\IR)$. $A$ is \emph{nilpotent} (of order $k$) if $A^{j}\neq 0$ for $j=1,\ldots,k-1$, and $A^k=\b0$.
+Let $A\in\M_n(\IR)$. $A$ is \emph{nilpotent} (of order $k$) if $A^{j}\neq 0$ for $j=1,\ldots,k-1$, and $A^k=\b0$
 \end{definition}
 }
 
 \frame{\frametitle{Jordan normal form}
 \begin{theorem}[Jordan normal form]
-Let $A\in\M_n(\IR)$ have eigenvalues $\lambda_1,\ldots,\lambda_n$, repeated according to their multiplicities. 
+Let $A\in\M_n(\IR)$ have eigenvalues $\lambda_1,\ldots,\lambda_n$, repeated according to their multiplicities
 \begin{itemize}
 \item 
-Then there exists a basis of generalized eigenvectors for $\IR^n$. 
+Then there exists a basis of generalized eigenvectors for $\IR^n$
 \item 
 And if $\{v_1,\ldots,v_n\}$ is any basis of generalized eigenvectors for $\IR^n$, then the matrix $P=[v_1\cdots v_n]$ is invertible, and $A$ can be written as
 \[
-A=S+N,
+A=S+N
 \]
 where
 \[
-P^{-1}SP=\diag(\lambda_j),
+P^{-1}SP=\diag(\lambda_j)
 \]
-the matrix $N=A-S$ is nilpotent of order $k\leq n$, and $S$ and $N$ commute, i.e., $SN=NS$.
+the matrix $N=A-S$ is nilpotent of order $k\leq n$ and $S$ and $N$ commute, i.e., $SN=NS$
 \end{itemize}
 \end{theorem}
 }
@@ -734,34 +738,36 @@ the matrix $N=A-S$ is nilpotent of order $k\leq n$, and $S$ and $N$ commute, i.e
 \begin{theorem}
 Under conditions of the Jordan normal form Theorem, the linear system $\bx'=A\bx$ with initial condition $\bx(0)=\bx_0$, has solution
 \[
-\bx(t)=P\diag\left(e^{\lambda_j t}\right)P^{-1}\left(\II+Nt+\cdots\frac{t^k}{k!}N^k\right) \bx_0.
+\bx(t)=P\diag\left(e^{\lambda_j t}\right)P^{-1}\left(\II+Nt+\cdots\frac{t^k}{k!}N^k\right) \bx_0
 \]
 \end{theorem}
-The result is particularly easy to apply in the following case.
+\vfill
 \begin{theorem}[Case of an eigenvalue of multiplicity $n$]
 Suppose that $\lambda$ is an eigenvalue of multiplicity $n$ of $A\in\M_n(\IR)$. Then $S=\diag(\lambda)$, and the solution of $\bx'=A\bx$ with initial value $\bx_0$ is given by
 \[
-\bx(t)=e^{\lambda t}\left(\II+Nt+\cdots\frac{t^k}{k!}N^k\right) \bx_0.
+\bx(t)=e^{\lambda t}\left(\II+Nt+\cdots\frac{t^k}{k!}N^k\right) \bx_0
 \]
 \end{theorem}
-In the simplified case, we do not need the matrix $P$ (the basis of generalized eigenvectors).
+In the simplified case, we do not need the basis of generalized eigenvectors (i.e., $P$)
 }
 
-% \frame{\frametitle{A variation of constants formula}
-% \begin{theorem}[Variation of constants formula]
-% Consider the IVP
-% \begin{subequations}\label{sys:lin_nonlin}
-% \begin{align}
-% x' &= Ax+B(t) \\
-% \bx(t_0) &= \bx_0,
-% \end{align}
-% \end{subequations}
-% where $B:\IR\to\IR^n$ a smooth function on $\IR$, and let $e^{A(t-t_0)}$ be matrix exponential associated to the homogeneous system $\bx'=A\bx$. Then the solution $\phi$ of \eqref{sys:lin_nonlin} is given by
-% \begin{equation}
-% \phi(t)=e^{A(t-t_0)}\bx_0 + \int_{t_0}^t e^{A(t-s)}B(s)ds.
-% \end{equation}
-% \end{theorem}
-% }
+ \frame{\frametitle{A variation of constants formula}
+ \begin{theorem}[Variation of constants formula]
+ Consider the IVP
+ \begin{subequations}\label{sys:lin_nonlin}
+ \begin{align}
+ x' &= Ax+B(t) \\
+ \bx(t_0) &= \bx_0
+ \end{align}
+ \end{subequations}
+ where $B:\IR\to\IR^n$ a smooth function on $\IR$ and $e^{A(t-t_0)}$ is the matrix exponential associated to the homogeneous system $\bx'=A\bx$
+ \vskip0.5cm
+ Then the solution $\phi$ to \eqref{sys:lin_nonlin} is given by
+ \begin{equation}
+ \phi(t)=e^{A(t-t_0)}\bx_0 + \int_{t_0}^t e^{A(t-s)}B(s)ds
+ \end{equation}
+ \end{theorem}
+ }
 
 %%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%
@@ -1010,9 +1016,8 @@ S & R \\ 0 & Q
 If no such matrix exists, $M$ is \defword{irreducible}
 \end{definition}
 \vfill
-Let $\G(M)$ be the digraph induced by $M$
 \begin{theorem}
-$0\leq M\in\M_n$ irreducible $\iff$ $\G(M)$ strongly connected
+Let $\G(M)$ be the digraph induced by $M$. We have $0\leq M\in\M_n$ irreducible $\iff$ $\G(M)$ strongly connected
 \end{theorem}
 \end{frame}
 
