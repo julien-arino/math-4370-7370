@@ -1,0 +1,533 @@
+\documentclass[aspectratio=169]{beamer}
+
+%\documentclass[handout]{beamer}
+%% To make 4 p	\begin{itemize}
+		\item The eigenvalues of a triangul	\begin{itemize}
+		\item Matrix operations (addition, multiplication) can be performed at the block level, provided dimensions are compatible
+	\end{itemize}matrix are its diagonal entries
+		\item The determinant is the product 	\begin{itemize}
+		\item T	\begin{itemize}
+		\item Circulant matrices are Toeplitz
+		\item Arise in differential equations, statistics (time-series analysis) and signal processing
+	\end{itemize}are a special type of Toeplitz matrix
+		\item Eigenvalues and eigenvectors can be found using the Discrete Fourier Transform
+		\item Important in signal processing for describing linear, time-invariant systems with periodic boundary conditions
+	\end{itemize}s diagonal entries
+		\item Essential for solving linear systems (e.g., Gaussian elimination produces an upper triangular matrix)
+	\end{itemize}ge
+%\usepackage{pgfpages}
+%\mode<handout>{\setbeamercolor{background canvas}{bg=white}}
+%\pgfpagesuselayout{4 on 1}[letterpaper,landscape]%,border shrink=5mm]
+
+\input{slides-setup-white-background.tex}
+
+% To have theorems and everything derived prefixed by the slide set
+% number
+\renewcommand{\thetheorem}{1.\arabic{theorem}}
+
+
+
+\title{A bestiary of matrices}
+\author{Julien Arino}
+\date{Fall 2025}
+
+\begin{document}
+	
+	% The title page
+	\begin{frame}[noframenumbering,plain]
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[above right,inner sep=0pt] at (current page.south west)
+			{
+				\includegraphics[width=\paperwidth]{FIGS/title-page-picture}
+			};
+		\end{tikzpicture}	
+		\titlepage
+	\end{frame}
+	\addtocounter{page}{-1}
+	
+	
+	\begin{frame}{Outline}
+		\tableofcontents[hideallsubsections]
+	\end{frame}
+	\addtocounter{page}{-1}
+	
+	
+\begin{frame}{Why study special matrices?}
+	\begin{block}{Motivation}
+		Certain matrices appear so frequently in theoretical and applied mathematics that they have been given special names.
+	\end{block}
+	\begin{itemize}
+		\item Their special structure often simplifies calculations (e.g., finding determinants, eigenvalues or solving linear systems)
+		\item They possess unique properties
+		\item They model specific phenomena in physics, engineering, computer science and statistics
+	\end{itemize>
+\end{frame}
+
+% --- SECTION 2 ---
+\section{Matrices with special patterns}
+
+% --- Diagonal and Triangular ---
+\subsection{Diagonal and triangular}
+
+\begin{frame}{Diagonal matrices}
+	\begin{block}{Definition}
+		A square matrix $D = [d_{ij}]$ is \textbf{diagonal} if all its off-diagonal entries are zero, i.e., $d_{ij} = 0$ for all $i \neq j$.
+	\end{block}
+	
+	\begin{itemize}
+		\item Denoted as $D = \text{diag}(d_1, d_2, \dots, d_n)$
+		\item Eigenvalues are simply the diagonal entries
+		\item Matrix multiplication with diagonal matrices is very efficient (scaling rows or columns)
+	\end{itemize}
+	
+	\begin{example}
+		$$
+		D = \begin{pmatrix}
+			-3 & 0 & 0 \\
+			0 & 5 & 0 \\
+			0 & 0 & 1.2
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+\begin{frame}{Triangular matrices}
+	\begin{block}{Definition}
+		A square matrix $A = [a_{ij}]$ is:
+		\begin{itemize}
+			\item \textbf{Upper Triangular} if $a_{ij} = 0$ for all $i > j$
+			\item \textbf{Lower Triangular} if $a_{ij} = 0$ for all $i < j$
+		\end{itemize}
+	\end{block}
+	\begin{itemize}
+		\item The eigenvalues of a triangular matrix are its diagonal entries.
+		\item The determinant is the product of its diagonal entries.
+		\item Essential for solving linear systems (e.g., Gaussian elimination produces an upper triangular matrix).
+	\end{itemize}
+	\begin{example}[Upper and Lower]
+		$$
+		U = \begin{pmatrix}
+			1 & 2 & 3 \\
+			0 & 4 & 5 \\
+			0 & 0 & 6
+		\end{pmatrix}
+		\quad
+		L = \begin{pmatrix}
+			1 & 0 & 0 \\
+			2 & 3 & 0 \\
+			4 & 5 & 6
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+% --- Block Matrices ---
+\subsection{Block matrices}
+
+\begin{frame}{Block matrices}
+	\begin{block}{Concept}
+		A matrix can be partitioned into smaller matrices called \textbf{blocks} or \textbf{submatrices}. This often reveals underlying structure.
+	\end{block}
+	
+	\begin{example}[A 2x2 Partition]
+		$$
+		A = 
+		\left(
+		\begin{array}{cc|c}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			\hline
+			7 & 8 & 9
+		\end{array}
+		\right)
+		=
+		\begin{pmatrix}
+			A_{11} & A_{12} \\
+			A_{21} & A_{22}
+		\end{pmatrix}
+		$$
+		where $A_{11} = \begin{pmatrix} 1 & 2 \\ 4 & 5 \end{pmatrix}$, $A_{12} = \begin{pmatrix} 3 \\ 6 \end{pmatrix}$, etc.
+	\end{example}
+	\vfill
+	\begin{itemize}
+		\item Matrix operations (addition, multiplication) can be performed at the block level, provided dimensions are compatible.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Block diagonal and block triangular}
+	\begin{block}{Block Diagonal}
+		A block matrix is \textbf{block diagonal} if the off-diagonal blocks are zero matrices.
+	\end{block}
+	\begin{example}
+		$$
+		A = \begin{pmatrix}
+			A_{11} & \mathbf{0} \\
+			\mathbf{0} & A_{22}
+		\end{pmatrix}
+		=
+		\left(
+		\begin{array}{cc|cc}
+			1 & 2 & 0 & 0 \\
+			3 & 4 & 0 & 0 \\
+			\hline
+			0 & 0 & 5 & 6 \\
+			0 & 0 & 7 & 8 
+		\end{array}
+		\right)
+		$$
+	\end{example}
+	\vfill
+	\begin{block}{Block Triangular}
+		A block matrix is \textbf{block upper triangular} if all blocks below the main block diagonal are zero.
+	\end{block}
+	\begin{example}
+		$$
+		B = \begin{pmatrix}
+			B_{11} & B_{12} \\
+			\mathbf{0} & B_{22}
+		\end{pmatrix}
+		=
+		\left(
+		\begin{array}{cc|c}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			\hline
+			0 & 0 & 7
+		\end{array}
+		\right)
+		$$
+	\end{example}
+\end{frame}
+
+% --- SECTION 3 ---
+\section{Matrices with symmetries}
+\subsection{Real matrices: transpose}
+
+\begin{frame}{Symmetric and skew-symmetric matrices}
+	Recall the \textbf{transpose} $A^T$ is formed by interchanging rows and columns.
+	
+	\begin{block}{Symmetric}
+		A real square matrix $A$ is \textbf{symmetric} if $A = A^T$.
+	\end{block}
+	\begin{example}
+		$$
+		A = \begin{pmatrix}
+			1 & \color{blue}{7} & \color{red}{-3} \\
+			\color{blue}{7} & 2 & \color{green}{5} \\
+			\color{red}{-3} & \color{green}{5} & 6
+		\end{pmatrix}
+		$$
+	\end{example}
+	\vfill
+	\begin{block}{Skew-Symmetric}
+		A real square matrix $A$ is \textbf{skew-symmetric} if $A = -A^T$. This implies diagonal entries are zero.
+	\end{block}
+	\begin{example}
+		$$
+		B = \begin{pmatrix}
+			0 & \color{blue}{7} & \color{red}{-3} \\
+			\color{blue}{-7} & 0 & \color{green}{5} \\
+			\color{red}{3} & \color{green}{-5} & 0
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+\begin{frame}{Properties of symmetric matrices}
+	Symmetric matrices are fundamental in mathematics and physics.
+	\begin{itemize}
+		\item All eigenvalues of a real symmetric matrix are real
+		\item Eigenvectors corresponding to distinct eigenvalues are orthogonal
+		\item A real symmetric matrix is always diagonalisable. This is the content of the \textbf{Spectral Theorem}
+		\item If $A$ is symmetric, it can be written as $A = Q \Lambda Q^T$, where $Q$ is an orthogonal matrix of eigenvectors and $\Lambda$ is a diagonal matrix of eigenvalues
+	\end{itemize}
+\end{frame}
+
+\subsection{Complex matrices: conjugate transpose}
+
+\begin{frame}{Hermitian and skew-Hermitian matrices}
+	For complex matrices, the \textbf{conjugate transpose} (or Adjoint) is key: $A^* = \overline{A^T}$.
+	
+	\begin{block}{Hermitian}
+		A complex square matrix $A$ is \textbf{Hermitian} if $A = A^*$. This implies diagonal entries are real.
+	\end{block}
+	\begin{example}
+		$$
+		A = \begin{pmatrix}
+			1 & \color{blue}{2-i} & \color{red}{5} \\
+			\color{blue}{2+i} & 3 & \color{green}{-i} \\
+			\color{red}{5} & \color{green}{i} & 0
+		\end{pmatrix}
+		$$
+	\end{example}
+	\vfill
+	\begin{block}{Skew-Hermitian}
+		A complex square matrix $A$ is \textbf{skew-Hermitian} if $A = -A^*$. Diagonal entries must be purely imaginary or zero.
+	\end{block}
+	\begin{example}
+		$$
+		B = \begin{pmatrix}
+			i & \color{blue}{2-i} \\
+			\color{blue}{-2-i} & 0
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+\begin{frame}{Properties of Hermitian matrices}
+	Hermitian matrices are the complex analogue of real symmetric matrices.
+	\begin{itemize}
+		\item All eigenvalues of a Hermitian matrix are real
+		\item Eigenvectors corresponding to distinct eigenvalues are orthogonal
+		\item A Hermitian matrix is always unitarily diagonalisable
+		\item The Spectral Theorem also applies: $A = U \Lambda U^*$, where $U$ is a unitary matrix
+	\end{itemize}
+\end{frame}
+
+\subsection{Important generalisations}
+
+\begin{frame}{Normal matrices}
+	\begin{block}{Definition}
+		A complex square matrix $A$ is \textbf{normal} if it commutes with its conjugate transpose:
+		$$ A A^* = A^* A $$
+	\end{block}
+	\begin{itemize}
+		\item This is a very important class of matrices!
+		\item It generalises many types we've seen
+		\item \textbf{Includes:} Hermitian, skew-Hermitian and Unitary matrices
+		\item \textbf{Key Property:} A matrix is normal if and only if it is unitarily diagonalisable
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Orthogonal and unitary matrices}
+	\begin{block}{Unitary Matrix (Complex)}
+		A complex square matrix $U$ is \textbf{unitary} if its inverse is its conjugate transpose:
+		$$ U^* U = U U^* = I \quad \implies \quad U^{-1} = U^*$$
+		The columns (and rows) form an orthonormal basis of $\C^n$.
+	\end{block}
+	\begin{block}{Orthogonal Matrix (Real)}
+		A real square matrix $Q$ is \textbf{orthogonal} if its inverse is its transpose:
+		$$ Q^T Q = Q Q^T = I \quad \implies \quad Q^{-1} = Q^T$$
+		The columns (and rows) form an orthonormal basis of $\R^n$.
+	\end{block}
+	\begin{itemize}
+		\item These matrices represent transformations that preserve length and angle (rotations, reflections)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example of an orthogonal matrix}
+	A 2D rotation matrix is a classic example.
+	\begin{block}{Rotation Matrix}
+		The matrix that rotates a vector in $\R^2$ by an angle $\theta$ counter-clockwise is:
+		$$
+		R(\theta) = \begin{pmatrix}
+			\cos\theta & -\sin\theta \\
+			\sin\theta & \cos\theta
+		\end{pmatrix}
+		$$
+	\end{block}
+	
+	Let's check if it's orthogonal:
+	\begin{align*}
+		R(\theta)^T R(\theta) &= \begin{pmatrix}
+			\cos\theta & \sin\theta \\
+			-\sin\theta & \cos\theta
+		\end{pmatrix}
+		\begin{pmatrix}
+			\cos\theta & -\sin\theta \\
+			\sin\theta & \cos\theta
+		\end{pmatrix} \\
+		&= \begin{pmatrix}
+			\cos^2\theta + \sin^2\theta & -\cos\theta\sin\theta + \sin\theta\cos\theta \\
+			-\sin\theta\cos\theta + \cos\theta\sin\theta & \sin^2\theta + \cos^2\theta
+		\end{pmatrix} \\
+		&= \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
+	\end{align*}
+\end{frame}
+
+% --- SECTION 4 ---
+\section{Matrices with named structures}
+\subsection{Permutation, circulant and Toeplitz}
+
+\begin{frame}{Permutation matrices}
+	\begin{block}{Definition}
+		A \textbf{permutation matrix} is a square matrix obtained by permuting the rows of an identity matrix. It has exactly one entry of '1' in each row and each column and '0's elsewhere.
+	\end{block}
+	\begin{itemize}
+		\item They are orthogonal matrices ($P^T P = I$)
+		\item Left-multiplying a matrix $A$ by $P$ ($PA$) permutes the rows of $A$
+		\item Right-multiplying ($AP$) permutes the columns of $A$
+	\end{itemize}
+	\begin{example}
+		To swap rows 2 and 3 of a 3x3 matrix, use:
+		$$
+		P = \begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & 0 & 1 \\
+			0 & 1 & 0
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+\begin{frame}{Circulant matrices}
+	\begin{block}{Definition}
+		A \textbf{circulant matrix} is a matrix where each row vector is rotated one element to the right relative to the preceding row vector. It is fully determined by its first row.
+	\end{block}
+	\begin{itemize}
+		\item They are a special type of Toeplitz matrix.
+		\item Eigenvalues and eigenvectors can be found using the Discrete Fourier Transform.
+		\item Important in signal processing for describing linear, time-invariant systems with periodic boundary conditions.
+	\end{itemize}
+	\begin{example}
+		$$
+		C = \begin{pmatrix}
+			c_0 & c_1 & c_2 & c_3 \\
+			c_3 & c_0 & c_1 & c_2 \\
+			c_2 & c_3 & c_0 & c_1 \\
+			c_1 & c_2 & c_3 & c_0
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+\begin{frame}{Toeplitz matrices}
+	\begin{block}{Definition}
+		A \textbf{Toeplitz matrix} is a matrix in which each descending diagonal from left to right is constant.
+		$$ A_{ij} = a_{i-j} $$
+	\end{block}
+	\begin{itemize}
+		\item Circulant matrices are Toeplitz
+		\item Arise in differential equations, statistics (time-series analysis) and signal processing
+	\end{itemize}
+	\begin{example}
+		$$
+		A = \begin{pmatrix}
+			a & b & c & d \\
+			e & a & b & c \\
+			f & e & a & b \\
+			g & f & e & a
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+\begin{frame}{Hankel matrices}
+	\begin{block}{Definition}
+		A \textbf{Hankel matrix} is a matrix in which each ascending anti-diagonal from left to right is constant.
+		$$ A_{ij} = a_{i+j-1} $$
+	\end{block}
+	\begin{itemize}
+		\item A Hankel matrix is a Toeplitz matrix flipped upside down
+		\item Arise in control theory (system identification) and signal processing
+	\end{itemize}
+	\begin{example}
+		$$
+		A = \begin{pmatrix}
+			a & b & c & d \\
+			b & c & d & e \\
+			c & d & e & f \\
+			d & e & f & g
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+\subsection{Vandermonde and Hadamard}
+
+\begin{frame}{Vandermonde matrices}
+	\begin{block}{Definition}
+		A \textbf{Vandermonde matrix} is defined for a set of numbers $\alpha_1, \dots, \alpha_m$ by:
+		$$ V_{ij} = \alpha_i^{j-1} $$
+	\end{block}
+	\begin{itemize}
+		\item Arise in polynomial interpolation: finding the coefficients of a polynomial that passes through a given set of points
+		\item The determinant has a simple, famous formula: $\det(V) = \prod_{1 \le i < j \le n} (\alpha_j - \alpha_i)$
+		\item The matrix is invertible if and only if the $\alpha_i$ are all distinct
+	\end{itemize}
+	\begin{example}
+		$$
+		V = \begin{pmatrix}
+			1 & \alpha_1 & \alpha_1^2 & \alpha_1^3 \\
+			1 & \alpha_2 & \alpha_2^2 & \alpha_2^3 \\
+			1 & \alpha_3 & \alpha_3^2 & \alpha_3^3 \\
+			1 & \alpha_4 & \alpha_4^2 & \alpha_4^3
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+\begin{frame}{Hadamard matrices}
+	\begin{block}{Definition}
+		A \textbf{Hadamard matrix} is a square matrix whose entries are either +1 or -1 and whose rows are mutually orthogonal.
+	\end{block}
+	\begin{itemize}
+		\item If $H$ is a Hadamard matrix of size $n \times n$, then $H H^T = nI_n$
+		\item The size $n$ must be 1, 2 or a multiple of 4. (It is an open conjecture that all multiples of 4 work)
+		\item Used in error-correcting codes (Walsh-Hadamard code), signal processing and experimental design
+	\end{itemize}
+	\begin{example}[A $4 \times 4$ Hadamard Matrix]
+		$$
+		H_4 = \begin{pmatrix}
+			1 & 1 & 1 & 1 \\
+			1 & -1 & 1 & -1 \\
+			1 & 1 & -1 & -1 \\
+			1 & -1 & -1 & 1
+		\end{pmatrix}
+		$$
+	\end{example}
+\end{frame}
+
+% --- SECTION 5 ---
+\section{Conclusion}
+
+\begin{frame}{Summary}
+	We have surveyed a menagerie of special matrices.
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\textbf{Pattern-Based:}
+			\begin{itemize}
+				\item Diagonal
+				\item Triangular
+				\item Block Structures
+			\end{itemize}
+			\vspace{1cm}
+			\textbf{Symmetry-Based:}
+			\begin{itemize}
+				\item Symmetric
+				\item Hermitian
+				\item Orthogonal/Unitary
+				\item Normal
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\textbf{Named Structures:}
+			\begin{itemize}
+				\item Permutation
+				\item Circulant
+				\item Toeplitz
+				\item Hankel
+				\item Vandermonde
+				\item Hadamard
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	\vspace{1cm}
+	\begin{alertblock}
+		Recognizing these structures is a key skill in linear algebra, as it can drastically simplify problems and provide deeper insight.
+	\end{alertblock}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+\begin{frame}[allowframebreaks]
+    \frametitle{References}
+    \bibliographystyle{amsalpha}
+    \bibliography{MATH-4370-7370-lecture-notes.bib}
+    \end{frame}
+    
+    
+
+\end{document}

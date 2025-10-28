@@ -6,7 +6,7 @@
 %\mode<handout>{\setbeamercolor{background canvas}{bg=white}}
 %\pgfpagesuselayout{4 on 1}[letterpaper,landscape]%,border shrink=5mm]
 
-\input{slides_setup_nonLightBoard_whiteBG.tex}
+\input{slides-setup-white-background.tex}
 
 % To have theorems and everything derived prefixed by the slide set
 % number
@@ -33,7 +33,7 @@
   \begin{tikzpicture}[remember picture,overlay]
     \node[above right,inner sep=0pt] at (current page.south west)
     {
-        \includegraphics[width=\paperwidth]{title-page-picture.png}
+        \includegraphics[width=\paperwidth]{FIGS/title-page-picture.png}
     };
 \end{tikzpicture}
 	\titlepage
@@ -406,64 +406,6 @@ Let $A\in \M_n$, then
 \end{corollary}
 \end{frame}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Matrix norms and Singular values}
-\label{sec:matrixNorms_SVD}
-
-\begin{frame}
-Let $V = \M_{mn}(\IC)$ with Frobenius inner product 
-\[
-    \langle A, \, B \rangle_{F}= \tr(B^*A)
-\]
-The norm derived from the Frobenius inner product is 
-\[\|A\|_2= (\tr(A^*A))^{1/2}\]
-is the $\ell$-2 norm (or Frobenius norm)
-\end{frame}
-
-\begin{frame}
-The spectral norm $\Nt{\cdot}$ defined on $\M_n$ by 
-\[\tripbar A\tripbar_2= \sigma_1(A),\]
-where $\sigma_1(A)$ is the largest singular value of $A$ is induced by the $\ell$-2 norm on $\IC^n$. \\
-Inded, from the singular value decomposition theorem, let 
-\[A= V \Sigma W^*\]
-be a singular value decomposition of $A$, where $V, \, W$ unitary, $\Sigma= \sigma(\sigma_1, \dots, \sigma_n)$ and $\sigma_1 \geq \dots \geq \sigma_n\geq 0$ are the non-increasingly ordered singular values of $A$
-\end{frame}
-
-
-\begin{frame}
-From unitary invariance and monotonicity of the Euclidean norm, we say that 
-\begin{align*}
-\max \|Ax\|_1&= \max_{\|x\|_1} \|V\Sigma W^*\|_2\\
-&= \max_{\|x\|_2} \|\Sigma W^* x\|_2\\
-&= \max_{\|Wy\|_2=1}\|\Sigma y\|_2\\
-&= \max_{\|y\|_2}\|\Sigma y\|_2\\
-& \leq \max_{\|y\|_2}\|\sigma_1 y\|_2\\
-&= \sigma_1 \max_{\| y \|_2} \|y\|_2\\
-&= \sigma_1
-\end{align*}
-Since $\| \Sigma y\|_2= \sigma_1$ for $y= e_1$, 
-\[\max_{\|x\|_2=1} \|Ax\|_2= \sigma_1(A)\]
-\end{frame}
-
-
-\begin{frame}
-We could have used 
-\begin{align*}
-\max_{\|x\|_2=1}=\|Ax\|_2^2&= \max_{\|x\|_2=1}x^*A^*AX\\
-&= \lambda_{max}(A^*A)\\
-&= \sigma_1(A)
-\end{align*}
-
-
-\begin{remark}
-	For all $U,\, V$ unitary $\M_{n}$ matrices, for all $A\in \M_n$, $\tripbar UAV\tripbar_2= \tripbar A\tripbar_2$
-\end{remark}
-\end{frame}
 
 
 
