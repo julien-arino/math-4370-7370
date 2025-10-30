@@ -1,11 +1,6 @@
 \documentclass[aspectratio=169]{beamer}
 
-%\documentclass[handout]{beamer}
-%% To make 4 per page
-%\usepackage{pgfpages}
-%\mode<handout>{\setbeamercolor{background canvas}{bg=white}}
-%\pgfpagesuselayout{4 on 1}[letterpaper,landscape]%,border shrink=5mm]
-
+% Include header
 \input{slides-setup-white-background.tex}
 
 % To have theorems and everything derived prefixed by the slide set
@@ -152,7 +147,8 @@ Let $\| \cdot \|_{\alpha}$ and $\| \cdot \|_{\beta}$ be any two norms on a finit
 \[
     C_m\| \bx\|_{\alpha} \leq 
     \| \bx \|_{\beta}\leq 
-    C_r\| \bx\|_{\alpha}, \forall \bx\in V
+    C_r\| \bx\|_{\alpha}, 
+    \quad\forall \bx\in V
 \]
 \end{corollary}
 \end{frame}
@@ -184,7 +180,7 @@ In finite-dimensional vector spaces, all norm are equivalent
 \begin{frame}
 \begin{definition}[Dual norm]
 Let $f$ be a pre-norm on $V=\IR^n$ or $\IC^n$. The function 
-\[f_d=(\by) \max\limits_{f(\bx)=1} \Rel \by^* \bx\]
+\[f_d(\by)= \max\limits_{f(\bx)=1} \Rel \by^* \bx\]
 is the \defword{dual norm} of $f$
 \end{definition}
 \vfill
@@ -201,7 +197,7 @@ Equivalent definition for dual norm: $f^D(\by)= \max\limits_{f(\bx)=1} | \by^*\b
 Let $f$ be a prenorm on $V=\IR^n$ or $\IC^n$ for all $\bx,\by\in V$. Then 
 \begin{align*}
     & |\by^*\bx\mid \leq f(\bx)f^D(\by)\\
-    & | \by^*\bx | \leq f^D(\bx)f(\bx)
+    & | \by^*\bx | \leq f^D(\bx)f(\by)
 \end{align*}
 \end{lemma}
 \vfill
@@ -222,10 +218,10 @@ In particular, $\|\cdot\|= \|\cdot\|^2 \iff \|\cdot\|= \|\cdot\|_2$
 \end{theorem}
 \vfill
 \begin{definition}
-Let $x\in \IF^n$. Denote $| x|= [|x_i|]$ ($|\cdot |$ entry-wise), and write that $|x|\leq |y |$ if $|x_i|\leq |y_i|$ for all $i= 1, \dots, n$. Assume $\|\cdot\|$ is 
+Let $x\in \IF^n$. Denote $| x|= [|x_i|]$ ($|\cdot |$ entry-wise), and write that $|x|\leq |y |$ if $|x_i|\leq |y_i|$ for all $i= 1, \dots, n$. Then $\|\cdot\|$ is 
 \begin{enumerate}
-    \item monotone if $|\bx|\leq |\by| \implies \|\bx\| \leq \|\by\|$ for all $\bx,\by$
-    \item absloute if $\left \| |\bx| \right\| $ for all $\bx\in V$
+    \item \defword{monotone} if $|\bx|\leq |\by| \implies \|\bx\| \leq \|\by\|$ for all $\bx,\by\in\IF^n$
+    \item \defword{absolute} if $\left \| |\bx| \right\| $ for all $\bx\in\IF^n$
 \end{enumerate}
 \end{definition}
 \end{frame}
@@ -242,7 +238,7 @@ Let $\|\cdot\|$ be a norm on $\IF^n$. Then
     \]
     for all $\by\in V$
     \item If $\|\cdot\|$ absolute, then $\|\cdot\|^D$ is absolute and monotone
-    \item $\|\cdot\|$ absolute if and only if $\|\cdot\|$
+    \item $\|\cdot\|$ absolute if and only if $\|\cdot\|$ monotone
 \end{enumerate}
 \end{theorem}
 \end{frame}
@@ -309,9 +305,9 @@ Then $\Nt{\cdot}$ is the \defword{matrix norm induced} by $\|\cdot\|$
 The function $\Nt{\cdot}$ defined in Definition~\ref{def:induced_matrix_norm} has the following properties
 \begin{enumerate}
     \item $\tripbar\II\tripbar =1$
-    \item $\| A\by \| \leq \tripbar A \tripbar \|\by\|$ for all $A\in \M_n(\IC)$ and all $\by \in \IC^n$
+    \item $\| A\by \| \leq \tripbar A \tripbar\ \|\by\|$ for all $A\in \M_n(\IC)$ and all $\by \in \IC^n$
     \item $\Nt{\cdot}$ is a matrix norm on $\M_n(\IC)$.
-    \item $\tripbar A \tripbar = \max\limits_{\|\bx\|= \|\by\|^D} |\by^* A\bx|$
+    \item $\tripbar A \tripbar = \max\limits_{\|\bx\|= \|\by\|^D=1} |\by^* A\bx|$
 \end{enumerate}
 \end{theorem}
 \end{frame}
@@ -333,10 +329,6 @@ A norm such that $\tripbar \mathbb{I} \tripbar=1$ is \defword{unital}
 
 
 \begin{frame}
-\begin{proposition}
-For all $U,\, V$ unitary matrices, we have $\tripbar UAV\tripbar_2= \tripbar A\tripbar_2$
-\end{proposition}
-\vfill
 \begin{theorem}
 Let $\Nt{\cdot}$ be a matrix norm in $\M_n$ and let $S\in \M_n$ be nonsingular. 
 Then for all $A\in \M_n$, $\tripbar A\tripbar_S= \tripbar SAS^{-1}\tripbar$ is a matrix norm. 
@@ -356,11 +348,19 @@ Then
 \end{theorem}
 \end{frame}
 
-
+\begin{frame}
+	\begin{theorem}
+		Let $A\in\M_n$ and $\varepsilon>0$ be given.
+		Then there exists a matrix norm $\tripbar\,\cdot\,\tripbar$ such that
+		\[
+			\rho(A)\leq\tripbar A\tripbar\leq \rho(A)+\varepsilon
+		\]
+	\end{theorem}
+\end{frame}
 
 \begin{frame}
 \begin{lemma}
-Let $A\in \M_n$. If there exists a norm $\Nt{\cdot}$ on $\M_n$ such that $\tripbar A\tripbar< 1$, then $\lim\limits_{k \to \infty}A^k=0$ entry-wise
+Let $A\in \M_n$. If there exists a norm $\Nt{\,\cdot\,}$ on $\M_n$ such that $\tripbar A\tripbar< 1$, then $\lim\limits_{k \to \infty}A^k=0$ entry-wise
 \end{lemma}
 \vfill
 \begin{remark}

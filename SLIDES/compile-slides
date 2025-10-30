@@ -1,0 +1,23 @@
+#!/bin/bash
+
+##
+## Render the lectures
+##
+
+# First, do some cleanup to start fresh.
+for f in MATH-4370-7370-slides-*.pdf
+do
+    rm -f $f
+done
+
+# Compile the LaTeX files
+for f in MATH-4370-7370-slides-*.tex 
+do
+    # We need to run pdflatex three times to get cross-references and TOC right
+    pdflatex -interaction=nonstopmode $f
+    pdflatex -interaction=nonstopmode $f
+    pdflatex -interaction=nonstopmode $f
+done
+
+# Clean up auxiliary files
+find . -maxdepth 1 \( -name "*.aux" -o -name "*.bbl" -o -name "*.blg" -o -name "*-concordance.tex" -o -name "*.fdb_latexmk" -o -name "*.fls" -o -name "*.idx" -o -name "*.ilg" -o -name "*.ind" -o -name "*.log" -o -name "*.nav" -o -name "*.out" -o -name "*.snm" -o -name "*.synctex.gz" -o -name "*.toc" -o -name "*.vrb" \) -delete
