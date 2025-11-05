@@ -69,32 +69,35 @@
 	\end{theorem}
 	\vfill
 	\begin{theorem}
-		Each eigenvalue of a positive definite matrix (respectively positive semidefinite matrix) is positive (respectively nonnegative)
+		Every eigenvalue of a positive definite matrix (respectively positive semidefinite matrix) is positive (respectively nonnegative)
 	\end{theorem}
 \end{frame}
 
 
 \begin{frame}
 	\begin{proposition}
-		Let $A$ be a positive semidefinite (respectively positive definite) matrix. Then $\tr (A)$, $\det(A)$, the principal minors of $A$ are all nonnegative (respectively positive). Also, $\tr(A)=0$ if and only if $A=0$
+		Let $A$ be a positive semidefinite (respectively positive definite) matrix. Then $\tr (A)$, $\det(A)$ and the principal minors of $A$ are all nonnegative (respectively positive). Also, $\tr(A)=0$ if and only if $A=0$
 	\end{proposition}
-	
+	\vfill
 	\begin{theorem}
 		Let $A\in \M_n$ be a positive semidefinite matrix and $\bx\in \IC^n$. Then 
 		\[
 		\bx^*A\bx= 0 \iff A\bx=\b0
 		\]
 	\end{theorem}
-	
+	\vfill
 	\begin{corollary}
-		Let $A\in \M_n$ be a positive semidefinite matrix. Then $A$ is positive definite if and only if $A$ is nonsingular
+		Let $A\in \M_n$ be a positive semidefinite matrix. Then 
+		\[
+			A\text{ positive definite }\iff A\text{ nonsingular}
+		\]
 	\end{corollary}
 \end{frame}
 
 
 \begin{frame}
-	\begin{theorem}[Somewhat unrelated]
-		Let $B\in \M_n$ be a Hermitian matrix, $\by \in \IC^n$, and $a\in \IR$. Let 
+	\begin{theorem}[An eigenvalue interlacing theorem]
+		Let $B\in \M_n$ be a Hermitian matrix, $\by \in \IC^n$ and $a\in \IR$. Let 
 		\[
 		A= \begin{pmatrix}
 			B& \by\\
@@ -111,9 +114,13 @@
 
 
 \begin{frame}
-	\begin{definition}
-		The singular values of a matrix $A$ are the (nonnegative) square roots of the eigenvalues of $A^*A$
+	\begin{definition}[Singular values]
+		The \defword{singular values} of a matrix $A\in\M_{mn}$ are the (nonnegative) square roots of the eigenvalues of $A^*A$
 	\end{definition}
+	\vfill
+	\begin{remark}
+	Let $A\in \M_{mn}$. Then $A, \overline{A}, A^T$, and $A^*$ have the same nonzero singular values
+	\end{remark}
 	\vfill
 	\begin{remark}
 		$A^*A$ is positive semidefinite
@@ -136,17 +143,28 @@
 \end{frame}
 
 
+\begin{frame}{Remark about SVs/SVD in H \& J}
+	H \& J like to work with matrices in $\M_n$
+	\vfill
+	If $A\in\M_{nm}$, then $A^*A\in\M_n$
+	\vfill
+	So all of their SV/SVD results are with matrices in $\M_{nm}$
+	\vfill
+	Pfff...
+\end{frame}
 
 \begin{frame}
-	\begin{theorem}[H \& J] Let $A\in \M_{nm}$ , $q= \min\{m,n\}$. Assume that the rank of $A$ is n. Then 
+	\begin{theorem}[H \& J] Let $A\in \M_{nm}$ , $q= \min\{m,n\}$. Assume that the rank of $A$ is $r$. Then 
 		\begin{enumerate}
 			\item $\exists V \in M_{n}$ and $W \in \M_{m}$ unitary matrices and $\Sigma_q\in \M_q= \diag(\sigma_1, \dots, \sigma_q)$ s.t. 
 			\[\sigma_1\geq \sigma_2 \geq \dots \geq \sigma_r > 0= \sigma_{r+1} = \dots = \sigma_q\]
 			and
-			\[A\Sigma W\]
+			\[
+				A=V\Sigma W^*
+			\]
 			where 
 			\[\Sigma= \begin{cases}
-				\Sigma_1, & m=n\\
+				\Sigma_q, & m=n\\
 				\begin{pmatrix}
 					\Sigma_q&
 					0
@@ -157,7 +175,7 @@
 				\end{pmatrix}\in \M_{nm},&  n>m
 			\end{cases}
 			\]
-			\item The parameters $\sigma_1, \dots, \sigma_r$ are the positive square roots of the decreasingly ordered eigenvalues of $A^*A$
+			\item The parameters $\sigma_1, \dots, \sigma_r$ are the positive square roots of the decreasingly ordered eigenvalues of $A^*A$ or $AA^*$
 		\end{enumerate}
 		
 	\end{theorem}
@@ -166,17 +184,13 @@
 
 \begin{frame}
 	\begin{remark}
-		Let $A\in \M_{mn}$. Then $A, \overline{A}, A^T$, and $A^*$ have the same singular values
-	\end{remark}
-	\vfill
-	\begin{remark}
 		Let $A\in \M_n$ with singular values $\sigma_1, \dots, \sigma_n$, then 
 		\[
-		\sigma_1\ldots \sigma_n = \det(A)
+		\sigma_1\cdots \sigma_n = \det(A)
 		\]
 		and 
 		\[
-		\sigma_1^2+ \ldots+ \sigma_n^2= \tr(A^*A)
+		\sigma_1^2+ \cdots+ \sigma_n^2= \tr(A^*A)
 		\]
 	\end{remark}
 \end{frame}
@@ -184,14 +198,14 @@
 
 \begin{frame}
 	\begin{theorem}
-		Let $A\in \M_{nm}$, $q= \min{m,n}$, and $\sigma_1\geq \dots \geq \sigma_q$ nonincresingly ordered singular values of $A$. Define 
+		Let $A\in \M_{nm}$, $q= \min\{m,n\}$ and $\sigma_1\geq \dots \geq \sigma_q$ nonincresingly ordered singular values of $A$. Define the Hermitian matrix
 		\[\mathcal{A}= \begin{pmatrix}
 			0& A\\
 			A^*& 0
 		\end{pmatrix}\]
-		to be a Hermitian matrix. Then the ordered eigenvalues of $\mathcal{A}$ are 
+		Then the ordered eigenvalues of $\mathcal{A}$ are 
 		\[
-		-\sigma_1 \leq \dots \leq -\sigma_q \leq \underbrace{0= \dots = 0}{|n-m|} \leq \sigma_q\leq \dots \leq \sigma_1
+		-\sigma_1 \leq \dots \leq -\sigma_q \leq \underbrace{0=\cdots=0}_{|n-m|} \leq \sigma_q\leq \dots \leq \sigma_1
 		\]
 	\end{theorem}
 \end{frame}
@@ -200,22 +214,32 @@
 
 \begin{frame}
 	\begin{theorem}[An interlacing result] Let $A\in \M_{nm}$, $q= \min\{m,n\}$ and $\hat{A}$ be the matrix obtained from $A$
-		by deleting one row and one column. Let $\sigma_1 \geq \dots \geq \sigma_q$ and $\hat{\sigma}_1\geq \dots \geq \hat{\sigma}_q$ be the nonsingular ordered singular values of $A$ and $\hat{A}$, respectively, where 
-		$\hat{\sigma}_q=0$ if $n\geq m$ and a column is deleted or if $n\geq m$ and a row is deleted. Then
-		\[\sigma_1 \geq \hat{\sigma_1} \geq \sigma_2 \geq \hat{\sigma_2} \geq \dots \sigma_q \geq \hat{\sigma_q}.\]
+		by deleting one row \emph{or} one column of $A$
+		\vskip0.5cm
+		Let $\sigma_1 \geq \dots \geq \sigma_q$ and $\hat{\sigma}_1\geq \dots \geq \hat{\sigma}_q$ be the nonincresingly ordered singular values of $A$ and $\hat{A}$, respectively, where 
+		$\hat{\sigma}_q=0$ if $n\geq m$ and a column is deleted or if $n\geq m$ and a row is deleted
+		\vskip0.5cm
+		Then
+		\[
+			\sigma_1 \geq \hat{\sigma}_1 \geq \sigma_2 \geq \hat{\sigma}_2 \geq \cdots\geq  \sigma_q \geq \hat{\sigma}_q
+		\]
 	\end{theorem}
+\end{frame}
 	
-	\begin{theorem}[von Neumann] Let $A, \, B\in \M_{mn}$, $q= \min\{m, n\}$, $\sigma_1(A)\geq \dots \geq \sigma_q(A)$ and $\sigma_1(B)\geq \dots \geq \sigma_q(B)$ the non-increasingly singular values of $A$ and $B$, respectively. Then 
-		\[\Rel\tr(AB^*)\leq \sum\limits_{i=1}^q \sigma_i(A) \sigma_i(B).\]
+\begin{frame}
+	\begin{theorem}[von Neumann] Let $A, \, B\in \M_{mn}$, $q= \min\{m, n\}$, $\sigma_1(A)\geq \dots \geq \sigma_q(A)$ and $\sigma_1(B)\geq \dots \geq \sigma_q(B)$ the nonincreasingly ordered singular values of $A$ and $B$, respectively. Then 
+		\[
+		\Re\tr(AB^*)\leq \sum\limits_{i=1}^q \sigma_i(A) \sigma_i(B)
+		\]
 	\end{theorem}
 \end{frame}
 
 
 \begin{frame}
 	\begin{theorem}
-		Let $A\in \M_{nm}$, $q= \min{m,n}$, and $\sigma_1\geq \dots \geq \sigma_q$ nonincreasingly ordered singular values of $A$, and $\alpha= \{1, \dots, q\}$. Then 
+		Let $A\in \M_{nm}$, $q= \min\{m,n\}$ and $\sigma_1\geq \dots \geq \sigma_q$ nonincreasingly ordered singular values of $A$, and $\alpha= \{1, \dots, q\}$. Then 
 		\[\Rel\tr(A)\leq \sum\limits_{i=1}^q\sigma_i\]
-		with equality if and only if $A[\alpha]$ (principal leading submatrix of $A$) is positive semidefinite and $A$ has no nonzero entries outside $A[\alpha]$. 
+		with equality if and only if $A[\alpha]$ (principal leading submatrix of $A$) is positive semidefinite and $A$ has no nonzero entries outside $A[\alpha]$
 	\end{theorem}
 \end{frame}
 
@@ -229,7 +253,7 @@
 \begin{frame}
 	\begin{itemize}
 		\item Let $A\in\M_2$
-		\[\sigma_1, \sigma_2= \dfrac{1}{2}\left((\tr A^*A) \mp \sqrt{(\tr A^* A)^2-4|\det A|^2} \right)\]
+		\[\sigma_1, \sigma_2= \dfrac{1}{2}\left(\tr (A^*A) \mp \sqrt{(\tr (A^* A))^2-4|\det A|^2} \right)\]
 		\item The nilpotent matrix 
 		\[A= \begin{pmatrix}
 			0& a_{12}& \\
@@ -237,13 +261,17 @@
 			& & & a_{n-1, m}\\
 			& & &0
 		\end{pmatrix}\]
-		has singular values $0, |a_{12}|, \dots, |a_{n-1,n}| $.
+		has singular values $0, |a_{12}|, \dots, |a_{n-1,n}| $
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\begin{theorem}
-		Let $A_1, A_2, \dots \in \M_{nm}$ given (infinite) sequence with $\lim_{k\to \infty} A_k=A$ (entrywise). Let $q= \min (m,n)$. Let $\sigma_1 (A)\geq \dots \geq \sigma_q(A)$ and $\sigma_1 (A_k)\geq \dots \geq \sigma_q(A_k)$ be the non-increasinly ordered singular values of $A$ and $A_k$, respectively (for all $k$). Then 
+		Let $A_1, A_2, \ldots \in \M_{nm}$ be a sequence with $\lim_{k\to \infty} A_k=A$ (entrywise)
+		\vskip0.5cm
+		Let $q= \min\{m,n\}$. Let $\sigma_1 (A)\geq \dots \geq \sigma_q(A)$ and $\sigma_1 (A_k)\geq \dots \geq \sigma_q(A_k)$ be the nonincreasinly ordered singular values of $A$ and $A_k$, respectively
+		\vskip0.5cm
+		Then 
 		\[
 		\lim_{k\to \infty}\sigma_i(A_k)= \sigma_i(A)
 		\]
@@ -252,9 +280,10 @@
 
 \begin{frame}
 	\begin{theorem}
-		Let $A\in \M_n$ where $n= \rank\ A$
+		Let $A\in \M_n$ where $r= \rank\ A$
 		\begin{enumerate}
-			\item $A= A^T$ if and only if there exists $U \in \M_n$ unitary and a nonegative diagonal matrix $\Sigma$ such that $A= U \Sigma U^T$. Then the diagonal entries of $\Sigma$ are the singular values of $A$
+			\item $A= A^T$ if and only if there exists $U \in \M_n$ unitary and a nonnegative diagonal matrix $\Sigma$ such that $A= U \Sigma U^T$. 
+			The diagonal entries of $\Sigma$ are the singular values of $A$
 			\item If $A=-A^T$, then $n$ is even and there exists $U \in \M_n$ unitary and positive real scalars $s_1, \dots , s_{r/2}$ such that 
 			\[
 			U \left( \begin{pmatrix}
@@ -303,18 +332,18 @@ be a singular value decomposition of $A$, where $V, \, W$ unitary, $\Sigma= \sig
 
 
 \begin{frame}
-From unitary invariance and monotonicity of the Euclidean norm, we say that 
+From unitary invariance and monotonicity of the Euclidean norm, we have
 \begin{align*}
-\max \|Ax\|_1&= \max_{\|x\|_1} \|V\Sigma W^*\|_2\\
-&= \max_{\|x\|_2} \|\Sigma W^* x\|_2\\
-&= \max_{\|Wy\|_2=1}\|\Sigma y\|_2\\
-&= \max_{\|y\|_2}\|\Sigma y\|_2\\
-& \leq \max_{\|y\|_2}\|\sigma_1 y\|_2\\
-&= \sigma_1 \max_{\| y \|_2} \|y\|_2\\
+\max_{\|\bx\|_2=1} \|A\bx\|_2&= \max_{\|\bx\|_2=1} \|V\Sigma W^*\bx\|_2\\
+&= \max_{\|\bx\|_2=1} \|\Sigma W^* \bx\|_2\\
+&= \max_{\|W\by\|_2=1}\|\Sigma \by\|_2\\
+&= \max_{\|\by\|_2=1}\|\Sigma \by\|_2\\
+& \leq \max_{\|\by\|_2=1}\|\sigma_1 \by\|_2\\
+&= \sigma_1 \max_{\| \by \|_2=1} \|\by\|_2\\
 &= \sigma_1
 \end{align*}
-Since $\| \Sigma y\|_2= \sigma_1$ for $y= e_1$, 
-\[\max_{\|x\|_2=1} \|Ax\|_2= \sigma_1(A)\]
+Since $\| \Sigma\by\|_2= \sigma_1$ for $\by= \be_1$, 
+\[\max_{\|\bx\|_2=1} \|A\bx\|_2= \sigma_1(A)\]
 \end{frame}
 
 
